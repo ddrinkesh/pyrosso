@@ -1,0 +1,154 @@
+{{ 'swiper.css' | asset_url | stylesheet_tag }}
+{{ 'top-bar.css' | asset_url | stylesheet_tag }}
+
+{%- if section.blocks.size > 0 -%}
+  <slideshow-section
+    class="top-bar-section"
+    style="
+      --top-bar-bg: {{ section.settings.bg_color }};
+      --top-bar-text: {{ section.settings.text_color }};
+      --top-bar-size: {{ section.settings.font_size }}px;
+    "
+  >
+    <script type="module" src="{{ 'slider.js' | asset_url }}" defer="defer"></script>
+
+    <div data-swiper class="top-bar loading">
+      <div class="hero__wrapper">
+         <div data-swiper-container class="swiper top-bar__swiper">
+            <div class="swiper-wrapper">
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'item' -%}
+                  <div
+                    data-swiper-slide
+                    class="swiper-slide top-bar__slide"
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.link != blank -%}
+                      <a class="top-bar__link" href="{{ block.settings.link }}">
+                        {{- block.settings.text | escape -}}
+                      </a>
+                    {%- else -%}
+                      <span>{{- block.settings.text | escape -}}</span>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script data-swiper-configuration type="text/json">
+      {
+        "slidesPerView": 1,
+        "slidesPerGroup": 1,
+        "loop": true,
+        "speed": 600,
+        "spaceBetween": 0,
+        "watchSlidesProgress": true,
+        "autoplay": {
+          "delay": {{ section.settings.autoplay_delay }},
+          "disableOnInteraction": false,
+          "pauseOnMouseEnter": true
+        },
+        "breakpoints": {
+          "750": {
+            "slidesPerView": 3,
+            "slidesPerGroup": 1,
+            "spaceBetween": 0
+          }
+        }
+      }
+    </script>
+  </slideshow-section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Top Bar",
+  "tag": "div",
+  "class": "top-bar-wrapper",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Carousel"
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "Autoplay delay",
+      "min": 1000,
+      "max": 8000,
+      "step": 500,
+      "unit": "ms",
+      "default": 3000
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Ticker item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "BUY 4 SAMPLES, GET 1 FREE"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Top Bar",
+      "category": "Header",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": { "text": "BUY 4 SAMPLES, GET 1 FREE" }
+        },
+        {
+          "type": "item",
+          "settings": { "text": "RECEIVE COMPLIMENTARY FRAGRANCE SAMPLES WITH FULL SIZE PURCHASES" }
+        },
+        {
+          "type": "item",
+          "settings": { "text": "BUY 4 SAMPLES, GET 1 FREE" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

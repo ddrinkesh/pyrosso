@@ -608,15 +608,30 @@
                 "text": "Announce something here",
                 "link": ""
               }
+            },
+            "announcement-bar-1": {
+              "type": "announcement",
+              "settings": {
+                "text": "Free shipping on orders over $50",
+                "link": ""
+              }
+            },
+            "announcement-bar-2": {
+              "type": "announcement",
+              "settings": {
+                "text": "New arrivals every week",
+                "link": ""
+              }
             }
           },
           "block_order": [
-            "announcement-bar-0"
+            "announcement-bar-0",
+            "announcement-bar-1",
+            "announcement-bar-2"
           ],
           "settings": {
             "marquee": false,
             "animation_speed": "100",
-            "checkbox_close_announcement": true,
             "background_color": "#e2e2e2"
           }
         },

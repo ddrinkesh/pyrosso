@@ -17,21 +17,21 @@
         "announcement_bH7Gqk": {
           "type": "announcement",
           "settings": {
-            "text": "Free shipping on orders over $50.",
+            "text": "BUY 4 SAMPLES, GET 1 FREE",
             "link": ""
           }
         },
         "announcement_KPJFgf": {
           "type": "announcement",
           "settings": {
-            "text": "19,000+ Positive Reviews",
+            "text": "RECEIVE COMPLIMENTARY FRAGRANCE SAMPLES WITH FULL SIZE PURCHASES",
             "link": ""
           }
         },
         "announcement_JhDV3V": {
           "type": "announcement",
           "settings": {
-            "text": "Satisfaction Guarantee",
+            "text": "BUY 4 SAMPLES, GET 1 FREE",
             "link": ""
           }
         }
@@ -41,12 +41,52 @@
         "announcement_KPJFgf",
         "announcement_JhDV3V"
       ],
+      "disabled": true,
       "name": "Announcementbar",
       "settings": {
         "bar_bg": "#000000",
         "bar_text_color": "#ffffff",
         "slide_effect": "fade",
         "autoplay_delay": 4000
+      }
+    },
+    "top_bar_HR7Cxi": {
+      "type": "top-bar",
+      "blocks": {
+        "item_Vwg6CM": {
+          "type": "item",
+          "settings": {
+            "text": "BUY 4 SAMPLES, GET 1 FREE",
+            "link": ""
+          }
+        },
+        "item_AghGYT": {
+          "type": "item",
+          "settings": {
+            "text": "RECEIVE COMPLIMENTARY FRAGRANCE SAMPLES WITH FULL SIZE PURCHASES",
+            "link": ""
+          }
+        },
+        "item_kETfLP": {
+          "type": "item",
+          "settings": {
+            "text": "BUY 4 SAMPLES, GET 1 FREE",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_Vwg6CM",
+        "item_AghGYT",
+        "item_kETfLP"
+      ],
+      "name": "Top Bar",
+      "settings": {
+        "bg_color": "#000000",
+        "text_color": "#ffffff",
+        "font_size": 12,
+        "speed": 30,
+        "separator": "·"
       }
     },
     "header": {
@@ -113,6 +153,7 @@
   },
   "order": [
     "custom_announcementbar_3Xznx7",
+    "top_bar_HR7Cxi",
     "header"
   ]
 }

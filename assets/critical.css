@@ -3009,6 +3009,8 @@ body.menu-drawer-overlay-on .page-header {
   }
   .wt-announcement__container--3col .wt-announcement__body {
     flex-basis: 33%;
+    width: 33%;
+    min-width: 0;
   }
   .wt-announcement__container--3col .wt-announcement__body:first-child {
     text-align: left;
