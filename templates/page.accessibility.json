@@ -1,0 +1,99 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "compact-size-enabled": true,
+        "size_heading": 140,
+        "size_heading_mobile": 100,
+        "color-body-text": "#151515",
+        "color-bg-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "margin-top": 60,
+        "margin-bottom": 60
+      }
+    },
+    "policy_n3Td9H": {
+      "type": "policy",
+      "blocks": {
+        "text_xkmb4y": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Effective Date: January 30,2026</p><p>At Pyrosso, we value your trust. In compliance with the California Consumer Privacy Act (CCPA), we ensure California residents have full control over their personal data.</p>"
+          }
+        },
+        "heading_AR79iD": {
+          "type": "heading",
+          "settings": {
+            "heading": "Your Rights at a Glance"
+          }
+        },
+        "text_JjMKJN": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Under the CCPA, you have the right to:</p><ul><li>Know what personal information is collected, disclosed, or shared.</li><li>Opt-out of the sale of your personal information.</li><li>Access a copy of the specific data we hold about you.</li><li>Delete your personal information from our records.</li><li>Non-Discrimination: You will never receive different service or pricing for exercising these rights.</li></ul>"
+          }
+        },
+        "heading_NbMk8e": {
+          "type": "heading",
+          "settings": {
+            "heading": "How We Use Cookies"
+          }
+        },
+        "text_7zaYEw": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pyrosso does not sell, rent, or trade your personal information to third parties for money or any other valuable consideration. We use your data strictly to process orders, improve our products, and communicate with you about your account.</p>"
+          }
+        },
+        "heading_wbtgy4": {
+          "type": "heading",
+          "settings": {
+            "heading": "How to Request Data Deletion"
+          }
+        },
+        "text_hCE9h8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>To have your personal information removed from our systems:</p><ul><li>Email: <a href=\"mailto:info@pyrosso.com\" title=\"mailto:info@pyrosso.com\">info@pyrosso.com</a></li><li>Subject Line: Please use \"Data Deletion Request\".</li><li>Timeline: After verifying your identity, we will process your request within 45 days.</li></ul><p>For a deeper look at our data practices, please visit our full <a href=\"/pages/privacy-policy\" title=\"Privacy Policy\">Privacy Policy</a>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_xkmb4y",
+        "heading_AR79iD",
+        "text_JjMKJN",
+        "heading_NbMk8e",
+        "text_7zaYEw",
+        "heading_wbtgy4",
+        "text_hCE9h8"
+      ],
+      "name": "policy",
+      "settings": {
+        "heading": "Accessibility",
+        "background_color": "#000000",
+        "text_color": "#FFFFFF",
+        "light_text_color": "#BFBFBF",
+        "margin-top": 128,
+        "margin-bottom": 128,
+        "margin-top-mobile": 76,
+        "margin-bottom-mobile": 76
+      }
+    }
+  },
+  "order": [
+    "main",
+    "policy_n3Td9H"
+  ]
+}

@@ -1,0 +1,72 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "footer": {
+      "type": "page-footer",
+      "blocks": {
+        "menu_TyWCqJ": {
+          "type": "menu",
+          "settings": {
+            "heading_links": "Navigate",
+            "links": "navigate"
+          }
+        },
+        "social_menu_eYPrxC": {
+          "type": "social_menu",
+          "settings": {
+            "heading_links": "Socials"
+          }
+        },
+        "menu_DzCNd6": {
+          "type": "menu",
+          "settings": {
+            "heading_links": "Legal",
+            "links": "legal"
+          }
+        },
+        "text_DY7pny": {
+          "type": "text",
+          "settings": {
+            "heading_text": "Contact",
+            "text": "<p>PR + Wholesale inquiry:<br/><a href=\"mailto:sales@pyrsso.com\" title=\"mailto:sales@pyrsso.com\">Sales@pyrsso.com</a></p><p>Customer Service:<br/><a href=\"mailto:info@pyrosso.com\" title=\"mailto:info@pyrosso.com\">info@pyrosso.com</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "menu_TyWCqJ",
+        "social_menu_eYPrxC",
+        "menu_DzCNd6",
+        "text_DY7pny"
+      ],
+      "settings": {
+        "show-scroll-effect": false,
+        "show-social-media-icons": false,
+        "show_country_selector": false,
+        "show_country_selector_label": false,
+        "show_country_selector_flag": false,
+        "show_language_selector": false,
+        "enable_follow_on_shop": false,
+        "show-payments-icons": false,
+        "payment_icons_monochrome": false,
+        "show-copyright": true,
+        "text": "© 2026 Pyrosso. All Rights Reserved.",
+        "big-logo-width": 100,
+        "margin-top": 56,
+        "margin-bottom": 8
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

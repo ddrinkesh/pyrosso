@@ -1,0 +1,18 @@
+.custom-announcmentbar { background-color: var(--bar-bg, #111111); color: var(--bar-text, #ffffff); width: 100%; position: relative; z-index: 10; }
+.custom-announcmentbar .custom-announcmentbar__inner { display: flex; align-items: center; margin: 0 auto; max-width: var(--site-max-width-big); padding-left: calc(var(--gap, 8px) * 2); padding-right: calc(var(--gap, 8px) * 2); }
+.custom-announcmentbar .custom-announcmentbar__track-wrapper { flex: 1; min-width: 0; overflow: hidden; }
+.custom-announcmentbar .custom-announcmentbar__track { display: flex; transition: transform 0.5s ease-in-out; will-change: transform; }
+.custom-announcmentbar .custom-announcmentbar__slide { min-width: 100%; display: flex; align-items: center; justify-content: center; text-align: center; padding: 7px 0; }
+.custom-announcmentbar .custom-announcmentbar__text { margin: 0; font-size: 16px; line-height: 1.35; letter-spacing: -1%; color: var(--bar-text, #ffffff); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.custom-announcmentbar .custom-announcmentbar__link { color: inherit; text-decoration: underline; text-underline-offset: 2px; transition: opacity 0.2s ease; }
+.custom-announcmentbar .custom-announcmentbar__link:hover { opacity: 0.7; }
+.custom-announcmentbar .custom-announcmentbar__btn { width: auto; height: 40px; display: flex; align-items: center; justify-content: center; border: none; background: transparent; color: var(--bar-text, #ffffff); cursor: pointer; flex-shrink: 0; transition: all 0.4s ease-in-out; padding: 0; }
+.custom-announcmentbar .custom-announcmentbar__btn:hover { opacity: 1; }
+.custom-announcmentbar .custom-announcmentbar__btn svg { width: 12px; height: 12px; display: block; }
+@media (min-width: 1200px) {
+    .custom-announcmentbar .custom-announcmentbar__inner { padding-left: calc(calc(var(--gap, 8px) * 2) + calc(var(--gap, 8px) * 2)); padding-right: calc(calc(var(--gap, 8px) * 2) + calc(var(--gap, 8px) * 2)); }
+}
+@media (max-width: 749px) {
+    .custom-announcmentbar .custom-announcmentbar__text { font-size: 14px; white-space: normal; }
+    .custom-announcmentbar .custom-announcmentbar__btn { height: 36px; }
+}

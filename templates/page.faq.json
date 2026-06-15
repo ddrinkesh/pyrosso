@@ -1,0 +1,434 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "compact-size-enabled": true,
+        "size_heading": 140,
+        "size_heading_mobile": 100,
+        "color-body-text": "rgba(0,0,0,0)",
+        "color-bg-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "margin-top": 40,
+        "margin-bottom": 0
+      }
+    },
+    "image_banner_xpAUaD": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_nVibCT": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get to know GLAZING MIST.",
+            "disable_on_mobile": false,
+            "size_heading": 100,
+            "size_heading_mobile": 100
+          }
+        }
+      },
+      "block_order": [
+        "heading_nVibCT"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "advanced_heading": false,
+        "heading": "",
+        "heading_richtext": "<h2>Image banner</h2>",
+        "full-width-enabled": true,
+        "slide_height": "fixed_height",
+        "desktop_fixed_height": 560,
+        "mobile_fixed_height": 400,
+        "desktop_image": "shopify://shop_images/VUU08221_SHOPIFY.png",
+        "desktop_text_vertical_position": "center",
+        "desktop_text_horizontal_position": "center",
+        "mobile_text_vertical_position": "center",
+        "mobile_text_horizontal_position": "center",
+        "out_hero_mobile": false,
+        "out-background-color": "rgba(0,0,0,0)",
+        "out-text-color": "rgba(0,0,0,0)",
+        "color-heading": "rgba(0,0,0,0)",
+        "section-color-overlay": "rgba(0,0,0,0)",
+        "section-color-overlay-opacity": 100,
+        "color-body-text": "rgba(0,0,0,0)",
+        "text-container-color": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "enable_scroll_btn": false,
+        "scroll_btn_text": "Scroll",
+        "scroll_btn_url": "",
+        "margin-top": 0,
+        "margin-bottom": 0,
+        "margin-top-mobile": 0,
+        "margin-bottom-mobile": 0,
+        "lcp_optimize": false
+      }
+    },
+    "faq_LeBqPr": {
+      "type": "faq",
+      "blocks": {
+        "heading_zyVHpd": {
+          "type": "heading",
+          "settings": {
+            "heading": "Products"
+          }
+        },
+        "collapsible_tab_6Xnp4d": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What hair types are Pyrosso products best for?",
+            "content": "<p>Pyrosso products are designed to work across most hair types, with a focus on straight to wavy hair and thick to medium textures. Our formulas are especially effective for adding texture, control, and natural hold without stiffness.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_WLVH7X": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Will Pyrosso products make my hair look greasy or heavy?",
+            "content": "<p>No. Pyrosso products are formulated to provide hold and texture while keeping a clean, lightweight finish. They’re designed to add definition without weighing your hair down or leaving residue.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_brc7hr": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "How strong is the hold?",
+            "content": "<p>Pyrosso offers a workable, long-lasting hold that keeps your style in place while still allowing movement. You can restyle throughout the day without your hair feeling stiff or crunchy.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_4TVPPe": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Can I use Pyrosso products on dry hair?",
+            "content": "<p>Yes. Pyrosso products work best on dry or slightly damp hair. Applying to dry hair gives you more texture and control, while damp hair offers a softer, more natural finish.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_mEVcgJ": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "How much product should I use?",
+            "content": "<p>A small amount goes a long way. Start with a fingertip-sized amount, warm it between your hands, and build up only if needed. Using too much product can reduce texture and movement.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_bcpFj3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Is Pyrosso safe to use daily?",
+            "content": "<p>Yes. Pyrosso products are designed for daily use and wash out easily with shampoo. They won’t clog your scalp or cause buildup when used as directed.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_zVm7mW": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Does Pyrosso work for short hair and longer styles?",
+            "content": "<p>Yes. Pyrosso works well for short crops, textured styles, and medium-length hair. The product can be layered to create either a clean, structured look or a more relaxed, natural finish.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_UtdD4V": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Will Pyrosso damage my hair?",
+            "content": "<p>No. Pyrosso products are formulated with conditioning ingredients to help protect hair while styling. They’re designed to enhance your look without drying out or damaging your hair.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_4e7VpG": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Can I combine Pyrosso products together?",
+            "content": "<p>If you’re looking for texture and hold, start with the clay. If you want volume and a natural, effortless look, pair it with the sea salt spray. Our products are designed to work together so you can dial in your ideal style.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "heading_EQLjnP": {
+          "type": "heading",
+          "settings": {
+            "heading": "Shipping"
+          }
+        },
+        "collapsible_tab_hkYBfG": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "How long does shipping take?",
+            "content": "<p>Orders are typically processed within 1–2 business days. Once shipped, delivery times vary by location but usually arrive within 3–7 business days in the U.S.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_xri4BL": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Do you offer free shipping?",
+            "content": "<p>Yes. We offer free shipping on orders that meet our free-shipping threshold, which is displayed at checkout.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_LtEe9N": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Where do you currently ship?",
+            "content": "<p>At this time, Pyrosso ships within the United States only. We plan to expand to international shipping in the future.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_Ptjf9d": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "How much does shipping cost?",
+            "content": "<p>Shipping costs are calculated at checkout based on your location and selected shipping method.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_erTht9": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Will I receive a tracking number?",
+            "content": "<p>Yes. Once your order ships, you’ll receive a confirmation email with tracking information so you can follow your package.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_dLGQ9y": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Can I change or cancel my order after placing it?",
+            "content": "<p>We process orders quickly, so changes or cancellations aren’t guaranteed. If you need assistance, contact us as soon as possible and we’ll do our best to help.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_gqLPwq": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What if my package is delayed?",
+            "content": "<p>Shipping timelines are estimates and may be affected by carrier delays or high-volume periods. If your order seems delayed, reach out to our support team and we’ll assist.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_mPtgeG": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What happens if my order arrives damaged?",
+            "content": "<p>If your order arrives damaged, contact us within 48 hours of delivery with photos of the packaging and product so we can make it right.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_WDPTgW": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Do you ship to PO boxes or APO/FPO addresses?",
+            "content": "<p>Yes, we ship to PO boxes and APO/FPO addresses when supported by the carrier.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_WkqbyA": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What if my order is marked as delivered but I didn’t receive it?",
+            "content": "<p>If your order is marked as delivered but can’t be located, please contact us. We’ll work with the carrier to investigate and help resolve the issue.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "heading_6adizy": {
+          "type": "heading",
+          "settings": {
+            "heading": "Returns"
+          }
+        },
+        "collapsible_tab_9aqkyC": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What is your return policy?",
+            "content": "<p>We accept returns on unused and unopened products within a specified return window. To be eligible, items must be in their original packaging and condition.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_ak4ixC": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "How do I start a return?",
+            "content": "<p>To start a return, contact our support team with your order number and reason for return. We’ll provide next steps and instructions.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_48qQbP": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "When will I receive my refund?",
+            "content": "<p>Once your return is received and inspected, refunds are typically processed back to the original payment method within 5–10 business days.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_GRNPRP": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Are shipping costs refundable?",
+            "content": "<p>Shipping costs are non-refundable unless the return is due to an error on our part or a damaged or defective product.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_EgCBrG": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What if my order arrives damaged or incorrect?",
+            "content": "<p>If your order arrives damaged or incorrect, contact us within 48 hours of delivery with photos and your order number so we can make it right.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "heading_wrFD7p": {
+          "type": "heading",
+          "settings": {
+            "heading": "Orders"
+          }
+        },
+        "collapsible_tab_wYUEGP": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "How can I check the status of my order?",
+            "content": "<p>Once your order ships, you’ll receive a confirmation email with tracking information. You can use that link at any time to check your order status.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_zmCHJa": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Can I change or cancel my order after placing it?",
+            "content": "<p>We begin processing orders quickly, so changes or cancellations aren’t guaranteed. If you need help, contact us as soon as possible and we’ll do our best to assist.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_LQy8cL": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "I didn’t receive an order confirmation email—what should I do?",
+            "content": "<p>First, check your spam or promotions folder. If you still can’t find it, contact our support team and we’ll help confirm your order.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_cdYzez": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What if I entered the wrong shipping address?",
+            "content": "<p>If you entered an incorrect address, reach out to us immediately. If the order hasn’t shipped yet, we may be able to update it.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "collapsible_tab_Ri7aLA": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What happens if my order is returned to sender?",
+            "content": "<p>If an order is returned due to an incorrect or incomplete address, we’ll contact you to arrange reshipment. Additional shipping fees may apply.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        },
+        "heading_m3N4Kp": {
+          "type": "heading",
+          "settings": {
+            "heading": "Contact Us"
+          }
+        },
+        "collapsible_tab_NLFNxL": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "How can I contact Pyrosso’s customer service team?",
+            "content": "<p>Feel free to reach out to us at any time—we’re here for questions, product recommendations, and feedback. Just send us a note through our contact form.<br/><br/>Our customer service team is available via email Monday-Friday, 9am-5pm PST excluding holidays. We will respond to your inquiry within 2 business days. Please refrain from sending additional emails on your current thread, as this will result in your message being sent to the back of the queue.</p>",
+            "page": "",
+            "open_by_default": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_zyVHpd",
+        "collapsible_tab_6Xnp4d",
+        "collapsible_tab_WLVH7X",
+        "collapsible_tab_brc7hr",
+        "collapsible_tab_4TVPPe",
+        "collapsible_tab_mEVcgJ",
+        "collapsible_tab_bcpFj3",
+        "collapsible_tab_zVm7mW",
+        "collapsible_tab_UtdD4V",
+        "collapsible_tab_4e7VpG",
+        "heading_EQLjnP",
+        "collapsible_tab_hkYBfG",
+        "collapsible_tab_xri4BL",
+        "collapsible_tab_LtEe9N",
+        "collapsible_tab_Ptjf9d",
+        "collapsible_tab_erTht9",
+        "collapsible_tab_dLGQ9y",
+        "collapsible_tab_gqLPwq",
+        "collapsible_tab_mPtgeG",
+        "collapsible_tab_WDPTgW",
+        "collapsible_tab_WkqbyA",
+        "heading_6adizy",
+        "collapsible_tab_9aqkyC",
+        "collapsible_tab_ak4ixC",
+        "collapsible_tab_48qQbP",
+        "collapsible_tab_GRNPRP",
+        "collapsible_tab_EgCBrG",
+        "heading_wrFD7p",
+        "collapsible_tab_wYUEGP",
+        "collapsible_tab_zmCHJa",
+        "collapsible_tab_LQy8cL",
+        "collapsible_tab_cdYzez",
+        "collapsible_tab_Ri7aLA",
+        "heading_m3N4Kp",
+        "collapsible_tab_NLFNxL"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "heading": "FAQ’s",
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "light_text_color": "#bfbfbf",
+        "margin-top": 96,
+        "margin-bottom": 96,
+        "margin-top-mobile": 16,
+        "margin-bottom-mobile": 12
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_xpAUaD",
+    "faq_LeBqPr"
+  ]
+}

@@ -1,0 +1,608 @@
+{{ 'video-gallery.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  [data-section-id="{{ section.id }}"] {
+    --vg-bg: {{ section.settings.bg_color }};
+    --vg-text: {{ section.settings.text_color }};
+    --vg-light-text: {{ section.settings.light_text_color }};
+    background-color: var(--vg-bg);
+    color: var(--vg-text);
+    color: var(--text-color);
+      {% if section.settings.margin-top %}
+          --section-gap-top: {{ section.settings.margin-top }}px;
+      {% endif %}
+
+      {% if section.settings.margin-bottom %}
+          --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+      {% endif %}
+  }
+  @media (max-width: 899px) {
+    [data-section-id="{{ section.id }}"] {
+      {% if section.settings.margin-top-mobile %}
+          --section-gap-top: {{ section.settings.margin-top-mobile }}px;
+      {% endif %}
+
+      {% if section.settings.margin-bottom-mobile %}
+          --section-gap-bottom: {{ section.settings.margin-bottom-mobile }}px;
+      {% endif %}
+    }
+  }
+{% endstyle %}
+
+{%- liquid
+  assign all_tags_raw = ''
+  for block in section.blocks
+    assign raw_tag = block.settings.tag | strip
+    if raw_tag != blank
+      assign tag_slug = raw_tag | downcase | strip
+      assign all_tags_raw = all_tags_raw | append: '||' | append: tag_slug
+    endif
+  endfor
+  assign tag_parts = all_tags_raw | split: '||'
+  assign unique_tags = ''
+  assign unique_tag_slugs = ''
+  for t in tag_parts
+    assign ts = t | strip
+    if ts == blank
+      continue
+    endif
+    assign already = false
+    assign check_arr = unique_tag_slugs | split: '||'
+    for c in check_arr
+      if c == ts
+        assign already = true
+        break
+      endif
+    endfor
+    unless already
+      assign unique_tag_slugs = unique_tag_slugs | append: '||' | append: ts
+      comment
+        Store original-cased label as well (first seen wins)
+      endcomment
+      for block2 in section.blocks
+        assign raw2 = block2.settings.tag | strip
+        assign raw2_slug = raw2 | downcase | strip
+        if raw2 != blank and raw2_slug == ts
+          assign unique_tags = unique_tags | append: '~~' | append: raw2
+          break
+        endif
+      endfor
+    endunless
+  endfor
+  assign tag_display_list = unique_tags | split: '~~'
+-%}
+
+<div data-section-id="{{ section.id }}">
+  <div
+    class="vg-section"
+    id="video-gallery-{{ section.id }}"
+  >
+    <div class="vg-wrapper">
+      <!-- Filter Tabs — auto-generated from block tags -->
+      <div class="vg-filters" role="tablist" aria-label="Video Categories">
+        {% if section.settings.filter_label != blank %}
+          <span class="vg-filter-label">{{ section.settings.filter_label }}:</span>
+        {% endif %}
+        <div class="vg-filter-btn-wrapper">
+          <button
+            class="hero__button--primary  hero__button--secondary hero__button vg-filter-btn active"
+            data-filter="all"
+            role="tab"
+            aria-selected="true"
+          >
+            {{ 'all' | t }}
+          </button>
+          {%- for tag_display in tag_display_list -%}
+            {%- assign td = tag_display | strip -%}
+            {%- if td != blank -%}
+              <button
+                class="hero__button--primary  hero__button--secondary hero__button vg-filter-btn"
+                data-filter="{{ td | downcase | strip }}"
+                role="tab"
+                aria-selected="false"
+              >
+                {{ td | upcase }}
+              </button>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <!-- Video Grid -->
+      <div class="vg-grid" id="vg-grid-{{ section.id }}">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign tag_slug = block.settings.tag | downcase | strip | default: ''
+            assign video_obj = block.settings.shopify_video
+            assign custom_thumb = block.settings.thumbnail
+            assign poster_url = ''
+            if custom_thumb != blank
+              assign poster_url = custom_thumb | image_url: width: 800
+            elsif video_obj != blank
+              assign poster_url = video_obj.preview_image | image_url: width: 800
+            endif
+          -%}
+          <article
+            class="vg-card"
+            data-tag="{{ tag_slug }}"
+            data-title="{{ block.settings.title | escape }}"
+            data-published="{{ block.settings.published_at | escape }}"
+            tabindex="0"
+            role="button"
+            aria-label="Play video: {{ block.settings.title | escape }}"
+            {{ block.shopify_attributes }}
+          >
+            <div class="vg-thumbnail">
+              {%- if video_obj != blank -%}
+                <!-- Thumbnail: custom if set, else auto poster from video -->
+                <img
+                  src="{{ poster_url }}"
+                  alt="{{ block.settings.title | escape }}"
+                  loading="lazy"
+                  class="vg-poster"
+                >
+
+                <!-- Hidden <video> so JS can read duration + sources -->
+                <video
+                  class="vg-native-video"
+                  preload="metadata"
+                  playsinline
+                  style="display:none"
+                  {%- if video_obj.sources.size > 0 -%}
+                    data-src="{{ video_obj.sources | first | map: 'url' | first }}"
+                  {%- endif -%}
+                >
+                  {%- for src in video_obj.sources -%}
+                    <source src="{{ src.url }}" type="{{ src.mime_type }}">
+                  {%- endfor -%}
+                </video>
+
+              {%- else -%}
+                <div class="vg-thumb-placeholder" aria-hidden="true">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                  >
+                    <rect x="2" y="2" width="20" height="20" rx="4"/><path d="M10 8l6 4-6 4V8z"/>
+                  </svg>
+                </div>
+              {%- endif -%}
+
+              <div class="vg-play-btn" aria-hidden="true">
+                <span class="shoppable-video__icon-play">
+                  {% render 'icon-play' %}
+                </span>
+              </div>
+
+              <!-- Duration badge — filled by JS after metadata loads -->
+              <span class="vg-duration" aria-hidden="true"></span>
+            </div>
+
+            <div class="vg-meta">
+              <h3 class="vg-title">{{ block.settings.title }}</h3>
+              <!-- Time-ago — filled by JS using data-published -->
+              <span class="vg-date" aria-label="Published time"></span>
+              {%- if block.settings.subtitle != blank -%}
+                <p class="vg-subtitle">{{ block.settings.subtitle }}</p>
+              {%- endif -%}
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+
+      <div class="vg-no-results" hidden>
+        <p>No videos found in this category.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Popup Modal -->
+  <div class="vg-modal" id="vg-modal-{{ section.id }}" role="dialog" aria-modal="true" aria-label="Video player" hidden>
+    <div class="vg-modal-backdrop"></div>
+    <div class="vg-modal-inner">
+      <button class="vg-modal-close" aria-label="Close video">
+        {% render 'icon-close' %}
+      </button>
+      <div class="vg-modal-video-wrap">
+        <div class="vg-modal-loader" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="vg-modal-embed" id="vg-embed-{{ section.id }}"></div>
+      </div>
+      <div class="vg-modal-title-bar">
+        <p class="vg-modal-title-text" id="vg-modal-title-{{ section.id }}"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    'use strict';
+
+    const sID = '{{ section.id }}';
+    const wrap = document.getElementById('video-gallery-' + sID);
+    const modal = document.getElementById('vg-modal-' + sID);
+    const embed = document.getElementById('vg-embed-' + sID);
+    const titleEl = document.getElementById('vg-modal-title-' + sID);
+    const backdrop = modal.querySelector('.vg-modal-backdrop');
+    const closeBtn = modal.querySelector('.vg-modal-close');
+    const loader = modal.querySelector('.vg-modal-loader');
+    const noRes = wrap.querySelector('.vg-no-results');
+    let lastFocus = null;
+
+    /* ─────────────────────────────────────────
+     1.  TIME-AGO  (calculated from published_at)
+         Format expected from schema: ISO 8601  e.g. "2024-06-01T10:00:00Z"
+         Merchant enters it as text in the schema field.
+  ───────────────────────────────────────── */
+    function timeAgo(iso) {
+      if (!iso) return '';
+      const past = new Date(iso);
+      if (isNaN(past)) return iso;
+
+      const diffMs = Date.now() - past.getTime();
+
+      // Future date or within last 60 seconds = "just now"
+      if (diffMs < 60000) return 'just now';
+
+      const diffSec = Math.floor(diffMs / 1000);
+      const mins = Math.floor(diffSec / 60);
+      const hours = Math.floor(diffSec / 3600);
+      const days = Math.floor(diffSec / 86400);
+      const weeks = Math.floor(days / 7);
+      const months = Math.floor(days / 30);
+      const years = Math.floor(days / 365);
+
+      if (diffSec < 3600) return mins === 1 ? '1 minute ago' : mins + ' minutes ago';
+      if (diffSec < 86400) return hours === 1 ? '1 hour ago' : hours + ' hours ago';
+      if (days < 7) return days === 1 ? '1 day ago' : days + ' days ago';
+      if (days < 30) return weeks === 1 ? '1 week ago' : weeks + ' weeks ago';
+      if (months < 12) return months === 1 ? '1 month ago' : months + ' months ago';
+      return years === 1 ? '1 year ago' : years + ' years ago';
+    }
+
+    /* ─────────────────────────────────────────
+     2.  DURATION  (from <video> metadata)
+  ───────────────────────────────────────── */
+    function formatDuration(secs) {
+      if (!isFinite(secs) || secs <= 0) return '';
+      const h = Math.floor(secs / 3600);
+      const m = Math.floor((secs % 3600) / 60);
+      const s = Math.floor(secs % 60);
+      if (h > 0) {
+        return String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+      }
+      return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    }
+
+    /* ─────────────────────────────────────────
+     3.  INIT CARDS
+  ───────────────────────────────────────── */
+    wrap.querySelectorAll('.vg-card').forEach((card) => {
+      // 3a. Time-ago
+      const pub = card.dataset.published;
+      const dateEl = card.querySelector('.vg-date');
+      if (dateEl && pub) dateEl.textContent = timeAgo(pub);
+
+      // 3b. Duration from native <video>
+      const vid = card.querySelector('.vg-native-video');
+      const durEl = card.querySelector('.vg-duration');
+      if (vid && durEl) {
+        // loadedmetadata may already have fired (cached)
+        if (vid.readyState >= 1) {
+          const d = formatDuration(vid.duration);
+          if (d) durEl.textContent = d;
+        } else {
+          vid.addEventListener(
+            'loadedmetadata',
+            function () {
+              const d = formatDuration(vid.duration);
+              if (d) durEl.textContent = d;
+            },
+            { once: true }
+          );
+          // Trigger metadata load without loading full video
+          if (!vid.src && vid.querySelector('source')) {
+            vid.load();
+          }
+        }
+      }
+
+      // 3c. Click & keyboard
+      card.addEventListener('click', () => openModal(card));
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(card);
+        }
+      });
+    });
+
+    /* ─────────────────────────────────────────
+     4.  FILTER  (case-insensitive tag match)
+  ───────────────────────────────────────── */
+    wrap.querySelectorAll('.vg-filter-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        wrap.querySelectorAll('.vg-filter-btn').forEach((b) => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        const filter = (btn.dataset.filter || '').trim().toLowerCase();
+        let visible = 0;
+        wrap.querySelectorAll('.vg-card').forEach((card) => {
+          const cardTag = (card.dataset.tag || '').trim().toLowerCase();
+          const show = filter === 'all' || cardTag === filter;
+          card.hidden = !show;
+          if (show) visible++;
+        });
+        noRes.hidden = visible > 0;
+      });
+    });
+
+    /* ─────────────────────────────────────────
+     5.  OPEN MODAL
+  ───────────────────────────────────────── */
+    function openModal(card) {
+      const vid = card.querySelector('.vg-native-video');
+      const title = (card.dataset.title || '').trim();
+      if (!vid) return;
+
+      lastFocus = document.activeElement;
+      titleEl.textContent = title;
+      embed.innerHTML = '';
+      loader.hidden = false;
+      modal.hidden = false;
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+
+      // Clone video element for the modal so it plays independently
+      const modalVid = document.createElement('video');
+      modalVid.controls = true;
+      modalVid.autoplay = true;
+      modalVid.muted = true;
+      modalVid.playsinline = true;
+      modalVid.style.cssText = 'width:100%;height:100%;display:block;background:#000;';
+
+      // Copy all <source> children
+      vid.querySelectorAll('source').forEach((s) => {
+        const ns = document.createElement('source');
+        ns.src = s.src;
+        ns.type = s.type;
+        modalVid.appendChild(ns);
+      });
+
+      modalVid.addEventListener(
+        'canplay',
+        () => {
+          loader.hidden = true;
+        },
+        { once: true }
+      );
+      modalVid.addEventListener(
+        'error',
+        () => {
+          loader.hidden = true;
+        },
+        { once: true }
+      );
+
+      embed.appendChild(modalVid);
+      modalVid.load();
+      modalVid.play().catch(() => {});
+    }
+
+    /* ─────────────────────────────────────────
+     6.  CLOSE MODAL
+  ───────────────────────────────────────── */
+    function closeModal() {
+      // Pause & destroy video to stop buffering
+      const mv = embed.querySelector('video');
+      if (mv) {
+        mv.pause();
+        mv.src = '';
+      }
+      embed.innerHTML = '';
+      modal.hidden = true;
+      document.body.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
+
+    /* ─────────────────────────────────────────
+     7.  REFRESH TIME-AGO every 60s
+  ───────────────────────────────────────── */
+    setInterval(() => {
+      wrap.querySelectorAll('.vg-card').forEach((card) => {
+        const pub = card.dataset.published;
+        const dateEl = card.querySelector('.vg-date');
+        if (dateEl && pub) dateEl.textContent = timeAgo(pub);
+      });
+    }, 60000);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Video Gallery",
+  "tag": "section",
+  "class": "vg-section-wrap",
+  "settings": [
+    {
+      "type": "text",
+      "id": "filter_label",
+      "label": "Filter label",
+      "default": "FILTER BY"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "light_text_color",
+      "label": "Light text Color",
+      "default": "#D9D9D9"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.section_spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 4,
+      "default": 20,
+      "label": "t:sections.settings.settings.distance-top.label"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 100,
+      "unit": "px",
+      "step": 4,
+      "default": 20,
+      "label": "t:sections.settings.settings.distance-bottom.label",
+      "info": "t:sections.settings.settings.distance-bottom.info"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing mobile"
+    },
+    {
+      "type": "range",
+      "id": "margin-top-mobile",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-top.label"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom-mobile",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-bottom.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_item",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "video",
+          "id": "shopify_video",
+          "label": "Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "thumbnail",
+          "label": "Thumbnail (Optional)",
+          "info": "If set, this image is used as the preview. Otherwise the video's auto-generated poster is shown."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Video Title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle / Description",
+          "default": "Short description here."
+        },
+        {
+          "type": "text",
+          "id": "published_at",
+          "label": "Published Date & Time (ISO 8601)",
+          "info": "Enter in format: 2024-06-01T10:00:00Z — used to auto-calculate '2 days ago' etc.",
+          "placeholder": "2024-06-01T10:00:00Z"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag (for Filter Tab)",
+          "info": "E.g. Products, Tutorials, Behind The Scenes. Same tag on multiple videos = grouped in one tab. Case-insensitive.",
+          "placeholder": "Products"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Gallery",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "video_item",
+          "settings": {
+            "title": "how to use sea salt",
+            "subtitle": "Learn how to style your hair with sea salt",
+            "published_at": "2026-06-03T15:40:00Z",
+            "tag": "basics"
+          }
+        },
+        {
+          "type": "video_item",
+          "settings": {
+            "title": "how to use the complete set",
+            "subtitle": "These 4 products will change how you style your hair",
+            "published_at": "2024-06-02T08:00:00Z",
+            "tag": "basics"
+          }
+        },
+        {
+          "type": "video_item",
+          "settings": {
+            "title": "how to use the texture duo",
+            "subtitle": "Create texture by using these 2 products",
+            "published_at": "2024-06-03T12:00:00Z",
+            "tag": "basics"
+          }
+        },
+        {
+          "type": "video_item",
+          "settings": {
+            "title": "how to find the best hairstyle for your faceshape!",
+            "subtitle": "These are the hairstyle that will look the best with your faceshape",
+            "published_at": "2024-06-03T16:00:00Z",
+            "tag": "advance"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

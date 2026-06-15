@@ -1,0 +1,393 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "compact-size-enabled": true,
+        "size_heading": 140,
+        "size_heading_mobile": 100,
+        "color-body-text": "rgba(0,0,0,0)",
+        "color-bg-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "margin-top": 40,
+        "margin-bottom": 0
+      }
+    },
+    "image_banner_bPMKVA": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_99P8dJ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get to know GLAZING \nMIST.",
+            "disable_on_mobile": false,
+            "size_heading": 100,
+            "size_heading_mobile": 100
+          }
+        }
+      },
+      "block_order": [
+        "heading_99P8dJ"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "advanced_heading": false,
+        "heading": "",
+        "heading_richtext": "<h2>Image banner</h2>",
+        "full-width-enabled": true,
+        "slide_height": "fixed_height",
+        "desktop_fixed_height": 900,
+        "mobile_fixed_height": 640,
+        "desktop_image": "shopify://shop_images/VUU08221_SHOPIFY.png",
+        "desktop_text_vertical_position": "center",
+        "desktop_text_horizontal_position": "center",
+        "mobile_text_vertical_position": "center",
+        "mobile_text_horizontal_position": "center",
+        "out_hero_mobile": false,
+        "out-background-color": "rgba(0,0,0,0)",
+        "out-text-color": "rgba(0,0,0,0)",
+        "color-heading": "rgba(0,0,0,0)",
+        "section-color-overlay": "rgba(0,0,0,0)",
+        "section-color-overlay-opacity": 100,
+        "color-body-text": "rgba(0,0,0,0)",
+        "text-container-color": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "enable_scroll_btn": true,
+        "scroll_btn_text": "Scroll",
+        "scroll_btn_url": "#shopify-section-template--22237964566767__rich_text_LXrd77",
+        "margin-top": 0,
+        "margin-bottom": 0,
+        "margin-top-mobile": 0,
+        "margin-bottom-mobile": 0,
+        "lcp_optimize": false
+      }
+    },
+    "rich_text_LXrd77": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_wtA9VR": {
+          "type": "heading",
+          "settings": {
+            "advanced_heading": true,
+            "heading": "Born in California, Rooted in Seoul",
+            "heading_richtext": "<p>Our philosophy</p>",
+            "disable_on_mobile": false,
+            "size_heading": 100,
+            "size_heading_mobile": 100,
+            "heading_richtext_color": "rgba(0,0,0,0)",
+            "heading_richtext_gradient": ""
+          }
+        },
+        "text_QVnDBm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>“We draw on Korea's most advanced biotech actives to treat the scalp with the same clinical precision dermatology applies to skin.”</p>",
+            "disable_on_mobile": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_wtA9VR",
+        "text_QVnDBm"
+      ],
+      "settings": {
+        "section_width": "regular",
+        "desktop_text_horizontal_position": "center",
+        "full-width-enabled": false,
+        "color-body-text": "#ffffff",
+        "background_color": "#000000",
+        "background_gradient": "",
+        "margin-top": 64,
+        "margin-bottom": 64,
+        "margin-top-mobile": 48,
+        "margin-bottom-mobile": 48
+      }
+    },
+    "image_with_text_PpNArB": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_qCbppQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "“Everyone deserves hair they feel confident in”",
+            "disable_on_mobile": false,
+            "size_heading": 100,
+            "size_heading_mobile": 100
+          }
+        },
+        "subheading_f84KxY": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Dr. Yeon Kang",
+            "subheading_disable_on_mobile": false
+          }
+        },
+        "text_b3XGmj": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Director of Formulation Science</p>",
+            "text_style": "subtitle",
+            "disable_on_mobile": false
+          }
+        },
+        "text_RAjj7t": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Dr. Yeon Kang is a board-certified dermatologist specializing in scalp health and hair biology. At Pyrosso, he works closely with our formulation team to develop products built on Korean biotech actives — ensuring every concentration is clinically defensible and every formula performs at the follicle level.</p>",
+            "text_style": "body",
+            "disable_on_mobile": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_qCbppQ",
+        "subheading_f84KxY",
+        "text_b3XGmj",
+        "text_RAjj7t"
+      ],
+      "settings": {
+        "advanced_heading": false,
+        "title": "",
+        "heading_richtext": "<h2>Your headline here</h2>",
+        "layout": "text_first",
+        "desktop-percentage-image-width": 50,
+        "full-width-enabled": false,
+        "slide_height": "adapt_to_first_image",
+        "desktop_fixed_height": 320,
+        "mobile_fixed_height": 460,
+        "section-color-body-text": "#000000",
+        "section-color-overlay": "#ffffff",
+        "section-color-overlay-opacity": 100,
+        "color-body-text": "#000000",
+        "color-overlay": "#f6f6f6",
+        "color-overlay-opacity": 100,
+        "desktop_image": "shopify://shop_images/Rectangle_4339.png",
+        "desktop_text_vertical_position": "top",
+        "desktop_text_horizontal_position": "left",
+        "mobile_text_horizontal_position": "left",
+        "margin-top": 32,
+        "margin-bottom": 32,
+        "margin-top-mobile": 16,
+        "margin-bottom-mobile": 16
+      }
+    },
+    "multicolumn_RAtWnN": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_Nrr6Gq": {
+          "type": "column",
+          "settings": {
+            "heading": "ACTIVATES FOLLICLES",
+            "heading_disable_on_mobile": false,
+            "text": "<p>The ingredient repairing your scalp</p>",
+            "text_disable_on_mobile": false,
+            "button_select": "primary",
+            "button_label": "",
+            "button_disable_on_mobile": false,
+            "button_link": "",
+            "button_link_in_new_window": false,
+            "mobile_image": "shopify://shop_images/Rectangle_4339.png"
+          }
+        },
+        "column_pC9HXe": {
+          "type": "column",
+          "settings": {
+            "heading": "REPAIRS THE SCALP",
+            "heading_disable_on_mobile": false,
+            "text": "<p>The ingredient repairing your scalp</p>",
+            "text_disable_on_mobile": false,
+            "button_select": "primary",
+            "button_label": "",
+            "button_disable_on_mobile": false,
+            "button_link": "",
+            "button_link_in_new_window": false,
+            "mobile_image": "shopify://shop_images/6FF5A788-E622-43B8-8DA4-68A7A41B252C.jpg"
+          }
+        },
+        "column_mLmYy8": {
+          "type": "column",
+          "settings": {
+            "heading": "SIGNALS SCALP TO BE YOUNGER.",
+            "heading_disable_on_mobile": false,
+            "text": "<p>The ingredient repairing your scalp</p>",
+            "text_disable_on_mobile": false,
+            "button_select": "primary",
+            "button_label": "",
+            "button_disable_on_mobile": false,
+            "button_link": "",
+            "button_link_in_new_window": false,
+            "mobile_image": "shopify://shop_images/Rectangle_4338.png"
+          }
+        }
+      },
+      "block_order": [
+        "column_Nrr6Gq",
+        "column_pC9HXe",
+        "column_mLmYy8"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "advanced_heading": true,
+        "heading": "Multicolumn",
+        "heading_richtext": "<p>Ingredients that work</p>",
+        "enable_stack_products": false,
+        "full-width-enabled": false,
+        "video_controls": false,
+        "video_custom_play_controls": false,
+        "video_custom_mute_controls": false,
+        "number_of_column_desktop": 3,
+        "spacing_desktop": "16",
+        "number_of_column_mobile": "1",
+        "spacing_mobile": "16",
+        "image_ratio": "square",
+        "column_alignment": "left",
+        "size_heading": 100,
+        "size_heading_mobile": 100,
+        "color-body-text": "#ffffff",
+        "background_color": "#000000",
+        "margin-top": 64,
+        "margin-bottom": 32,
+        "margin-top-mobile": 32,
+        "margin-bottom-mobile": 0
+      }
+    },
+    "certifications_tMxMLe": {
+      "type": "certifications",
+      "blocks": {
+        "certificate_dGbqWj": {
+          "type": "certificate",
+          "settings": {
+            "certificate_name": "CGMP Certified (Korea Cosmetic Association)",
+            "certificate_year": 2009,
+            "certificate_position": "left"
+          }
+        },
+        "certificate_6QKjcU": {
+          "type": "certificate",
+          "settings": {
+            "certificate_name": "ISO 14001 (Environmental Management)",
+            "certificate_year": 2009,
+            "certificate_position": "left"
+          }
+        },
+        "certificate_bJe8tb": {
+          "type": "certificate",
+          "settings": {
+            "certificate_name": "ISO 9001 (Quality Management)",
+            "certificate_year": 2008,
+            "certificate_position": "left"
+          }
+        },
+        "certificate_BNcKbG": {
+          "type": "certificate",
+          "settings": {
+            "certificate_name": "ISO 22716:2007 (Cosmetic GMP)",
+            "certificate_year": 2014,
+            "certificate_position": "left"
+          }
+        },
+        "certificate_Mfpw9p": {
+          "type": "certificate",
+          "settings": {
+            "certificate_name": "MFDS Compliant with Good Cosmetics",
+            "certificate_year": 2014,
+            "certificate_position": "left"
+          }
+        },
+        "certificate_xTw4k8": {
+          "type": "certificate",
+          "settings": {
+            "certificate_name": "EWG Verified",
+            "certificate_year": 2026,
+            "certificate_position": "right"
+          }
+        },
+        "certificate_8JNbyp": {
+          "type": "certificate",
+          "settings": {
+            "certificate_name": "Leaping Bunny Certified",
+            "certificate_year": 2026,
+            "certificate_position": "right"
+          }
+        }
+      },
+      "block_order": [
+        "certificate_dGbqWj",
+        "certificate_6QKjcU",
+        "certificate_bJe8tb",
+        "certificate_BNcKbG",
+        "certificate_Mfpw9p",
+        "certificate_xTw4k8",
+        "certificate_8JNbyp"
+      ],
+      "name": "Certifications",
+      "settings": {
+        "left_heading": "Manufacturer certifications",
+        "right_heading": "Manufacturer certifications",
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "margin-top": 128,
+        "margin-bottom": 128,
+        "margin-top-mobile": 48,
+        "margin-bottom-mobile": 48
+      }
+    },
+    "featured_collection_awQcUD": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "advanced_heading": false,
+        "title": "",
+        "heading_richtext": "<h2>Featured collection</h2>",
+        "disable_on_mobile": false,
+        "hide_empty_section": false,
+        "collection": "best-selling-products",
+        "product_list": [],
+        "products_to_show": 3,
+        "enable_stack_products": false,
+        "show_view_all": false,
+        "button_select": "primary",
+        "number_of_column_desktop": 3,
+        "spacing_desktop": "16",
+        "make_products_full_width": false,
+        "number_of_column_mobile": 1.3,
+        "spacing_mobile": "16",
+        "text_alignment": "left",
+        "image_ratio": "square",
+        "show_video": false,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "enable_vendor_link": false,
+        "show_type": true,
+        "show_product_rating": true,
+        "enable_quick_add_button": true,
+        "quick_add_mode": "hover_desktop",
+        "color-body-text": "rgba(0,0,0,0)",
+        "background_color": "rgba(0,0,0,0)",
+        "margin-top": 28,
+        "margin-bottom": 0,
+        "margin-top-mobile": 8,
+        "margin-bottom-mobile": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_bPMKVA",
+    "rich_text_LXrd77",
+    "image_with_text_PpNArB",
+    "multicolumn_RAtWnN",
+    "certifications_tMxMLe",
+    "featured_collection_awQcUD"
+  ]
+}

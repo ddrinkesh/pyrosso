@@ -1,0 +1,209 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "main-breadcrumbs",
+      "disabled": true,
+      "settings": {
+        "full-width-enabled": false,
+        "text_color": "#000000",
+        "background_color": "#eeeeee",
+        "margin-top": 12,
+        "margin-bottom": 8
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_placeholder_image": true,
+        "layout": "text_first",
+        "desktop-percentage-image-width": 50,
+        "slide_height": "adapt_to_first_image",
+        "desktop_fixed_height": 320,
+        "mobile_fixed_height": 200,
+        "full-width-enabled": true,
+        "size_heading": 150,
+        "size_heading_mobile": 120,
+        "desktop_text_vertical_position": "center",
+        "desktop_text_horizontal_position": "left",
+        "mobile_text_horizontal_position": "center",
+        "color-body-text": "#000000",
+        "color-overlay": "#e3f2e6",
+        "color-overlay-opacity": 100,
+        "margin-top": 0,
+        "margin-bottom": 0
+      }
+    },
+    "title": {
+      "type": "main-collection-title",
+      "disabled": true,
+      "settings": {
+        "full-width-enabled": true,
+        "show_collection_description": true,
+        "desktop_text_horizontal_position": "center",
+        "size_heading": 140,
+        "size_heading_mobile": 120,
+        "color-body-text": "#000000",
+        "background_color": "#e6efe8",
+        "margin-top": 24,
+        "margin-bottom": 32
+      }
+    },
+    "image_banner_VpWdCy": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_UPWEij": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get to know GLAZING MIST.",
+            "disable_on_mobile": false,
+            "size_heading": 100,
+            "size_heading_mobile": 100
+          }
+        }
+      },
+      "block_order": [
+        "heading_UPWEij"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "advanced_heading": false,
+        "heading": "",
+        "heading_richtext": "<h2>Image banner</h2>",
+        "full-width-enabled": true,
+        "slide_height": "fixed_height",
+        "desktop_fixed_height": 560,
+        "mobile_fixed_height": 460,
+        "desktop_image": "shopify://shop_images/VUU08221_SHOPIFY.png",
+        "desktop_text_vertical_position": "center",
+        "desktop_text_horizontal_position": "center",
+        "mobile_text_vertical_position": "center",
+        "mobile_text_horizontal_position": "center",
+        "out_hero_mobile": false,
+        "out-background-color": "rgba(0,0,0,0)",
+        "out-text-color": "rgba(0,0,0,0)",
+        "color-heading": "rgba(0,0,0,0)",
+        "section-color-overlay": "rgba(0,0,0,0)",
+        "section-color-overlay-opacity": 100,
+        "color-body-text": "rgba(0,0,0,0)",
+        "text-container-color": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "enable_scroll_btn": false,
+        "scroll_btn_text": "Scroll",
+        "scroll_btn_url": "",
+        "margin-top": 0,
+        "margin-bottom": 0,
+        "margin-top-mobile": 0,
+        "margin-bottom-mobile": 0,
+        "lcp_optimize": false
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "collection_tab_QGYKEp": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_collection": "featured"
+          }
+        },
+        "collection_tab_BwBAnt": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_collection": "hair"
+          }
+        },
+        "collection_tab_yNwwDB": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_collection": "skin"
+          }
+        },
+        "collection_tab_NCgYxV": {
+          "type": "collection_tab",
+          "settings": {
+            "tab_collection": "sets"
+          }
+        },
+        "banner_card_NMAVbw": {
+          "type": "banner-card",
+          "settings": {
+            "text": "Ready-to wear\nHAIRCARE",
+            "text_style": "body",
+            "button_label": "MEET SPOTWEAR",
+            "button_select": "secondary",
+            "banner_link": "",
+            "position_before_nth_product": 5,
+            "column_number_desktop": "1",
+            "text_size_desktop": 180,
+            "desktop_image": "shopify://shop_images/VUU09785.jpg",
+            "desktop_text_vertical_position": "end",
+            "desktop_text_horizontal_position": "left",
+            "column_number_mobile": "1",
+            "text_size_mobile": 180,
+            "mobile_image": "shopify://shop_images/VUU09785.jpg",
+            "mobile_text_vertical_position": "end",
+            "mobile_text_horizontal_position": "left",
+            "color-body-text": "#ffffff",
+            "color-overlay": "#000000",
+            "color-overlay-opacity": 50
+          }
+        }
+      },
+      "block_order": [
+        "collection_tab_QGYKEp",
+        "collection_tab_BwBAnt",
+        "collection_tab_yNwwDB",
+        "collection_tab_NCgYxV",
+        "banner_card_NMAVbw"
+      ],
+      "settings": {
+        "products_per_page": 5,
+        "columns_mobile": "2",
+        "columns_desktop": "2",
+        "spacing_desktop": "32",
+        "full-width-enabled": false,
+        "spacing_mobile": "8",
+        "image_ratio": "square",
+        "show_video": false,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "enable_vendor_link": true,
+        "show_type": true,
+        "show_product_rating": true,
+        "enable_product_url_within_collection": false,
+        "enable_quick_add_button": true,
+        "quick_add_mode": "hover_desktop",
+        "text_alignment": "left",
+        "toolbar_style": "buttons",
+        "enable_sorting": true,
+        "enable_filtering": false,
+        "filter_position": "always",
+        "open_first_filter": false,
+        "bg_color": "#ffffff",
+        "text_color": "#000000",
+        "margin-top": 16,
+        "margin-bottom": 16,
+        "margin-top-mobile": 16,
+        "margin-bottom-mobile": 0
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "banner",
+    "title",
+    "image_banner_VpWdCy",
+    "product-grid"
+  ]
+}

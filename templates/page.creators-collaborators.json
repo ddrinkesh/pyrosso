@@ -1,0 +1,267 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "compact-size-enabled": true,
+        "size_heading": 140,
+        "size_heading_mobile": 100,
+        "color-body-text": "#151515",
+        "color-bg-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "margin-top": 60,
+        "margin-bottom": 60
+      }
+    },
+    "image_banner_pT7cbQ": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_Cz4MF6": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get to know GLAZING \nMIST.",
+            "disable_on_mobile": false,
+            "size_heading": 100,
+            "size_heading_mobile": 100
+          }
+        }
+      },
+      "block_order": [
+        "heading_Cz4MF6"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "advanced_heading": false,
+        "heading": "",
+        "heading_richtext": "<h2>Image banner</h2>",
+        "full-width-enabled": true,
+        "slide_height": "fixed_height",
+        "desktop_fixed_height": 900,
+        "mobile_fixed_height": 640,
+        "desktop_image": "shopify://shop_images/VUU08221_SHOPIFY.png",
+        "desktop_text_vertical_position": "center",
+        "desktop_text_horizontal_position": "center",
+        "mobile_text_vertical_position": "center",
+        "mobile_text_horizontal_position": "center",
+        "out_hero_mobile": false,
+        "out-background-color": "rgba(0,0,0,0)",
+        "out-text-color": "rgba(0,0,0,0)",
+        "color-heading": "rgba(0,0,0,0)",
+        "section-color-overlay": "rgba(0,0,0,0)",
+        "section-color-overlay-opacity": 100,
+        "color-body-text": "rgba(0,0,0,0)",
+        "text-container-color": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "enable_scroll_btn": true,
+        "scroll_btn_text": "Scroll",
+        "scroll_btn_url": "#shopify-section-template--22237964566767__rich_text_LXrd77",
+        "margin-top": 0,
+        "margin-bottom": 0,
+        "margin-top-mobile": 0,
+        "margin-bottom-mobile": 0,
+        "lcp_optimize": false
+      }
+    },
+    "skinification_KmpyVt": {
+      "type": "skinification",
+      "blocks": {
+        "item_kpHFxE": {
+          "type": "item",
+          "settings": {
+            "label": "TikTok",
+            "image": "shopify://shop_images/Rectangle_4340.png",
+            "text": "Already have product on hand? Link to us on TikTok Shop. Looking to apply for a sample?"
+          }
+        },
+        "item_bKpYXQ": {
+          "type": "item",
+          "settings": {
+            "label": "ShopMy",
+            "image": "shopify://shop_images/Rectangle_4338.png",
+            "text": ""
+          }
+        },
+        "item_qgJxDb": {
+          "type": "item",
+          "settings": {
+            "label": "Instagram",
+            "image": "shopify://shop_images/0677D9D3-D5CA-40E2-977D-A5EF7F8D9096.jpg",
+            "text": ""
+          }
+        },
+        "item_BMVfDR": {
+          "type": "item",
+          "settings": {
+            "label": "Amazon Affiliate",
+            "image": "shopify://shop_images/6FF5A788-E622-43B8-8DA4-68A7A41B252C.jpg",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_kpHFxE",
+        "item_bKpYXQ",
+        "item_qgJxDb",
+        "item_BMVfDR"
+      ],
+      "name": "Skinification",
+      "settings": {
+        "heading": "<p>Apply to be a PYROSSO CREATOR</p>",
+        "text": "<p>This formula was evaluated using dermatologist assessment and instrumental measurement of makeup</p>",
+        "background_color": "#fefefe",
+        "content_bg_color": "#f6f6f6",
+        "text_color": "#000000",
+        "light_text_color": "#bfbfbf",
+        "margin-top": 16,
+        "margin-bottom": 16,
+        "margin-top-mobile": 8,
+        "margin-bottom-mobile": 8
+      }
+    },
+    "multicolumn_7pJPdD": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_RJpCaJ": {
+          "type": "column",
+          "settings": {
+            "heading": "@Vuthebarber_",
+            "heading_disable_on_mobile": false,
+            "text": "",
+            "text_disable_on_mobile": false,
+            "button_select": "primary",
+            "button_label": "",
+            "button_disable_on_mobile": false,
+            "button_link": "",
+            "button_link_in_new_window": false,
+            "mobile_image": "shopify://shop_images/Rectangle_4339.png"
+          }
+        },
+        "column_dYVKaT": {
+          "type": "column",
+          "settings": {
+            "heading": "@Vuthebarber_",
+            "heading_disable_on_mobile": false,
+            "text": "",
+            "text_disable_on_mobile": false,
+            "button_select": "primary",
+            "button_label": "",
+            "button_disable_on_mobile": false,
+            "button_link": "",
+            "button_link_in_new_window": false,
+            "mobile_image": "shopify://shop_images/6FF5A788-E622-43B8-8DA4-68A7A41B252C.jpg"
+          }
+        },
+        "column_FBmtJ9": {
+          "type": "column",
+          "settings": {
+            "heading": "@Vuthebarber_",
+            "heading_disable_on_mobile": false,
+            "text": "",
+            "text_disable_on_mobile": false,
+            "button_select": "primary",
+            "button_label": "",
+            "button_disable_on_mobile": false,
+            "button_link": "",
+            "button_link_in_new_window": false,
+            "mobile_image": "shopify://shop_images/Rectangle_4338.png"
+          }
+        },
+        "column_6fn7NK": {
+          "type": "column",
+          "settings": {
+            "heading": "@Vuthebarber_",
+            "heading_disable_on_mobile": false,
+            "text": "",
+            "text_disable_on_mobile": false,
+            "button_select": "primary",
+            "button_label": "",
+            "button_disable_on_mobile": false,
+            "button_link": "",
+            "button_link_in_new_window": false,
+            "mobile_image": "shopify://shop_images/Rectangle_4339.png"
+          }
+        },
+        "column_C8RLeY": {
+          "type": "column",
+          "settings": {
+            "heading": "@Vuthebarber_",
+            "heading_disable_on_mobile": false,
+            "text": "",
+            "text_disable_on_mobile": false,
+            "button_select": "primary",
+            "button_label": "",
+            "button_disable_on_mobile": false,
+            "button_link": "",
+            "button_link_in_new_window": false,
+            "mobile_image": "shopify://shop_images/6FF5A788-E622-43B8-8DA4-68A7A41B252C.jpg"
+          }
+        },
+        "column_mWfqXN": {
+          "type": "column",
+          "settings": {
+            "heading": "@Vuthebarber_",
+            "heading_disable_on_mobile": false,
+            "text": "",
+            "text_disable_on_mobile": false,
+            "button_select": "primary",
+            "button_label": "",
+            "button_disable_on_mobile": false,
+            "button_link": "",
+            "button_link_in_new_window": false,
+            "mobile_image": "shopify://shop_images/Rectangle_4338.png"
+          }
+        }
+      },
+      "block_order": [
+        "column_RJpCaJ",
+        "column_dYVKaT",
+        "column_FBmtJ9",
+        "column_6fn7NK",
+        "column_C8RLeY",
+        "column_mWfqXN"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "advanced_heading": true,
+        "heading": "Multicolumn",
+        "heading_richtext": "<p>Our REAL, Creators</p>",
+        "enable_stack_products": false,
+        "full-width-enabled": false,
+        "video_controls": false,
+        "video_custom_play_controls": false,
+        "video_custom_mute_controls": false,
+        "number_of_column_desktop": 3,
+        "spacing_desktop": "16",
+        "number_of_column_mobile": "1",
+        "spacing_mobile": "16",
+        "image_ratio": "square",
+        "column_alignment": "left",
+        "size_heading": 100,
+        "size_heading_mobile": 100,
+        "color-body-text": "#ffffff",
+        "background_color": "#000000",
+        "margin-top": 64,
+        "margin-bottom": 32,
+        "margin-top-mobile": 32,
+        "margin-bottom-mobile": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_banner_pT7cbQ",
+    "skinification_KmpyVt",
+    "multicolumn_7pJPdD"
+  ]
+}

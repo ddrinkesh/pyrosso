@@ -1,0 +1,273 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "compact-size-enabled": true,
+        "size_heading": 140,
+        "size_heading_mobile": 100,
+        "color-body-text": "#151515",
+        "color-bg-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "margin-top": 60,
+        "margin-bottom": 60
+      }
+    },
+    "background_video_aEmn34": {
+      "type": "background-video",
+      "blocks": {
+        "heading_NHxcAn": {
+          "type": "heading",
+          "settings": {
+            "heading": "Get to know GLAZING \nMIST.",
+            "disable_on_mobile": false,
+            "size_heading": 100,
+            "size_heading_mobile": 100
+          }
+        }
+      },
+      "block_order": [
+        "heading_NHxcAn"
+      ],
+      "name": "t:sections.background-video.presets.name",
+      "settings": {
+        "advanced_heading": false,
+        "heading": "",
+        "heading_richtext": "<h2>Video hero</h2>",
+        "full-width-enabled": true,
+        "video_hosted": "shopify://files/videos/Timeline 1Commercial 2.mov",
+        "autoplay": false,
+        "video_controls": false,
+        "video_custom_play_controls": true,
+        "video_custom_mute_controls": false,
+        "video_url": "",
+        "original_ratio": "fixed_height",
+        "desktop_fixed_height": 900,
+        "mobile_fixed_height": 460,
+        "color-body-heading": "rgba(0,0,0,0)",
+        "color-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "color-body-text": "rgba(0,0,0,0)",
+        "desktop_text_vertical_position": "center",
+        "desktop_text_horizontal_position": "center",
+        "mobile_text_vertical_position": "bottom",
+        "mobile_text_horizontal_position": "left",
+        "margin-top": 0,
+        "margin-bottom": 0,
+        "margin-top-mobile": 0,
+        "margin-bottom-mobile": 20
+      }
+    },
+    "video_gallery_kFJTXL": {
+      "type": "video-gallery",
+      "blocks": {
+        "video_item_fLTDgq": {
+          "type": "video_item",
+          "settings": {
+            "shopify_video": "shopify://files/videos/Sea Salt Korean Middle part.mov",
+            "thumbnail": "shopify://shop_images/Product_Listing_Downsized.png",
+            "title": "how to use sea salt",
+            "subtitle": "Learn how to style your hair with sea salt",
+            "published_at": "2026-05-28T09:15:00Z",
+            "tag": "basics"
+          }
+        },
+        "video_item_6mnaWx": {
+          "type": "video_item",
+          "settings": {
+            "shopify_video": "shopify://files/videos/Headshape Guide.mov",
+            "thumbnail": "shopify://shop_images/Still_2025-10-04_232952_1.3.1.jpg",
+            "title": "how to find the best hairstyle for your faceshape!",
+            "subtitle": "These are the hairstyle that will look the best with your faceshape",
+            "published_at": "2026-05-15T14:30:00Z",
+            "tag": "advance"
+          }
+        },
+        "video_item_p3DYQL": {
+          "type": "video_item",
+          "settings": {
+            "shopify_video": "shopify://files/videos/Nick 4 steps.mov",
+            "thumbnail": "shopify://shop_images/Still_2025-09-01_212253_1.30.1.jpg",
+            "title": "how to use the complete set",
+            "subtitle": "These 4 products will change how you style your hair",
+            "published_at": "2026-04-22T18:45:00Z",
+            "tag": "basics"
+          }
+        },
+        "video_item_yqq9nq": {
+          "type": "video_item",
+          "settings": {
+            "shopify_video": "shopify://files/videos/Chance Styles V.2 H.265_2204476e-2a31-4c4a-823d-17c3a1b8f86d.mov",
+            "thumbnail": "shopify://shop_images/QWRQ_1.496.1.jpg",
+            "title": "5 ways to style straight asian hair!",
+            "subtitle": "Learn how to style your hair using these simple techniques.",
+            "published_at": "2026-03-10T07:20:00Z",
+            "tag": "advance"
+          }
+        },
+        "video_item_tX4bKT": {
+          "type": "video_item",
+          "settings": {
+            "shopify_video": "shopify://files/videos/Chance Creed Edit.mov",
+            "thumbnail": "shopify://shop_images/Still_2025-11-04_222347_1.409.1.jpg",
+            "title": "how to use the texture duo",
+            "subtitle": "Create texture by using these 2 products",
+            "published_at": "2026-02-14T12:00:00Z",
+            "tag": "basics"
+          }
+        },
+        "video_item_TfK6ym": {
+          "type": "video_item",
+          "settings": {
+            "shopify_video": "shopify://files/videos/Nick Style.mov",
+            "thumbnail": "shopify://shop_images/Still_2025-05-29_171621_1.75.5.jpg",
+            "title": "how to style longer hair",
+            "subtitle": "Here are 5 easy ways to style longer hair...",
+            "published_at": "2026-01-01T00:00:00Z",
+            "tag": "advance"
+          }
+        },
+        "video_item_cLwiHG": {
+          "type": "video_item",
+          "settings": {
+            "shopify_video": "shopify://files/videos/Hairstyling Tutorial.mov",
+            "thumbnail": "shopify://shop_images/E0AD0075-66A4-43CB-ABED-D0119E317B50.png",
+            "title": "how to style the middle part",
+            "subtitle": "Easy way to style the middle part using 2 products..",
+            "published_at": "2025-11-18T16:10:00Z",
+            "tag": "basics"
+          }
+        },
+        "video_item_ceE3gx": {
+          "type": "video_item",
+          "settings": {
+            "shopify_video": "shopify://files/videos/Hair Sticks Out 2.mov",
+            "thumbnail": "shopify://shop_images/Still_2025-05-27_214053_1.185.3.jpg",
+            "title": "stop your hair from sticking out",
+            "subtitle": "How to keep your hair from flaring out on the sides?",
+            "published_at": "2025-08-05T21:35:00Z",
+            "tag": "advance"
+          }
+        }
+      },
+      "block_order": [
+        "video_item_fLTDgq",
+        "video_item_6mnaWx",
+        "video_item_p3DYQL",
+        "video_item_yqq9nq",
+        "video_item_tX4bKT",
+        "video_item_TfK6ym",
+        "video_item_cLwiHG",
+        "video_item_ceE3gx"
+      ],
+      "name": "Video Gallery",
+      "settings": {
+        "filter_label": "FILTER BY",
+        "bg_color": "#000000",
+        "text_color": "#ffffff",
+        "light_text_color": "#d9d9d9",
+        "margin-top": 20,
+        "margin-bottom": 20,
+        "margin-top-mobile": 20,
+        "margin-bottom-mobile": 20
+      }
+    },
+    "multicolumn_B7pHtA": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_x7aYzq": {
+          "type": "column",
+          "settings": {
+            "heading": "ACTIVATES FOLLICLES",
+            "heading_disable_on_mobile": false,
+            "text": "<p>The ingredient repairing your scalp</p>",
+            "text_disable_on_mobile": false,
+            "button_select": "primary",
+            "button_label": "",
+            "button_disable_on_mobile": false,
+            "button_link": "",
+            "button_link_in_new_window": false,
+            "mobile_image": "shopify://shop_images/Rectangle_4339.png"
+          }
+        },
+        "column_kDdwrw": {
+          "type": "column",
+          "settings": {
+            "heading": "REPAIRS THE SCALP",
+            "heading_disable_on_mobile": false,
+            "text": "<p>The ingredient repairing your scalp</p>",
+            "text_disable_on_mobile": false,
+            "button_select": "primary",
+            "button_label": "",
+            "button_disable_on_mobile": false,
+            "button_link": "",
+            "button_link_in_new_window": false,
+            "mobile_image": "shopify://shop_images/6FF5A788-E622-43B8-8DA4-68A7A41B252C.jpg"
+          }
+        },
+        "column_EJUyrn": {
+          "type": "column",
+          "settings": {
+            "heading": "SIGNALS SCALP TO BE YOUNGER.",
+            "heading_disable_on_mobile": false,
+            "text": "<p>The ingredient repairing your scalp</p>",
+            "text_disable_on_mobile": false,
+            "button_select": "primary",
+            "button_label": "",
+            "button_disable_on_mobile": false,
+            "button_link": "",
+            "button_link_in_new_window": false,
+            "mobile_image": "shopify://shop_images/Rectangle_4338.png"
+          }
+        }
+      },
+      "block_order": [
+        "column_x7aYzq",
+        "column_kDdwrw",
+        "column_EJUyrn"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "advanced_heading": true,
+        "heading": "Multicolumn",
+        "heading_richtext": "<p>Ingredients that work</p>",
+        "enable_stack_products": false,
+        "full-width-enabled": false,
+        "video_controls": false,
+        "video_custom_play_controls": false,
+        "video_custom_mute_controls": false,
+        "number_of_column_desktop": 3,
+        "spacing_desktop": "32",
+        "number_of_column_mobile": "1",
+        "spacing_mobile": "32",
+        "image_ratio": "square",
+        "column_alignment": "left",
+        "size_heading": 100,
+        "size_heading_mobile": 100,
+        "color-body-text": "#ffffff",
+        "background_color": "#000000",
+        "margin-top": 32,
+        "margin-bottom": 0,
+        "margin-top-mobile": 20,
+        "margin-bottom-mobile": 20
+      }
+    }
+  },
+  "order": [
+    "main",
+    "background_video_aEmn34",
+    "video_gallery_kFJTXL",
+    "multicolumn_B7pHtA"
+  ]
+}

@@ -1,0 +1,183 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "compact-size-enabled": true,
+        "size_heading": 140,
+        "size_heading_mobile": 100,
+        "color-body-text": "#151515",
+        "color-bg-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "margin-top": 60,
+        "margin-bottom": 60
+      }
+    },
+    "policy_de9A6h": {
+      "type": "policy",
+      "blocks": {
+        "text_LTpPrr": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Effective Date: January 30,2026</p><p>This Cookie Policy explains how Pyrosso (“Pyrosso,” “we,” “us,” or “our”) uses cookies and similar tracking technologies when you visit or interact with our website (the “Site”). This policy should be read together with our Privacy Policy.</p><p>By continuing to use the Site, you consent to the use of cookies as described in this policy, unless you manage or disable them through your browser or cookie settings.</p>"
+          }
+        },
+        "heading_ypn6Ut": {
+          "type": "heading",
+          "settings": {
+            "heading": "What Are Cookies?"
+          }
+        },
+        "text_gfVcRr": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Cookies are small text files that are placed on your device when you visit a website. They help websites function properly, remember preferences, analyze performance, and deliver relevant content and advertising.</p><p>Cookies may be:</p><ul><li>Session cookies, which expire when you close your browser</li><li>Persistent cookies, which remain on your device for a set period or until deleted</li><li>First-party cookies, set by Pyrosso</li><li>Third-party cookies, set by partners such as analytics or advertising providers</li></ul>"
+          }
+        },
+        "heading_3yMMge": {
+          "type": "heading",
+          "settings": {
+            "heading": "How We Use Cookies"
+          }
+        },
+        "text_aEQmEf": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pyrosso uses cookies and similar technologies to:</p><ul><li>Ensure the Site functions correctly</li><li>Remember your preferences and settings</li><li>Enable core e-commerce features like checkout and cart functionality</li><li>Analyze Site traffic and user behavior</li><li>Measure marketing and advertising performance</li><li>Personalize content and product recommendations</li><li>Improve our products, services, and overall user experience</li></ul>"
+          }
+        },
+        "heading_Cgpdxy": {
+          "type": "heading",
+          "settings": {
+            "heading": "Types of Cookies We Use"
+          }
+        },
+        "text_EnNpb3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Essential Cookies</p><p>These cookies are necessary for the Site to function and cannot be switched off in our systems. They are usually set in response to actions you take, such as adding items to your cart, logging into an account, or completing a purchase.</p>"
+          }
+        },
+        "heading_rEnyqt": {
+          "type": "heading",
+          "settings": {
+            "heading": "Analytics and Performance Cookies"
+          }
+        },
+        "text_RUk9C9": {
+          "type": "text",
+          "settings": {
+            "text": "<p>These cookies help us understand how visitors interact with the Site by collecting information such as pages visited, time spent on the Site, and error messages. This information is used to improve Site performance and user experience.</p>"
+          }
+        },
+        "heading_JkXnYD": {
+          "type": "heading",
+          "settings": {
+            "heading": "Functional Cookies"
+          }
+        },
+        "text_pLkzDk": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Functional cookies allow the Site to remember choices you make, such as language preferences or saved information, to provide a more personalized experience.</p>"
+          }
+        },
+        "heading_cUJ7C9": {
+          "type": "heading",
+          "settings": {
+            "heading": "Advertising and Marketing Cookies"
+          }
+        },
+        "text_4AKhFF": {
+          "type": "text",
+          "settings": {
+            "text": "<p>These cookies may be set by Pyrosso or third-party partners to deliver relevant advertisements, track campaign effectiveness, and show you content that aligns with your interests.</p><p>Third-Party Cookies</p><p>We may allow trusted third-party service providers to place cookies on your device for analytics, advertising, and performance purposes. These providers may collect information about your online activities over time and across different websites.</p><p>Third-party cookies are governed by the privacy policies of those third parties, not this Cookie Policy.</p>"
+          }
+        },
+        "heading_ayqgEK": {
+          "type": "heading",
+          "settings": {
+            "heading": "Managing Your Cookie Preferences"
+          }
+        },
+        "text_XBYcqj": {
+          "type": "text",
+          "settings": {
+            "text": "<p>You can manage or disable cookies through your browser settings at any time. Please note that disabling certain cookies may impact the functionality and performance of the Site.</p><p>Where required by law, we provide a cookie consent banner or management tool that allows you to accept, reject, or customize cookie preferences.</p>"
+          }
+        },
+        "heading_7RDkKb": {
+          "type": "heading",
+          "settings": {
+            "heading": "Updates to This Cookie Policy"
+          }
+        },
+        "text_Vwbq4w": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We may update this Cookie Policy from time to time to reflect changes in technology, legal requirements, or our practices. When we do, we will update the effective date above.</p>"
+          }
+        },
+        "heading_4eteXX": {
+          "type": "heading",
+          "settings": {
+            "heading": "Contact Us"
+          }
+        },
+        "text_6GXR7L": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If you have questions about this Cookie Policy or our use of cookies, please contact us at:</p><p><a href=\"mailto:info@pyrosso.com\" title=\"mailto:info@pyrosso.com\">info@pyrosso.com</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_LTpPrr",
+        "heading_ypn6Ut",
+        "text_gfVcRr",
+        "heading_3yMMge",
+        "text_aEQmEf",
+        "heading_Cgpdxy",
+        "text_EnNpb3",
+        "heading_rEnyqt",
+        "text_RUk9C9",
+        "heading_JkXnYD",
+        "text_pLkzDk",
+        "heading_cUJ7C9",
+        "text_4AKhFF",
+        "heading_ayqgEK",
+        "text_XBYcqj",
+        "heading_7RDkKb",
+        "text_Vwbq4w",
+        "heading_4eteXX",
+        "text_6GXR7L"
+      ],
+      "name": "policy",
+      "settings": {
+        "heading": "Cookie Policy",
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "light_text_color": "#bfbfbf",
+        "margin-top": 128,
+        "margin-bottom": 128,
+        "margin-top-mobile": 76,
+        "margin-bottom-mobile": 76
+      }
+    }
+  },
+  "order": [
+    "main",
+    "policy_de9A6h"
+  ]
+}

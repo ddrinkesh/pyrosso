@@ -1,0 +1,327 @@
+{{ 'faq.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  [data-section-id="{{ section.id }}"] {
+    --background-color: {{ section.settings.background_color }};
+    --text-color: {{ section.settings.text_color }};
+    --light-text-color: {{ section.settings.light_text_color }};
+    background-color: var(--background-color);
+    color: var(--text-color);
+      {% if section.settings.margin-top %}
+          --section-gap-top: {{ section.settings.margin-top }}px;
+      {% endif %}
+
+      {% if section.settings.margin-bottom %}
+          --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+      {% endif %}
+  }
+  @media (max-width: 899px) {
+    [data-section-id="{{ section.id }}"] {
+      {% if section.settings.margin-top-mobile %}
+          --section-gap-top: {{ section.settings.margin-top-mobile }}px;
+      {% endif %}
+
+      {% if section.settings.margin-bottom-mobile %}
+          --section-gap-bottom: {{ section.settings.margin-bottom-mobile }}px;
+      {% endif %}
+    }
+  }
+{% endstyle %}
+
+<div data-section-id="{{ section.id }}">
+  <div class="faq-wrapper">
+    {% assign has_faq_heading_blocks = false %}
+    {% for block in section.blocks %}
+      {% if block.type == 'heading' and block.settings.heading != blank %}
+        {% assign has_faq_heading_blocks = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+    {% if section.settings.heading != blank or has_faq_heading_blocks %}
+      <div class="faq-navigation-and-heading">
+        {% if section.settings.heading != blank %}
+          <h2 class="faq-heading hero__title">{{ section.settings.heading }}</h2>
+        {% endif %}
+
+        {% if has_faq_heading_blocks %}
+          <div class="faq-navigation">
+            {% for block in section.blocks %}
+              {% if block.type == 'heading' and block.settings.heading != blank %}
+                <a
+                  href="#faq-group-{{ block.id }}"
+                  class="faq-navigation__link"
+                  data-target="faq-group-{{ block.id }}"
+                >
+                  {{ block.settings.heading }}
+                </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+    <div class="faq-content{% if has_faq_heading_blocks == false %} faq-content-full-width{% endif %}">
+      {% for block in section.blocks %}
+        {% if block.type == 'heading' %}
+          <h3 id="faq-group-{{ block.id }}" class="faq-group-heading">{{ block.settings.heading }}</h3>
+        {% elsif block.type == 'collapsible_tab' %}
+          {% if block.settings.heading != blank
+            or block.settings.content != blank
+            or block.settings.page.content != blank
+            or request.design_mode
+          %}
+            <collapsible-section
+              {% if settings.animations %}
+                data-cascade
+                style="--animation-order: {{ forloop.index }};"
+              {% endif %}
+              class="wt-collapse wt-collapse--always  {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
+              data-block-id="{{ block.id }}"
+            >
+              <div
+                class="wt-collapse__trigger wt-collapsible__trigger {% if block.settings.open_by_default %} wt-collapse__trigger--active {% endif %}"
+                role="button"
+                tabindex="0"
+                data-open="{{ block.settings.open_by_default }}"
+                aria-expanded="{{ block.settings.open_by_default }}"
+                aria-controls="CollapsibleTab-{{ block.id }}"
+              >
+                <div class="wt-collapse__trigger__text">
+                  <span class="wt-collapse__trigger__title">
+                    {{- block.settings.heading | default: block.settings.page.title -}}
+                  </span>
+                </div>
+                <div class="wt-icon" aria-hidden="true">
+                  {% comment %} {% render 'icons', id: 'plus' %} {% endcomment %}
+                  <svg width="20" height="27" viewBox="0 0 20 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 3.5C4.48456 3.5 0 7.98456 0 13.5C0 19.0154 4.48456 23.5 10 23.5C15.5154 23.5 20 19.0154 20 13.5C20 7.98456 15.5154 3.5 10 3.5ZM10 4.75C14.8399 4.75 18.75 8.66009 18.75 13.5C18.75 18.3399 14.8399 22.25 10 22.25C5.16011 22.25 1.25 18.3399 1.25 13.5C1.25 8.66009 5.16011 4.75 10 4.75ZM6.25 12.875V14.125H13.75V12.875H6.25Z" fill="currentColor"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="wt-collapse__target wt-collapsible__target" id="CollapsibleTab-{{ block.id }}">
+                <div class="wt-collapse__target--text rte">
+                  {{ block.settings.content }}
+                  {{ block.settings.page.content }}
+                </div>
+              </div>
+            </collapsible-section>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.faq-navigation__link');
+    const sections = document.querySelectorAll('.faq-group-heading');
+
+    if (!navLinks.length || !sections.length) return;
+
+    // Navigation Click
+    navLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const target = document.getElementById(link.dataset.target);
+
+        if (!target) return;
+
+        const offset = 120;
+
+        window.scrollTo({
+          top: target.offsetTop - offset,
+          behavior: 'smooth',
+        });
+
+        navLinks.forEach((item) => item.classList.remove('active'));
+
+        link.classList.add('active');
+      });
+    });
+
+    function updateActiveSection() {
+      const triggerPoint = window.innerHeight * 0.5;
+
+      let activeSection = sections[0];
+
+      // If user is at bottom of page
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10) {
+        activeSection = sections[sections.length - 1];
+      } else {
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+
+          if (rect.top <= triggerPoint) {
+            activeSection = section;
+          }
+        });
+      }
+
+      navLinks.forEach((link) => {
+        link.classList.remove('active');
+
+        if (link.dataset.target === activeSection.id) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    let ticking = false;
+
+    function handleScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateActiveSection();
+          ticking = false;
+        });
+
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', updateActiveSection);
+
+    updateActiveSection();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "FAQ’s"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "light_text_color",
+      "label": "Light text Color",
+      "default": "#BFBFBF"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.section_spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-top.label"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-bottom.label",
+      "info": "t:sections.settings.settings.distance-bottom.info"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing mobile"
+    },
+    {
+      "type": "range",
+      "id": "margin-top-mobile",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-top.label"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom-mobile",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-bottom.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading"
+        }
+      ]
+    },
+    {
+      "type": "collapsible_tab",
+      "name": "t:sections.main-product.blocks.collapsible_tab.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Collapsible tab",
+          "info": "t:sections.main-product.blocks.collapsible_tab.settings.heading.info",
+          "label": "t:sections.main-product.blocks.collapsible_tab.settings.heading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "t:sections.main-product.blocks.collapsible_tab.settings.content.label"
+        },
+        {
+          "type": "page",
+          "id": "page",
+          "label": "t:sections.main-product.blocks.collapsible_tab.settings.page.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "label": "t:sections.main-product.blocks.collapsible_tab.settings.open_by_default.label",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

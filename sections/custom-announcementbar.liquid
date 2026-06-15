@@ -1,0 +1,263 @@
+{{ 'custom-announcmentbar.css' | asset_url | stylesheet_tag }}
+{%- if section.blocks.size > 0 -%}
+  <div
+    class="custom-announcmentbar"
+    style="
+      --bar-bg: {{ section.settings.bar_bg }};
+      --bar-text: {{ section.settings.bar_text_color }};
+    "
+    data-effect="{{ section.settings.slide_effect }}"
+    data-autoplay="{{ section.settings.autoplay_delay }}"
+  >
+    <div class="custom-announcmentbar__inner">
+      {%- if section.blocks.size > 1 -%}
+        <button
+          class="custom-announcmentbar__btn custom-announcmentbar__prev"
+          aria-label="Previous announcement"
+          type="button"
+        >
+          <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line y1="-0.666667" x2="8.41889" y2="-0.666667" transform="matrix(-0.701505 0.712665 -0.701505 -0.712665 5.90576 0)" stroke="white" stroke-width="1.33333"/>
+            <line y1="-0.666667" x2="8.41889" y2="-0.666667" transform="matrix(-0.701505 -0.712665 -0.701505 0.712665 5.90576 12)" stroke="white" stroke-width="1.33333"/>
+          </svg>
+        </button>
+      {%- endif -%}
+
+      <div class="custom-announcmentbar__track-wrapper">
+        <div class="custom-announcmentbar__track">
+          {%- for block in section.blocks -%}
+            <div
+              class="custom-announcmentbar__slide"
+              {{ block.shopify_attributes }}
+            >
+              <p class="custom-announcmentbar__text">
+                {%- if block.settings.link != blank -%}
+                  class="custom-announcmentbar__link" href="{{ block.settings.link }}" >
+                  {{ block.settings.text | escape }}
+                  </a>
+                {%- else -%}
+                  {{ block.settings.text | escape }}
+                {%- endif -%}
+              </p>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+
+      {%- if section.blocks.size > 1 -%}
+        <button
+          class="custom-announcmentbar__btn custom-announcmentbar__next"
+          aria-label="Next announcement"
+          type="button"
+        >
+          <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line y1="-0.666667" x2="8.41889" y2="-0.666667" transform="matrix(0.701505 0.712665 0.701505 -0.712665 0.935547 0)" stroke="white" stroke-width="1.33333"/>
+            <line y1="-0.666667" x2="8.41889" y2="-0.666667" transform="matrix(0.701505 -0.712665 0.701505 0.712665 0.935547 12)" stroke="white" stroke-width="1.33333"/>
+          </svg>
+        </button>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}
+
+{% javascript %}
+  (function () {
+    function initAnnouncmentBar() {
+      const wrappers = document.querySelectorAll('.custom-announcmentbar');
+
+      wrappers.forEach((wrapper) => {
+        if (wrapper._initialized) return;
+        wrapper._initialized = true;
+
+        const track = wrapper.querySelector('.custom-announcmentbar__track');
+        const slides = wrapper.querySelectorAll('.custom-announcmentbar__slide');
+        const nextBtn = wrapper.querySelector('.custom-announcmentbar__next');
+        const prevBtn = wrapper.querySelector('.custom-announcmentbar__prev');
+
+        if (!track || slides.length <= 1) return;
+
+        let currentIndex = 0;
+        const autoplayDelay = Number(wrapper.dataset.autoplay) || 4000;
+        let interval = null;
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        function goTo(index) {
+          currentIndex = (index + slides.length) % slides.length;
+          track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function next() {
+          goTo(currentIndex + 1);
+        }
+        function prev() {
+          goTo(currentIndex - 1);
+        }
+
+        function startAutoplay() {
+          clearInterval(interval);
+          interval = setInterval(next, autoplayDelay);
+        }
+
+        function stopAutoplay() {
+          clearInterval(interval);
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener('click', function () {
+            next();
+            startAutoplay();
+          });
+        }
+
+        if (prevBtn) {
+          prevBtn.addEventListener('click', function () {
+            prev();
+            startAutoplay();
+          });
+        }
+
+        wrapper.addEventListener('mouseenter', stopAutoplay);
+        wrapper.addEventListener('mouseleave', startAutoplay);
+
+        track.addEventListener(
+          'touchstart',
+          function (e) {
+            touchStartX = e.touches[0].clientX;
+          },
+          { passive: true }
+        );
+
+        track.addEventListener(
+          'touchend',
+          function (e) {
+            touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 30) {
+              diff > 0 ? next() : prev();
+              startAutoplay();
+            }
+          },
+          { passive: true }
+        );
+
+        startAutoplay();
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAnnouncmentBar);
+    } else {
+      initAnnouncmentBar();
+    }
+
+    document.addEventListener('shopify:section:load', function (event) {
+      if (event.target.querySelector('.custom-announcmentbar')) {
+        const wrapper = event.target.querySelector('.custom-announcmentbar');
+        if (wrapper) wrapper._initialized = false;
+        initAnnouncmentBar();
+      }
+    });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Announcementbar",
+  "tag": "div",
+  "class": "custom-announcmentbar-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Bar Appearance"
+    },
+    {
+      "type": "color",
+      "id": "bar_bg",
+      "label": "Background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "bar_text_color",
+      "label": "Text & icon color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "select",
+      "id": "slide_effect",
+      "label": "Slide effect",
+      "options": [
+        {
+          "value": "slide",
+          "label": "Slide"
+        },
+        {
+          "value": "fade",
+          "label": "Fade"
+        }
+      ],
+      "default": "slide"
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "Autoplay delay",
+      "min": 1000,
+      "max": 9500,
+      "step": 500,
+      "unit": "ms",
+      "default": 4000
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Announcement text",
+          "default": "Free shipping on orders over $50."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ]
+  /* "presets": [
+    {
+      "name": "Announcementbar",
+      "blocks": [
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Free shipping on orders over $50."
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "19,000+ Positive Reviews"
+          }
+        },
+        {
+          "type": "announcement",
+          "settings": {
+            "text": "Satisfaction Guarantee"
+          }
+        }
+      ]
+    }
+  ] */
+}
+{% endschema %}

@@ -1,0 +1,289 @@
+{{ 'image-tabs.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign bg_color = section.settings.background_color
+  assign panel_bg = section.settings.content_bg_color
+  assign txt_color = section.settings.text_color
+  assign light_text_color = section.settings.light_text_color
+  assign sid = section.id
+-%}
+
+{% style %}
+  [data-section-id="{{ section.id }}"] {
+    --itab-bg:       {{ bg_color }};
+    --itab-panel-bg: {{ panel_bg }};
+    --itab-text:     {{ txt_color }};
+     --itab-light-text: {{ light_text_color }};
+    background-color: var(--itab-bg);
+    {% if section.settings.margin-top %}
+      --section-gap-top: {{ section.settings.margin-top }}px;
+    {% endif %}
+    {% if section.settings.margin-bottom %}
+      --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+    {% endif %}
+  }
+  @media (max-width: 899px) {
+    [data-section-id="{{ section.id }}"] {
+      {% if section.settings.margin-top-mobile %}
+          --section-gap-top: {{ section.settings.margin-top-mobile }}px;
+      {% endif %}
+
+      {% if section.settings.margin-bottom-mobile %}
+          --section-gap-bottom: {{ section.settings.margin-bottom-mobile }}px;
+      {% endif %}
+    }
+  }
+{% endstyle %}
+
+<div data-section-id="{{ section.id }}">
+  <div id="image-tabs-{{ sid }}" class="image-tabs">
+    <div class="itab__grid">
+      <div class="itab__static">
+        <div class="itab__static-media">
+          {%- if section.settings.static_image != blank -%}
+            {{
+              section.settings.static_image
+              | image_url: width: 1200
+              | image_tag:
+                loading: 'lazy',
+                widths: '400,600,800,1000,1200',
+                sizes: '(max-width: 767px) 100vw, 50vw',
+                alt: section.settings.static_image.alt
+            }}
+          {%- else -%}
+            <div class="itab__placeholder">{{ 'image' | placeholder_svg_tag }}</div>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="itab__panel{% if section.settings.content_bg_color != blank %} itab__panel_padding{% endif %}">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="itab__heading headline headline--rich">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+
+        <div class="itab__media-wrap" aria-live="polite">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'tab' -%}
+              <div
+                class="itab__frame{% if forloop.first %} is-active{% endif %}"
+                data-frame="{{ forloop.index0 }}"
+                aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}"
+              >
+                {%- if block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 1200
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '400,600,800,1000,1200',
+                      sizes: '(max-width: 767px) 100vw, 50vw',
+                      alt: block.settings.image.alt
+                    | default: block.settings.label
+                  }}
+                {%- else -%}
+                  <div class="itab__placeholder">{{ 'image' | placeholder_svg_tag }}</div>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {%- if section.blocks.size > 0 -%}
+          <ul class="itab__nav" role="list">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'tab' -%}
+                <li
+                  class="itab__nav-item{% if forloop.first %} is-active{% endif %}"
+                  data-index="{{ forloop.index0 }}"
+                  {{ block.shopify_attributes }}
+                  tabindex="0"
+                  role="button"
+                  aria-label="{{ block.settings.label | escape }}"
+                >
+                  <span class="itab__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if section.settings.footnote != blank -%}
+          <div class="rte itab__footnote">{{ section.settings.footnote }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('image-tabs-{{ sid }}');
+    if (!root) return;
+
+    var navItems = Array.from(root.querySelectorAll('.itab__nav-item'));
+    var frames = Array.from(root.querySelectorAll('.itab__frame'));
+    var current = 0;
+
+    function isMobile() {
+      return window.matchMedia('(max-width: 767px)').matches;
+    }
+
+    function activate(idx) {
+      if (idx === current && root.querySelector('.itab__nav-item.is-active')) return;
+      current = idx;
+      navItems.forEach(function (el, i) {
+        el.classList.toggle('is-active', i === idx);
+      });
+      frames.forEach(function (el, i) {
+        var on = i === idx;
+        el.classList.toggle('is-active', on);
+        el.setAttribute('aria-hidden', on ? 'false' : 'true');
+      });
+    }
+
+    activate(0);
+
+    navItems.forEach(function (el, idx) {
+      el.addEventListener('mouseenter', function () {
+        if (!isMobile()) activate(idx);
+      });
+      el.addEventListener('click', function () {
+        activate(idx);
+      });
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          activate(idx);
+        }
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Image Tabs",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Take your Rhode ON THE GO.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "footnote",
+      "label": "Text",
+      "default": "<p>Based on an independent 32-subject clinical study after one use.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "static_image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Content Background Color",
+      "info": "Leave blank to remove content spacing."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "light_text_color",
+      "label": "Light text Color",
+      "default": "#BFBFBF"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.section_spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-top.label"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-bottom.label",
+      "info": "t:sections.settings.settings.distance-bottom.info"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing mobile"
+    },
+    {
+      "type": "range",
+      "id": "margin-top-mobile",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-top.label"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom-mobile",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-bottom.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Tabs",
+      "category": "Custom",
+      "blocks": [{ "type": "tab" }, { "type": "tab" }, { "type": "tab" }, { "type": "tab" }, { "type": "tab" }]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,118 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header Group",
+  "sections": {
+    "custom_announcementbar_3Xznx7": {
+      "type": "custom-announcementbar",
+      "blocks": {
+        "announcement_bH7Gqk": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free shipping on orders over $50.",
+            "link": ""
+          }
+        },
+        "announcement_KPJFgf": {
+          "type": "announcement",
+          "settings": {
+            "text": "19,000+ Positive Reviews",
+            "link": ""
+          }
+        },
+        "announcement_JhDV3V": {
+          "type": "announcement",
+          "settings": {
+            "text": "Satisfaction Guarantee",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_bH7Gqk",
+        "announcement_KPJFgf",
+        "announcement_JhDV3V"
+      ],
+      "name": "Announcementbar",
+      "settings": {
+        "bar_bg": "#000000",
+        "bar_text_color": "#ffffff",
+        "slide_effect": "fade",
+        "autoplay_delay": 4000
+      }
+    },
+    "header": {
+      "type": "page-header",
+      "blocks": {
+        "column_NLfjdN": {
+          "type": "column",
+          "settings": {
+            "title": "shop",
+            "stack_view": true,
+            "collections": [
+              "featured",
+              "hair",
+              "sets",
+              "best-selling-products"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "column_NLfjdN"
+      ],
+      "settings": {
+        "layout": "option_5",
+        "sticky_header": true,
+        "sticky_header_always": true,
+        "header_bg_opacity": 100,
+        "header_bg_blur": 0,
+        "header_always_blurred": false,
+        "show_line_separator": true,
+        "show_shadow": true,
+        "logo": "shopify://shop_images/logo.svg",
+        "large_screen_logo_width": 192,
+        "mobile_screen_logo_width": 160,
+        "menu": "header",
+        "mobile_footer_menu": "",
+        "customer_account_menu": "customer-account-main-menu",
+        "teaser_menu": "header",
+        "teaser_menu_limit": 5,
+        "transparent_logo": "shopify://shop_images/logo.svg",
+        "transparent_header_color": "#ffffff",
+        "show_country_selector": false,
+        "show_country_selector_label": false,
+        "show_country_selector_flag": false,
+        "show_language_selector": false,
+        "drawer_title": "",
+        "enable_submenu_link_in_drawer": false,
+        "show_search": true,
+        "typing_search": "Search...",
+        "suggestions_title": "Suggestions",
+        "suggestions_menu": "search",
+        "text_alignment": "left",
+        "image_ratio": "adapt",
+        "show_video": false,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "enable_vendor_link": false,
+        "show_type": true,
+        "show_product_rating": false,
+        "enable_quick_add_button": true,
+        "quick_add_mode": "hover_desktop"
+      }
+    }
+  },
+  "order": [
+    "custom_announcementbar_3Xznx7",
+    "header"
+  ]
+}

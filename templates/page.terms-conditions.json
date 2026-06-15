@@ -1,0 +1,267 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "compact-size-enabled": true,
+        "size_heading": 140,
+        "size_heading_mobile": 100,
+        "color-body-text": "#151515",
+        "color-bg-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "margin-top": 60,
+        "margin-bottom": 60
+      }
+    },
+    "policy_bYehmb": {
+      "type": "policy",
+      "blocks": {
+        "text_aEkTXh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Effective Date: January 30, 2026</p><p>These Terms of Service (“Terms”) govern your access to and use of the Pyrosso website, products, and services (collectively, the “Site”). By accessing the Site, making a purchase, or otherwise interacting with Pyrosso (“Pyrosso,” “we,” “us,” or “our”), you agree to be bound by these Terms. If you do not agree, please do not use the Site.</p>"
+          }
+        },
+        "heading_KAwry7": {
+          "type": "heading",
+          "settings": {
+            "heading": "Eligibility and Use of the Site"
+          }
+        },
+        "text_a9rWFi": {
+          "type": "text",
+          "settings": {
+            "text": "<p>By using the Site, you represent that you are at least 18 years old or have the consent of a parent or legal guardian. You agree to use the Site only for lawful purposes and in accordance with these Terms.</p><p>We reserve the right to refuse service, terminate accounts, or cancel orders at our discretion, including if we believe your conduct violates these Terms or applicable law.</p>"
+          }
+        },
+        "heading_JbpQAc": {
+          "type": "heading",
+          "settings": {
+            "heading": "Products and Orders"
+          }
+        },
+        "text_MbQLAy": {
+          "type": "text",
+          "settings": {
+            "text": "<p>All products offered by Pyrosso are intended for personal use only and not for resale unless explicitly authorized by us.</p><p>We strive to display accurate product descriptions, pricing, and availability. However, we do not guarantee that all information on the Site is error-free. We reserve the right to correct errors, update information, or cancel orders at any time, including after an order has been submitted.</p><p>Product availability is not guaranteed, and we may limit quantities per order or customer.</p>"
+          }
+        },
+        "heading_cAXwnP": {
+          "type": "heading",
+          "settings": {
+            "heading": "Pricing, Payments, and Billing"
+          }
+        },
+        "text_ak3BqJ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Prices are listed in U.S. dollars unless otherwise stated. Taxes, shipping, and handling fees are calculated at checkout.</p><p>By placing an order, you authorize us (or our payment processor) to charge your selected payment method for the total amount of your purchase.</p><p>We reserve the right to change prices or discontinue products at any time without notice.</p>"
+          }
+        },
+        "heading_ieXHHh": {
+          "type": "heading",
+          "settings": {
+            "heading": "Shipping and Delivery"
+          }
+        },
+        "text_jMWx3w": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Shipping timelines provided at checkout are estimates and not guarantees. Pyrosso is not responsible for delays caused by carriers, customs, or events outside of our control.</p><p>Risk of loss passes to you upon delivery of the product to the carrier.</p>"
+          }
+        },
+        "heading_htiFXF": {
+          "type": "heading",
+          "settings": {
+            "heading": "Returns and Refunds"
+          }
+        },
+        "text_KmKGbU": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our return and refund policies are described on the Site and incorporated into these Terms by reference. Please review them carefully before making a purchase.</p><p>We reserve the right to deny returns or refunds that do not comply with our stated policies.</p>"
+          }
+        },
+        "heading_qkLeEc": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscriptions, Promotions, and Discounts"
+          }
+        },
+        "text_8aRkJJ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Certain products, promotions, or discounts may be subject to additional terms. Promotional offers have no cash value and cannot be combined unless expressly stated.</p><p>We reserve the right to modify or discontinue promotions, discount codes, or referral programs at any time.</p>"
+          }
+        },
+        "heading_GikXYR": {
+          "type": "heading",
+          "settings": {
+            "heading": "User Content and Reviews"
+          }
+        },
+        "text_9LBt6Q": {
+          "type": "text",
+          "settings": {
+            "text": "<p>You may have the opportunity to submit reviews, comments, or other content (“User Content”). By submitting User Content, you grant Pyrosso a non-exclusive, royalty-free, perpetual, and worldwide license to use, reproduce, modify, display, and distribute such content for marketing or other lawful purposes.</p><p>You represent that your User Content is accurate, lawful, and does not infringe on the rights of any third party. We reserve the right to remove User Content at our discretion.</p>"
+          }
+        },
+        "heading_9beNL6": {
+          "type": "heading",
+          "settings": {
+            "heading": "Intellectual Property"
+          }
+        },
+        "text_k4YXrT": {
+          "type": "text",
+          "settings": {
+            "text": "<p>All content on the Site, including text, graphics, logos, images, videos, and product designs, is owned by or licensed to Pyrosso and is protected by intellectual property laws.</p><p>You may not copy, reproduce, distribute, modify, or exploit any content without our prior written consent.</p>"
+          }
+        },
+        "heading_jPN67U": {
+          "type": "heading",
+          "settings": {
+            "heading": "Third-Party Services and Links"
+          }
+        },
+        "text_CMqNBd": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The Site may contain links to third-party websites or services. Pyrosso is not responsible for the content, policies, or practices of third parties. Your interactions with third-party services are governed by their respective terms and policies.</p>"
+          }
+        },
+        "heading_G8zMk6": {
+          "type": "heading",
+          "settings": {
+            "heading": "Disclaimer of Warranties"
+          }
+        },
+        "text_xeVDAb": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The Site and products are provided “as is” and “as available” without warranties of any kind, either express or implied, including warranties of merchantability, fitness for a particular purpose, or non-infringement.</p><p>Individual results may vary depending on hair type, routine, and usage.</p>"
+          }
+        },
+        "heading_ktJEeM": {
+          "type": "heading",
+          "settings": {
+            "heading": "Limitation of Liability"
+          }
+        },
+        "text_eA77We": {
+          "type": "text",
+          "settings": {
+            "text": "<p>To the fullest extent permitted by law, Pyrosso shall not be liable for any indirect, incidental, special, or consequential damages arising out of or related to your use of the Site or products.</p><p>Our total liability for any claim shall not exceed the amount you paid for the product giving rise to the claim.</p>"
+          }
+        },
+        "heading_awpQYf": {
+          "type": "heading",
+          "settings": {
+            "heading": "Indemnification"
+          }
+        },
+        "text_6CJ8NK": {
+          "type": "text",
+          "settings": {
+            "text": "<p>You agree to indemnify and hold harmless Pyrosso, its affiliates, officers, employees, and partners from any claims, damages, losses, or expenses arising from your use of the Site, violation of these Terms, or infringement of any third-party rights.</p>"
+          }
+        },
+        "heading_9g9AHR": {
+          "type": "heading",
+          "settings": {
+            "heading": "Governing Law and Dispute Resolution"
+          }
+        },
+        "text_6gqmnB": {
+          "type": "text",
+          "settings": {
+            "text": "<p>These Terms are governed by the laws of the State of Nevada, without regard to conflict of law principles.</p><p>Any disputes arising out of or relating to these Terms shall be resolved exclusively in the state or federal courts located in Nevada.</p>"
+          }
+        },
+        "heading_mMwXcT": {
+          "type": "heading",
+          "settings": {
+            "heading": "Changes to These Terms"
+          }
+        },
+        "text_VQzcgD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We may update these Terms from time to time. When we do, we will revise the effective date above. Your continued use of the Site after changes are posted constitutes acceptance of the updated Terms.</p>"
+          }
+        },
+        "heading_eqMMB9": {
+          "type": "heading",
+          "settings": {
+            "heading": "Contact Us"
+          }
+        },
+        "text_h4kWE3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If you have questions about these Terms, please contact us at:</p><p><a href=\"mailto:info@pyrosso.com\" title=\"mailto:info@pyrosso.com\">info@pyrosso.com</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_aEkTXh",
+        "heading_KAwry7",
+        "text_a9rWFi",
+        "heading_JbpQAc",
+        "text_MbQLAy",
+        "heading_cAXwnP",
+        "text_ak3BqJ",
+        "heading_ieXHHh",
+        "text_jMWx3w",
+        "heading_htiFXF",
+        "text_KmKGbU",
+        "heading_qkLeEc",
+        "text_8aRkJJ",
+        "heading_GikXYR",
+        "text_9LBt6Q",
+        "heading_9beNL6",
+        "text_k4YXrT",
+        "heading_jPN67U",
+        "text_CMqNBd",
+        "heading_G8zMk6",
+        "text_xeVDAb",
+        "heading_ktJEeM",
+        "text_eA77We",
+        "heading_awpQYf",
+        "text_6CJ8NK",
+        "heading_9g9AHR",
+        "text_6gqmnB",
+        "heading_mMwXcT",
+        "text_VQzcgD",
+        "heading_eqMMB9",
+        "text_h4kWE3"
+      ],
+      "name": "policy",
+      "settings": {
+        "heading": "Terms & Conditions",
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "light_text_color": "#bfbfbf",
+        "margin-top": 128,
+        "margin-bottom": 128,
+        "margin-top-mobile": 76,
+        "margin-bottom-mobile": 76
+      }
+    }
+  },
+  "order": [
+    "main",
+    "policy_bYehmb"
+  ]
+}

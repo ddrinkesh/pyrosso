@@ -1,0 +1,267 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "compact-size-enabled": true,
+        "size_heading": 140,
+        "size_heading_mobile": 100,
+        "color-body-text": "#151515",
+        "color-bg-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "margin-top": 60,
+        "margin-bottom": 60
+      }
+    },
+    "policy_NAKcVE": {
+      "type": "policy",
+      "blocks": {
+        "text_fT7qtM": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Effective Date: January 30, 2026</p><p>This Privacy Policy explains how Pyrosso (“Pyrosso,” “we,” “us,” or “our”) collects, uses, and shares information about you when you visit our website, purchase our products, sign up for emails or text messages, participate in promotions, or otherwise interact with us (collectively, the “Site”).</p><p>Pyrosso is a men’s grooming brand focused on hair styling and personal care products sold directly to consumers online. We are committed to protecting your privacy and handling your information transparently.</p><p>We may update this Privacy Policy from time to time. When we do, we will revise the effective date above and may provide additional notice where required. We encourage you to review this policy periodically.</p>"
+          }
+        },
+        "heading_D4Wgze": {
+          "type": "heading",
+          "settings": {
+            "heading": "Acceptance of This Policy"
+          }
+        },
+        "text_exzGnL": {
+          "type": "text",
+          "settings": {
+            "text": "<p>By accessing or using the Site, making a purchase, or otherwise interacting with Pyrosso, you agree to this Privacy Policy. If you do not agree, please do not use the Site. Continued use of the Site after changes are posted constitutes acceptance of those changes.</p>"
+          }
+        },
+        "heading_6ietLP": {
+          "type": "heading",
+          "settings": {
+            "heading": "Information We Collect"
+          }
+        },
+        "text_P6M3bH": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We collect information in three main ways: (1) information you provide directly to us, (2) information collected automatically when you use the Site, and (3) information from third parties.</p><p>Some of this information may be considered “Personal Information” or “Personal Data” under applicable privacy laws. Personal Information generally includes information that identifies or can reasonably be linked to you.</p><p>If we combine non-personal information with Personal Information, we treat the combined information as Personal Information. We may also de‑identify or aggregate information so it can no longer reasonably identify you.</p>"
+          }
+        },
+        "heading_Dgp4yY": {
+          "type": "heading",
+          "settings": {
+            "heading": "Information You Provide Directly"
+          }
+        },
+        "text_XDWXCG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>You may provide information to us when you:</p><ul><li>Make a purchase or return</li><li>Create or manage an account</li><li>Join a waitlist, loyalty program, or promotion</li><li>Subscribe to email or SMS marketing</li><li>Contact customer support</li><li>Participate in surveys, reviews, or giveaways</li></ul><p>This information may include:</p><ul><li>Name</li><li>Email address</li><li>Phone number</li><li>Shipping and billing information</li><li>Payment information</li><li>Product preferences and order history</li><li>Any other information you choose to provide</li></ul>"
+          }
+        },
+        "heading_pegrD9": {
+          "type": "heading",
+          "settings": {
+            "heading": "Information We Collect Automatically"
+          }
+        },
+        "text_TmiFQt": {
+          "type": "text",
+          "settings": {
+            "text": "<p>When you visit or interact with the Site, we automatically collect certain information, including:</p><ul><li>IP address and device identifiers</li><li>Browser type and operating system</li><li>Pages viewed, time spent, and referring URLs</li><li>Purchase and interaction history</li></ul><p>We use cookies, pixels, and similar tracking technologies to collect this information. These tools help us understand how customers use our Site, improve performance, measure marketing effectiveness, and personalize your experience.</p>"
+          }
+        },
+        "heading_dw7qPN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Information from Third Parties"
+          }
+        },
+        "text_6ce4zF": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We may receive information from third parties such as:</p><ul><li>Payment processors</li><li>Shipping and fulfillment partners</li><li>Marketing and analytics providers</li><li>Social media platforms (if you interact with Pyrosso through them)</li></ul>"
+          }
+        },
+        "heading_9fiLUm": {
+          "type": "heading",
+          "settings": {
+            "heading": "How We Use Your Information"
+          }
+        },
+        "text_z7iQYm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We use your information to:</p><ul><li>Process and fulfill orders</li><li>Provide customer support</li><li>Communicate with you about your orders, account, or inquiries</li><li>Send marketing messages about products, launches, and promotions</li><li>Personalize your shopping experience</li><li>Improve our products, services, and website</li><li>Analyze trends and customer behavior</li><li>Prevent fraud and protect the security of our business</li><li>Comply with legal obligations</li></ul>"
+          }
+        },
+        "heading_gUphb4": {
+          "type": "heading",
+          "settings": {
+            "heading": "SMS and Email Marketing"
+          }
+        },
+        "text_MhcVnj": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If you opt in, we may send you marketing communications via email or text message, including product launches, promotions, and checkout reminders. Message and data rates may apply. You can opt out at any time by following the instructions in the message or contacting us.</p><p>Automated technologies may be used to send these communications.</p>"
+          }
+        },
+        "heading_q7aCzi": {
+          "type": "heading",
+          "settings": {
+            "heading": "How We Share Information"
+          }
+        },
+        "text_JfJyVP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We may share your information with:</p><ul><li>Service providers who help operate our business (e.g., payment processing, shipping, email/SMS delivery, analytics, customer support)</li><li>Legal or regulatory authorities if required by law</li><li>Business partners in connection with a merger, acquisition, or sale of assets</li><li>Other parties with your consent or at your direction</li></ul><p>We do not sell your Personal Information for monetary consideration. We may share aggregated or de‑identified information that cannot reasonably be used to identify you.</p>"
+          }
+        },
+        "heading_F4mkxP": {
+          "type": "heading",
+          "settings": {
+            "heading": "Advertising and Analytics"
+          }
+        },
+        "text_7aNXxE": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We work with third‑party partners to deliver ads and analyze Site performance. These partners may collect information about your activity on our Site and other websites using cookies and similar technologies. This information may be used to deliver relevant advertisements and measure campaign effectiveness.</p><p>You can manage cookie preferences through your browser settings and, where available, our cookie management tools.</p>"
+          }
+        },
+        "heading_hqQMyA": {
+          "type": "heading",
+          "settings": {
+            "heading": "Your Privacy Rights and Choices"
+          }
+        },
+        "text_aedwEt": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Depending on where you live, you may have rights to:</p><ul><li>Access your Personal Information</li><li>Correct inaccurate information</li><li>Request deletion of your information</li><li>Opt out of certain data uses, including targeted advertising</li><li>Withdraw consent where processing is based on consent</li></ul><p>You may exercise these rights by contacting us at <a href=\"mailto:info@pyrosso.com\" title=\"mailto:info@pyrosso.com\">info@pyrosso.com</a>. We may need to verify your identity before processing your request.</p>"
+          }
+        },
+        "heading_ryfLd9": {
+          "type": "heading",
+          "settings": {
+            "heading": "Data Retention"
+          }
+        },
+        "text_E6H8Wq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We retain Personal Information only as long as reasonably necessary to fulfill the purposes described in this policy, comply with legal obligations, resolve disputes, and enforce our agreements.</p>"
+          }
+        },
+        "heading_W4zxiD": {
+          "type": "heading",
+          "settings": {
+            "heading": "Security"
+          }
+        },
+        "text_YnAKpb": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We use reasonable administrative, technical, and organizational safeguards to protect your information. However, no online system is completely secure, and we cannot guarantee absolute security.</p><p>If you believe your interaction with us is no longer secure, please contact <a href=\"mailto:info@pyrosso.com\" title=\"mailto:info@pyrosso.com\">info@pyrosso.com</a> immediately.</p>"
+          }
+        },
+        "heading_PcFGyi": {
+          "type": "heading",
+          "settings": {
+            "heading": "Children’s Privacy"
+          }
+        },
+        "text_reeRy4": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pyrosso does not knowingly collect Personal Information from children under the age of 16. If we become aware that we have collected such information, we will delete it.</p>"
+          }
+        },
+        "heading_tVxTDW": {
+          "type": "heading",
+          "settings": {
+            "heading": "International Users"
+          }
+        },
+        "text_Frq3L8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If you access the Site from outside the United States, you understand that your information may be transferred to and processed in the United States and other countries where our service providers operate.</p>"
+          }
+        },
+        "heading_BmU8TV": {
+          "type": "heading",
+          "settings": {
+            "heading": "Contact Us"
+          }
+        },
+        "text_PEeyNq": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If you have questions about this Privacy Policy or our privacy practices, please contact us at:</p><p><a href=\"mailto:info@pyrosso.com\" title=\"mailto:info@pyrosso.com\">info@pyrosso.com</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_fT7qtM",
+        "heading_D4Wgze",
+        "text_exzGnL",
+        "heading_6ietLP",
+        "text_P6M3bH",
+        "heading_Dgp4yY",
+        "text_XDWXCG",
+        "heading_pegrD9",
+        "text_TmiFQt",
+        "heading_dw7qPN",
+        "text_6ce4zF",
+        "heading_9fiLUm",
+        "text_z7iQYm",
+        "heading_gUphb4",
+        "text_MhcVnj",
+        "heading_q7aCzi",
+        "text_JfJyVP",
+        "heading_F4mkxP",
+        "text_7aNXxE",
+        "heading_hqQMyA",
+        "text_aedwEt",
+        "heading_ryfLd9",
+        "text_E6H8Wq",
+        "heading_W4zxiD",
+        "text_YnAKpb",
+        "heading_PcFGyi",
+        "text_reeRy4",
+        "heading_tVxTDW",
+        "text_Frq3L8",
+        "heading_BmU8TV",
+        "text_PEeyNq"
+      ],
+      "name": "policy",
+      "settings": {
+        "heading": "Privacy Policy",
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "light_text_color": "#bfbfbf",
+        "margin-top": 128,
+        "margin-bottom": 128,
+        "margin-top-mobile": 76,
+        "margin-bottom-mobile": 76
+      }
+    }
+  },
+  "order": [
+    "main",
+    "policy_NAKcVE"
+  ]
+}

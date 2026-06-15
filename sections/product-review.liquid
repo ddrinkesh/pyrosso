@@ -1,0 +1,163 @@
+{{ 'product-review.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  [data-section-id="{{ section.id }}"] {
+    --bg-color: {{ section.settings.bg_color }};
+    --content-bg-color: {{ section.settings.content_bg_color }};
+    --text-color: {{ section.settings.text_color }};
+    --light-text-color: {{ section.settings.light_text_color }};
+    --jdgm-star-color: {{ section.settings.text_color }} !important;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+      {% if section.settings.margin-top %}
+          --section-gap-top: {{ section.settings.margin-top }}px;
+      {% endif %}
+
+      {% if section.settings.margin-bottom %}
+          --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+      {% endif %}
+  }
+  @media (max-width: 899px) {
+    [data-section-id="{{ section.id }}"] {
+      {% if section.settings.margin-top-mobile %}
+          --section-gap-top: {{ section.settings.margin-top-mobile }}px;
+      {% endif %}
+
+      {% if section.settings.margin-bottom-mobile %}
+          --section-gap-bottom: {{ section.settings.margin-bottom-mobile }}px;
+      {% endif %}
+    }
+  }
+  [data-section-id="{{ section.id }}"]:has(.jdgm-rev-widg__reviews:empty) {
+    --section-gap-top: 0;
+    --section-gap-bottom: 0;
+    --section-gap-top: 0;
+    --section-gap-bottom: 0;
+  }
+{% endstyle %}
+
+<div data-section-id="{{ section.id }}">
+  <div class="product-review-wrapper">
+    <div class="product-review{% if section.settings.content_bg_color != blank %} product-review_padding{% endif %}">
+      <!-- Start of Judge.me code -->
+      {% assign has_legacy = false -%}
+      {%- if product.metafields.judgeme.widget.size > 20 %}{% assign has_legacy = true %}{% endif %}
+      <div style="clear:both"></div>
+      <div
+        id="judgeme_product_reviews"
+        class="jdgm-widget jdgm-review-widget"
+        data-product-title="{{ product.title | escape }}"
+        data-id="{{ product.id }}"
+        data-product-id="{{ product.id }}"
+        data-widget="review"
+        data-auto-install="false"
+        data-shop-reviews-count="{{ shop.metafields.judgeme.shop_reviews_count | default: 0 | escape }}"
+        data-entry-point="review_widget.js"
+        data-entry-key="review-widget/main.js"
+      >
+        {% if has_legacy %}
+          <div class="jdgm-legacy-widget-content" style="display: none;">{{ product.metafields.judgeme.widget }}</div>
+        {% endif %}
+      </div>
+      {% if product.metafields.judgeme.review_widget_data %}
+        <script>
+          jdgm.data ||= {}; jdgm.data.reviewWidget ||= {}; jdgm.data.reviewWidget[{{ product.id }}] = {{ product.metafields.judgeme.review_widget_data }}
+        </script>
+      {% endif %}
+      <!-- End of Judge.me code -->
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product review",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Content background Color",
+      "default": "#F6F6F6",
+      "info": "Leave blank to remove content spacing."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "light_text_color",
+      "label": "Light text Color",
+      "default": "#6B6B6B"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.section_spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-top.label"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-bottom.label",
+      "info": "t:sections.settings.settings.distance-bottom.info"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing mobile"
+    },
+    {
+      "type": "range",
+      "id": "margin-top-mobile",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-top.label"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom-mobile",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-bottom.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product review",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

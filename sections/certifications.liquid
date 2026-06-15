@@ -1,0 +1,241 @@
+{{ 'certifications.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  [data-section-id="{{ section.id }}"] {
+    --background-color: {{ section.settings.background_color }};
+    --text-color: {{ section.settings.text_color }};
+    background-color: var(--background-color);
+    color: var(--text-color);
+      {% if section.settings.margin-top %}
+          --section-gap-top: {{ section.settings.margin-top }}px;
+      {% endif %}
+
+      {% if section.settings.margin-bottom %}
+          --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+      {% endif %}
+  }
+  @media (max-width: 899px) {
+    [data-section-id="{{ section.id }}"] {
+      {% if section.settings.margin-top-mobile %}
+          --section-gap-top: {{ section.settings.margin-top-mobile }}px;
+      {% endif %}
+
+      {% if section.settings.margin-bottom-mobile %}
+          --section-gap-bottom: {{ section.settings.margin-bottom-mobile }}px;
+      {% endif %}
+    }
+  }
+{% endstyle %}
+
+{% assign left_count = 0 %}
+{% assign right_count = 0 %}
+
+{% for block in section.blocks %}
+  {% if block.settings.certificate_position == 'left' %}
+    {% assign left_count = left_count | plus: 1 %}
+  {% elsif block.settings.certificate_position == 'right' %}
+    {% assign right_count = right_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+<div data-section-id="{{ section.id }}">
+  <div class="certifications">
+    <div class="certifications__grid{% if left_count == 0 or right_count == 0 %} certifications__grid--single{% endif %}">
+      {% if left_count > 0 %}
+        <div class="certifications__column">
+          {% if section.settings.left_heading != blank %}
+            <h2 class="certifications__heading">
+              {{ section.settings.left_heading }}
+            </h2>
+          {% endif %}
+
+          {% assign left_index = 0 %}
+
+          <div class="certifications__list">
+            {% for block in section.blocks %}
+              {% if block.settings.certificate_position == 'left' %}
+                {% assign left_index = left_index | plus: 1 %}
+
+                <div class="certifications__item" {{ block.shopify_attributes }}>
+                  <div class="certifications__name">
+                    <span class="certifications__number"> {{ left_index }}. </span>
+                    {{ block.settings.certificate_name }}
+                  </div>
+
+                  {% if block.settings.certificate_year != blank %}
+                    <span class="certifications__year">
+                      {{ block.settings.certificate_year }}
+                    </span>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if right_count > 0 %}
+        <div class="certifications__column">
+          {% if section.settings.right_heading != blank %}
+            <h2 class="certifications__heading">
+              {{ section.settings.right_heading }}
+            </h2>
+          {% endif %}
+
+          {% assign right_index = 0 %}
+
+          <div class="certifications__list">
+            {% for block in section.blocks %}
+              {% if block.settings.certificate_position == 'right' %}
+                {% assign right_index = right_index | plus: 1 %}
+
+                <div class="certifications__item" {{ block.shopify_attributes }}>
+                  <div class="certifications__name">
+                    <span class="certifications__number"> {{ right_index }}. </span>
+                    {{ block.settings.certificate_name }}
+                  </div>
+
+                  {% if block.settings.certificate_year != blank %}
+                    <span class="certifications__year">
+                      {{ block.settings.certificate_year }}
+                    </span>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Certifications",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "left_heading",
+      "label": "Left Heading",
+      "default": "Manufacturer certifications"
+    },
+    {
+      "type": "text",
+      "id": "right_heading",
+      "label": "Right Heading",
+      "default": "Manufacturer certifications"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.section_spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-top.label"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-bottom.label",
+      "info": "t:sections.settings.settings.distance-bottom.info"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing mobile"
+    },
+    {
+      "type": "range",
+      "id": "margin-top-mobile",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-top.label"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom-mobile",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-bottom.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "certificate",
+      "name": "Certificate",
+      "settings": [
+        {
+          "type": "text",
+          "id": "certificate_name",
+          "label": "Certificate name"
+        },
+        {
+          "type": "number",
+          "id": "certificate_year",
+          "label": "Certificate year"
+        },
+        {
+          "type": "select",
+          "id": "certificate_position",
+          "label": "Certificate position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Certifications",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,25 @@
+.policy-wrapper { max-width: 1056px; padding-left: calc(var(--gap, 8px) * 2); padding-right: calc(var(--gap, 8px) * 2); margin-inline: auto; display: flex; gap: 48px; }
+.policy-wrapper .policy-navigation { width: calc(33.4% - 24px); display: flex; flex-direction: column; gap: 24px; height: fit-content; position: sticky; top: 100px; display: flex; flex-direction: column; gap: 24px; transition: all 400ms ease-in-out; text-transform: capitalize; }
+.policy-wrapper .policy-navigation .policy-navigation__link { font-size: 14px; line-height: 1.3; letter-spacing: -2%; color: var(--light-text-color); }
+.policy-wrapper .policy-navigation .policy-navigation__link.active { font-size: 16px; font-weight: 600; line-height: 1.5; letter-spacing: -0.5%; color: var(--text-color); }
+.policy-wrapper .policy-content { width: calc(66.6% - 24px); display: grid; gap: 48px; }
+.policy-wrapper .policy-content.policy-content-full-width { width: 100%; display: grid; gap: 48px; }
+.policy-wrapper .hero__title { margin: 0; }
+.policy-wrapper .policy-group-heading { font-size: 16px; line-height: 1.5; letter-spacing: -0.5%; margin: 32px 0; scroll-margin-top: 120px; margin-block: 20px; }
+.policy-wrapper .policy-content > .policy-group-heading:first-child { margin-top: 0; }
+.policy-wrapper .policy-text, .policy-wrapper .policy-text a { font-size: 14px; color: var(--light-text-color); line-height: 1.3; letter-spacing: -2%; transition: all 400ms ease-in-out; }
+.policy-wrapper .policy-text a:hover { color: var(--text-color); }
+.policy-wrapper .policy-text > *:not(:last-child) { margin-bottom: 20px; }
+.policy-wrapper .policy-text > *:not(:last-child) { margin-bottom: 20px; }
+.policy-wrapper .policy-text :is(ul,ol) { padding-left: 25px; display: grid; gap: 6px; }
+.policy-wrapper .policy-text ul { list-style-type: disc; }
+.policy-wrapper .policy-text ol { list-style-type: decimal; }
+@media (min-width: 1200px) {
+    .policy-wrapper { padding-left: calc(calc(var(--gap, 8px) * 2) + calc(var(--gap, 8px) * 2)); padding-right: calc(calc(var(--gap, 8px) * 2) + calc(var(--gap, 8px) * 2)); }
+}
+@media (max-width: 899px) {
+    .policy-wrapper { flex-direction: column; gap: 0; }
+    .policy-wrapper .policy-navigation, .policy-wrapper .policy-content { width: 100%; }
+    .policy-wrapper .policy-navigation { display: none; }
+    .policy-wrapper .policy-content { gap: 64px; }
+}

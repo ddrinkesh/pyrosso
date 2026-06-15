@@ -1,0 +1,317 @@
+{{ 'skinification.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign bg_color = section.settings.background_color
+  assign content_bg_color = section.settings.content_bg_color
+  assign text_color = section.settings.text_color
+  assign light_text_color = section.settings.light_text_color
+  assign sid = section.id
+-%}
+
+{% style %}
+  [data-section-id="{{ section.id }}"] {
+    --skin-bg: {{ bg_color }};
+    --skin-text-bg: {{ content_bg_color }};
+    --skin-text: {{ text_color }};
+    --skin-light-text: {{ light_text_color }};
+    background-color: var(--skin-bg);
+      {% if section.settings.margin-top %}
+          --section-gap-top: {{ section.settings.margin-top }}px;
+      {% endif %}
+
+      {% if section.settings.margin-bottom %}
+          --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+      {% endif %}
+  }
+  @media (max-width: 899px) {
+    [data-section-id="{{ section.id }}"] {
+      {% if section.settings.margin-top-mobile %}
+          --section-gap-top: {{ section.settings.margin-top-mobile }}px;
+      {% endif %}
+
+      {% if section.settings.margin-bottom-mobile %}
+          --section-gap-bottom: {{ section.settings.margin-bottom-mobile }}px;
+      {% endif %}
+    }
+  }
+{% endstyle %}
+
+<div data-section-id="{{ section.id }}">
+  <div id="skinification-{{ sid }}" class="skinification">
+    <div class="sk__inner">
+      <div class="sk__left{% if section.settings.content_bg_color != blank %} sk__left_padding{% endif %}">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="sk__heading headline headline--rich">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+
+        {% if section.blocks.size > 0 or section.settings.text != blank %}
+          <div class="sk__content">
+            {% if section.blocks.size > 0 %}
+              <ul class="sk__items" role="list">
+                {%- for block in section.blocks -%}
+                  {%- if block.type == 'item' -%}
+                    {% if block.settings.label != blank %}
+                      <li
+                        class="sk__item{% if forloop.first %} is-active{% endif %}"
+                        data-index="{{ forloop.index0 }}"
+                        {{ block.shopify_attributes }}
+                        tabindex="0"
+                        role="button"
+                        aria-label="{{ block.settings.label | escape }}"
+                      >
+                        <span class="sk__item-label">{{- block.settings.label -}}</span>
+                        {% if block.settings.text != blank %}
+                          <p class="sk__item-text">{{- block.settings.text -}}</p>
+                        {%- endif -%}
+                      </li>
+                    {%- endif -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              </ul>
+            {% endif %}
+
+            {% if section.settings.text != blank %}
+              <div class="rte sk__text">
+                {{ section.settings.text }}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="sk__right" aria-live="polite">
+        <div class="sk__image-wrap">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'item' -%}
+              <div
+                class="sk__slide{% if forloop.first %} is-active{% endif %}"
+                data-slide="{{ forloop.index0 }}"
+                aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}"
+              >
+                {%- if block.settings.image != blank -%}
+                  {{
+                    block.settings.image
+                    | image_url: width: 1200
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '400,600,800,1000,1200',
+                      sizes: '(max-width: 767px) 100vw, 50vw',
+                      alt: block.settings.image.alt
+                  }}
+                {%- else -%}
+                  <div class="sk__placeholder">
+                    {{ 'image' | placeholder_svg_tag }}
+                  </div>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var section = document.getElementById('skinification-{{ sid }}');
+    if (!section) return;
+
+    var items = Array.from(section.querySelectorAll('.sk__item'));
+    var slides = Array.from(section.querySelectorAll('.sk__slide'));
+    var activeIndex = 0;
+
+    function isMobile() {
+      return window.matchMedia('(max-width: 767px)').matches;
+    }
+
+    function activate(index) {
+      if (index === activeIndex && section.querySelector('.sk__item.is-active')) return;
+      activeIndex = index;
+
+      items.forEach(function (item, i) {
+        item.classList.toggle('is-active', i === index);
+      });
+
+      slides.forEach(function (slide, i) {
+        var active = i === index;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+      });
+    }
+
+    // Initialise first item as active on load
+    activate(0);
+
+    items.forEach(function (item, index) {
+      // Desktop: hover
+      item.addEventListener('mouseenter', function () {
+        if (!isMobile()) activate(index);
+      });
+
+      // Mobile & desktop fallback: click
+      item.addEventListener('click', function () {
+        activate(index);
+      });
+
+      // Keyboard
+      item.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          activate(index);
+        }
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Skinification",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>Built on the SKINIFICATION OF HAIR — Korean-grade actives, clinical performance, zero compromises.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Content background Color",
+      "info": "Leave blank to remove content spacing."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "light_text_color",
+      "label": "Light text Color",
+      "default": "#6B6B6B"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.global.section_spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-top.label"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-bottom.label",
+      "info": "t:sections.settings.settings.distance-bottom.info"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing mobile"
+    },
+    {
+      "type": "range",
+      "id": "margin-top-mobile",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-top.label"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom-mobile",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "t:sections.settings.settings.distance-bottom.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Tab Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Mission"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Skinification",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "label": "Mission"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "label": "Philanthropy"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "label": "Sustainability"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

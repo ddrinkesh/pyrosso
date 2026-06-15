@@ -1,0 +1,99 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "compact-size-enabled": true,
+        "size_heading": 140,
+        "size_heading_mobile": 100,
+        "color-body-text": "#151515",
+        "color-bg-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "margin-top": 60,
+        "margin-bottom": 60
+      }
+    },
+    "policy_tFTwac": {
+      "type": "policy",
+      "blocks": {
+        "text_matQmB": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Effective Date: January 30,2026</p><p>At Pyrosso, we believe in digital equality. We are constantly improving our website to ensure a seamless experience for all users, aiming for WCAG 2.1 Level AA compliance.</p>"
+          }
+        },
+        "heading_xYgAXk": {
+          "type": "heading",
+          "settings": {
+            "heading": "Our Standards"
+          }
+        },
+        "text_8zNzja": {
+          "type": "text",
+          "settings": {
+            "text": "<p>To provide an inclusive experience, we focus on:</p><ul><li>Clean Code: Using semantic HTML and ARIA attributes for better screen reader compatibility.</li><li>Visual Clarity: Ensuring high color contrast and providing text alternatives for images.</li><li>Easy Navigation: Supporting full keyboard access and logical site structure.</li><li>Ongoing Audits: Regularly reviewing our platform to catch and fix accessibility gaps.</li></ul>"
+          }
+        },
+        "heading_EEAEBh": {
+          "type": "heading",
+          "settings": {
+            "heading": "Continuous Improvement"
+          }
+        },
+        "text_98jKqW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>While we strive for perfection, some third-party elements may still have limitations. We are actively working to resolve these and choose partners who value accessibility as much as we do.</p>"
+          }
+        },
+        "heading_LNyc3M": {
+          "type": "heading",
+          "settings": {
+            "heading": "Contact Us"
+          }
+        },
+        "text_kTbtaP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>If you have questions about this Cookie Policy or our use of cookies, please contact us at:</p><p><a href=\"mailto:info@pyrosso.com\" title=\"mailto:info@pyrosso.com\">info@pyrosso.com</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_matQmB",
+        "heading_xYgAXk",
+        "text_8zNzja",
+        "heading_EEAEBh",
+        "text_98jKqW",
+        "heading_LNyc3M",
+        "text_kTbtaP"
+      ],
+      "name": "policy",
+      "settings": {
+        "heading": "Do Not Sell My  Information",
+        "background_color": "#000000",
+        "text_color": "#FFFFFF",
+        "light_text_color": "#BFBFBF",
+        "margin-top": 128,
+        "margin-bottom": 128,
+        "margin-top-mobile": 76,
+        "margin-bottom-mobile": 76
+      }
+    }
+  },
+  "order": [
+    "main",
+    "policy_tFTwac"
+  ]
+}

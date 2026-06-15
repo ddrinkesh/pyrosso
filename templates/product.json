@@ -1,0 +1,374 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "main-breadcrumbs",
+      "disabled": true,
+      "settings": {
+        "full-width-enabled": true,
+        "text_color": "rgba(0,0,0,0)",
+        "background_color": "rgba(0,0,0,0)",
+        "margin-top": 12,
+        "margin-bottom": 12
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title_9RfeUG": {
+          "type": "title",
+          "settings": {
+            "brand": "",
+            "enable_vendor_link": false,
+            "size_text": 140,
+            "size_text_mobile": 100
+          }
+        },
+        "type_MRU8D4": {
+          "type": "type",
+          "settings": {}
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
+        "text_XfU9zt": {
+          "type": "text",
+          "settings": {
+            "heading": "",
+            "content": "{{ product.metafields.custom.short_description | metafield_tag }}",
+            "page": ""
+          }
+        },
+        "text_tbbwd4": {
+          "type": "text",
+          "settings": {
+            "heading": "",
+            "content": "<p>{{ product.metafields.custom.size.value }}</p>",
+            "page": ""
+          }
+        },
+        "feature_tags_44iTGm": {
+          "type": "feature_tags",
+          "settings": {
+            "metafield": "",
+            "limit": 4,
+            "text_color": "#717171",
+            "border_color": "#ececec"
+          }
+        },
+        "inventory_WhQUX3": {
+          "type": "inventory",
+          "settings": {
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true,
+            "inventory_quantity_threshold": 0
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true,
+            "show_qty_selector": true,
+            "full_width_add_to_cart": false,
+            "custom_add_to_cart_label": "",
+            "text_color": "rgba(0,0,0,0)",
+            "background_color": "rgba(0,0,0,0)"
+          }
+        },
+        "payment_note_UHfEte": {
+          "type": "payment_note",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title_9RfeUG",
+        "type_MRU8D4",
+        "rating",
+        "text_XfU9zt",
+        "text_tbbwd4",
+        "feature_tags_44iTGm",
+        "inventory_WhQUX3",
+        "buy_buttons",
+        "payment_note_UHfEte"
+      ],
+      "custom_css": [],
+      "settings": {
+        "enable_sticky_buy_button": true,
+        "sticky_button_visibility": "desktop",
+        "sticky_button_type": "sticky",
+        "sticky_button_select": "primary",
+        "sticky_bg_opacity": 80,
+        "sticky_bg_blur": 20,
+        "sticky_shadow": true,
+        "sticky_button_show_image": "yes",
+        "sticky_button_product_info": "title_and_price",
+        "full-width-enabled": true,
+        "desktop-media-size": "normal",
+        "desktop-layout": "carousel-horizontal",
+        "desktop-image-ratio": "square",
+        "enable_video_looping": true,
+        "video_controls": false,
+        "video_custom_play_controls": true,
+        "video_custom_mute_controls": true,
+        "enable-preselected-variant": true,
+        "enable-image-zoom": true,
+        "mobile-image": "small",
+        "show-thumbnails-mobile": false,
+        "text_color": "#000000",
+        "background_color": "#ffffff",
+        "margin-top": 0,
+        "margin-bottom": 0
+      }
+    },
+    "background_video_axipNV": {
+      "type": "background-video",
+      "name": "t:sections.background-video.presets.name",
+      "settings": {
+        "advanced_heading": false,
+        "heading": "",
+        "heading_richtext": "<h2>Your headline here</h2>",
+        "full-width-enabled": false,
+        "video_hosted": "shopify://files/videos/Timeline 1Commercial 2.mov",
+        "autoplay": false,
+        "video_controls": false,
+        "video_custom_play_controls": true,
+        "video_custom_mute_controls": false,
+        "video_url": "",
+        "original_ratio": "fixed_height",
+        "desktop_fixed_height": 680,
+        "mobile_fixed_height": 320,
+        "color-body-heading": "#000000",
+        "color-overlay": "#ffffff",
+        "color-overlay-opacity": 100,
+        "color-body-text": "#ffffff",
+        "desktop_text_vertical_position": "center",
+        "desktop_text_horizontal_position": "center",
+        "mobile_text_vertical_position": "center",
+        "mobile_text_horizontal_position": "center",
+        "margin-top": 32,
+        "margin-bottom": 16,
+        "margin-top-mobile": 8,
+        "margin-bottom-mobile": 8
+      }
+    },
+    "skinification_VaGfRd": {
+      "type": "skinification",
+      "blocks": {
+        "item_VMeAez": {
+          "type": "item",
+          "settings": {
+            "label": "consumer study results",
+            "image": "shopify://shop_images/Rectangle_4340.png"
+          }
+        },
+        "item_FLtNYR": {
+          "type": "item",
+          "settings": {
+            "label": "clinical results",
+            "image": "shopify://shop_images/Rectangle_4338.png"
+          }
+        }
+      },
+      "block_order": [
+        "item_VMeAez",
+        "item_FLtNYR"
+      ],
+      "name": "Skinification",
+      "settings": {
+        "heading": "<p>Take your rhode ON THE GO.</p>",
+        "text": "<p>This formula was evaluated using dermatologist assessment and instrumental measurement of makeup</p>",
+        "background_color": "#fefefe",
+        "content_bg_color": "#f6f6f6",
+        "text_color": "#000000",
+        "light_text_color": "#6b6b6b",
+        "margin-top": 16,
+        "margin-bottom": 16,
+        "margin-top-mobile": 8,
+        "margin-bottom-mobile": 8
+      }
+    },
+    "image_tabs_74igTb": {
+      "type": "image-tabs",
+      "blocks": {
+        "tab_RDLLe6": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_4341.png"
+          }
+        },
+        "tab_UgD3Rk": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/Group_767.png"
+          }
+        },
+        "tab_eUD7Dw": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle413.png"
+          }
+        },
+        "tab_xUXnwi": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle412.png"
+          }
+        },
+        "tab_HwD3xa": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/VUU08524.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "tab_RDLLe6",
+        "tab_UgD3Rk",
+        "tab_eUD7Dw",
+        "tab_xUXnwi",
+        "tab_HwD3xa"
+      ],
+      "name": "Image Tabs",
+      "settings": {
+        "heading": "<p>Take your Rhode ON THE GO.</p>",
+        "footnote": "<p>Based on an independent 32-subject clinical study after one use.</p>",
+        "static_image": "shopify://shop_images/Rectangle_4338.png",
+        "background_color": "#ffffff",
+        "content_bg_color": "#f6f6f6",
+        "text_color": "#000000",
+        "light_text_color": "#bfbfbf",
+        "margin-top": 16,
+        "margin-bottom": 16,
+        "margin-top-mobile": 8,
+        "margin-bottom-mobile": 8
+      }
+    },
+    "image_with_text_jUtNrr": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_FHi67Q": {
+          "type": "heading",
+          "settings": {
+            "heading": "“Everyone deserves hair they feel confident in”",
+            "disable_on_mobile": false,
+            "size_heading": 100,
+            "size_heading_mobile": 100
+          }
+        },
+        "subheading_LfQLF9": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Dr. Yeon Kang",
+            "subheading_disable_on_mobile": false
+          }
+        },
+        "text_qxy4yB": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Director of Formulation Science</p>",
+            "text_style": "subtitle",
+            "disable_on_mobile": false
+          }
+        },
+        "text_fYrpVb": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Dr. Yeon Kang is a board-certified dermatologist specializing in scalp health and hair biology. At Pyrosso, he works closely with our formulation team to develop products built on Korean biotech actives — ensuring every concentration is clinically defensible and every formula performs at the follicle level.</p>",
+            "text_style": "body",
+            "disable_on_mobile": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_FHi67Q",
+        "subheading_LfQLF9",
+        "text_qxy4yB",
+        "text_fYrpVb"
+      ],
+      "settings": {
+        "advanced_heading": false,
+        "title": "",
+        "heading_richtext": "<h2>Your headline here</h2>",
+        "layout": "text_first",
+        "desktop-percentage-image-width": 50,
+        "full-width-enabled": false,
+        "slide_height": "adapt_to_first_image",
+        "desktop_fixed_height": 320,
+        "mobile_fixed_height": 460,
+        "section-color-body-text": "#000000",
+        "section-color-overlay": "#ffffff",
+        "section-color-overlay-opacity": 100,
+        "color-body-text": "#000000",
+        "color-overlay": "#f6f6f6",
+        "color-overlay-opacity": 100,
+        "desktop_image": "shopify://shop_images/Rectangle_4339.png",
+        "desktop_text_vertical_position": "top",
+        "desktop_text_horizontal_position": "left",
+        "mobile_text_horizontal_position": "left",
+        "margin-top": 16,
+        "margin-bottom": 16,
+        "margin-top-mobile": 8,
+        "margin-bottom-mobile": 8
+      }
+    },
+    "product_review_CrifCb": {
+      "type": "product-review",
+      "name": "Product review",
+      "settings": {
+        "bg_color": "#ffffff",
+        "content_bg_color": "#f6f6f6",
+        "text_color": "#000000",
+        "light_text_color": "#6b6b6b",
+        "margin-top": 16,
+        "margin-bottom": 16,
+        "margin-top-mobile": 16,
+        "margin-bottom-mobile": 16
+      }
+    },
+    "product_recommendations_R93X6g": {
+      "type": "product-recommendations",
+      "name": "t:sections.product-recommendations.presets.name",
+      "settings": {
+        "heading": "",
+        "disable_on_mobile": false,
+        "products_to_show": 2,
+        "number_of_column_desktop": 3,
+        "make_products_full_width": false,
+        "show_secondary_image_on_hover": true,
+        "number_of_column_mobile": 1.3,
+        "text_alignment": "left",
+        "image_ratio": "square",
+        "show_vendor": false,
+        "enable_vendor_link": false,
+        "show_type": true,
+        "show_product_rating": true,
+        "enable_quick_add_button": true,
+        "quick_add_mode": "hover_desktop",
+        "color-body-text": "#000000",
+        "background_color": "#ffffff",
+        "margin-top": 16,
+        "margin-bottom": 16
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "background_video_axipNV",
+    "skinification_VaGfRd",
+    "image_tabs_74igTb",
+    "image_with_text_jUtNrr",
+    "product_review_CrifCb",
+    "product_recommendations_R93X6g"
+  ]
+}
