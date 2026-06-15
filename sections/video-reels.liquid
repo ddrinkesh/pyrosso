@@ -80,22 +80,17 @@
             data-block-id="{{ block.id }}"
             class="video-carousel"
           >
-            <div
-              class="video-container"
-            >
+            <div class="video-container">
               <low-power-video>
                 <video-controls data-video-click="false">
                   <div class="wt-video__movie wt-video__movie--shopify-video wt-video__item {% if block.settings.video_hosted == nil %} wt-video__movie--placeholder {% endif %}">
-                    {% if section.settings.video_button %}
-                      {% render 'play-pause-button', classname: '' %}
-                    {% endif %}
+                    {% render 'play-pause-button', classname: '' %}
                     {% if block.settings.video_hosted %}
                       {{
                         block.settings.video_hosted
                         | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '600x'
                       }}
                     {% else %}
-                      {% comment %} {% assign my_counter = forloop.index | modulo: 3 | plus: 1 %} {% endcomment %}
                       {{ 'product-apparel-3' | placeholder_svg_tag: '' }}
                     {% endif %}
                   </div>
@@ -109,9 +104,9 @@
                   {% render 'icons', id: 'volume-muted' %}
                 </button>
               </low-power-video>
+              <div class="video-reels__gradient"></div>
+              {% render 'shoppable-video-product', block: block, hide_brand: section.settings['hide-brand-name'] %}
             </div>
-
-            {% render 'shoppable-video-product', block: block, hide_brand: section.settings['hide-brand-name'] %}
           </div>
         {% endfor %}
       </div>
@@ -195,7 +190,7 @@
       "type": "checkbox",
       "id": "quick-add-enabled",
       "label": "Enable quick add button",
-      "default": false
+      "default": true
     },
     {
       "type": "checkbox",

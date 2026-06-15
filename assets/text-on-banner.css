@@ -1,0 +1,26 @@
+.tob-section { margin-top: var(--tob-gap-top, 0px); margin-bottom: var(--tob-gap-bottom, 0px); }
+
+/* Banner: 1440×810 → 16/9, image fills, text/button overlaid */
+.tob-section .tob-banner { position: relative; width: 100%; aspect-ratio: 1440 / 810; overflow: hidden; }
+.tob-section .tob-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Content box: single positioned wrapper — left 48px, top 10.49% (heading ~85/810). Children flow naturally. */
+.tob-section .content-box-wrapper { position: absolute; left: 48px; top: 10.49%; display: flex; flex-direction: column; align-items: flex-start; }
+
+.tob-section .tob-text { }
+.tob-section .tob-heading { color: var(--tob-heading-color, #0d0d0d); font-family: var(--font-heading-family, var(--font-base)); font-size: 2em; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; margin: 0; max-width: 320px; }
+.tob-section .tob-subheading { color: var(--tob-text-color, #8c8c8c); font-size: 20px; font-weight: 400; line-height: 1.35; letter-spacing: -0.01em; margin: 16px 0 0; max-width: 310px; }
+
+/* Button: black pill — gap to subheading ~156px (button at 382/810) */
+.tob-section .tob-button { margin-top: 66px; display: inline-flex; align-items: center; justify-content: center; background: var(--tob-btn-bg, #000000); color: var(--tob-btn-text, #ffffff); border: 1px solid var(--tob-btn-border, #1c1c1c); border-radius: 100px; padding: 10.39px 29px 11.49px; font-size: 18px; font-weight: 400; line-height: 1.5; letter-spacing: -0.09px; text-decoration: none; white-space: nowrap; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+.tob-section .tob-button:hover { background: var(--tob-btn-bg-hover, #333333); color: var(--tob-btn-text-hover, #ffffff); border-color: var(--tob-btn-bg-hover, #333333); }
+
+@media (max-width: 749px) {
+  /* Mobile 390×585 (2:3) — heading pinned top, button pinned bottom (Figma 2004:6052) */
+  .tob-section .tob-banner { aspect-ratio: 390 / 585; }
+  .tob-section .content-box-wrapper { top: 0; bottom: 0; left: 20px; right: 20px; height: auto; padding: 28px 0 13px; justify-content: space-between; }
+  .tob-section .tob-text { max-width: 100%; }
+  .tob-section .tob-heading { font-size: clamp(26px, 7.5vw, 30px); max-width: 280px; }
+  .tob-section .tob-subheading { font-size: 16px; margin-top: 12px; max-width: 220px; }
+  .tob-section .tob-button { margin-top: 0; padding: 11.4px 29px; font-size: 14px; font-weight: 400; line-height: 1.5; letter-spacing: -0.09px; border-width: 1px; border-radius: 100px; }
+}
