@@ -110,8 +110,8 @@
       "settings": {
         "marquee": true,
         "animation_speed": "100",
-        "color-body-text": "#000000",
-        "background_color": "#ffffff",
+        "color-body-text": "#FFFFFF",
+        "background_color": "#000000",
         "size_text_desktop": 100,
         "size_text_mobile": 100
       }
@@ -127,11 +127,11 @@
         "hide_empty_section": false,
         "collection": "best-selling-products",
         "product_list": [],
-        "products_to_show": 3,
+        "products_to_show": 2,
         "enable_stack_products": false,
         "show_view_all": false,
         "button_select": "primary",
-        "number_of_column_desktop": 3,
+        "number_of_column_desktop": 2,
         "spacing_desktop": "16",
         "make_products_full_width": false,
         "number_of_column_mobile": 1.3,
@@ -152,118 +152,6 @@
         "margin-bottom": 16,
         "margin-top-mobile": 16,
         "margin-bottom-mobile": 0
-      }
-    },
-    "image_banner_TkezHC": {
-      "type": "image-banner",
-      "blocks": {
-        "heading_qhxp96": {
-          "type": "heading",
-          "settings": {
-            "heading": "skin safe for hair",
-            "disable_on_mobile": false,
-            "size_heading": 100,
-            "size_heading_mobile": 100
-          }
-        },
-        "text_t6arLz": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Most brands stop at the hair. We start at the scalp</p>",
-            "disable_on_mobile": false
-          }
-        },
-        "button_Brneza": {
-          "type": "button",
-          "settings": {
-            "button_select": "secondary",
-            "button_label": "SHOP PYROSSO",
-            "disable_on_mobile": false,
-            "button_link": "/",
-            "second_button_select": "primary",
-            "second_button_label": "Button label",
-            "second_disable_on_mobile": false,
-            "second_button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_qhxp96",
-        "text_t6arLz",
-        "button_Brneza"
-      ],
-      "name": "t:sections.image-banner.presets.name",
-      "settings": {
-        "advanced_heading": false,
-        "heading": "",
-        "heading_richtext": "<h2>Image banner</h2>",
-        "full-width-enabled": false,
-        "slide_height": "fixed_height",
-        "desktop_fixed_height": 680,
-        "mobile_fixed_height": 460,
-        "desktop_image": "shopify://shop_images/footer-hp_2000x_jpg.png",
-        "desktop_text_vertical_position": "center",
-        "desktop_text_horizontal_position": "center",
-        "mobile_text_vertical_position": "center",
-        "mobile_text_horizontal_position": "center",
-        "out_hero_mobile": false,
-        "out-background-color": "rgba(0,0,0,0)",
-        "out-text-color": "rgba(0,0,0,0)",
-        "color-heading": "rgba(0,0,0,0)",
-        "section-color-overlay": "rgba(0,0,0,0)",
-        "section-color-overlay-opacity": 100,
-        "color-body-text": "rgba(0,0,0,0)",
-        "text-container-color": "rgba(0,0,0,0)",
-        "color-overlay-opacity": 100,
-        "enable_scroll_btn": false,
-        "scroll_btn_text": "Scroll",
-        "scroll_btn_url": "",
-        "margin-top": 16,
-        "margin-bottom": 32,
-        "margin-top-mobile": 0,
-        "margin-bottom-mobile": 16,
-        "lcp_optimize": false
-      }
-    },
-    "rich_text_Nm4gMM": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_YkTMiz": {
-          "type": "heading",
-          "settings": {
-            "advanced_heading": true,
-            "heading": "Born in California, Rooted in Seoul",
-            "heading_richtext": "<p>Born in California, Rooted in Seoul</p>",
-            "disable_on_mobile": false,
-            "size_heading": 100,
-            "size_heading_mobile": 100,
-            "heading_richtext_color": "rgba(0,0,0,0)",
-            "heading_richtext_gradient": ""
-          }
-        },
-        "text_cakH6m": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Each product draws from Korean nature, memory, and craft, telling a story that has rarely been told before. </p>",
-            "disable_on_mobile": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_YkTMiz",
-        "text_cakH6m"
-      ],
-      "settings": {
-        "section_width": "regular",
-        "desktop_text_horizontal_position": "center",
-        "full-width-enabled": false,
-        "color-body-text": "#ffffff",
-        "background_color": "#000000",
-        "background_gradient": "",
-        "margin-top": 48,
-        "margin-bottom": 16,
-        "margin-top-mobile": 48,
-        "margin-bottom-mobile": 48
       }
     },
     "video_reels_xexCWw": {
@@ -336,7 +224,6 @@
         "product_LVA8Eb",
         "product_kXqbJd"
       ],
-      "disabled": true,
       "settings": {
         "advanced_heading": false,
         "heading": "",
@@ -352,188 +239,43 @@
         "margin-bottom-mobile": 48
       }
     },
-    "image_tabs_BVPNaC": {
-      "type": "image-tabs",
-      "blocks": {
-        "tab_hmYNqp": {
-          "type": "tab",
-          "settings": {
-            "image": "shopify://shop_images/Group_252_1.png"
-          }
-        },
-        "tab_wyNRHF": {
-          "type": "tab",
-          "settings": {
-            "image": "shopify://shop_images/Group_767.png"
-          }
-        },
-        "tab_ANychY": {
-          "type": "tab",
-          "settings": {
-            "image": "shopify://shop_images/Rectangle413.png"
-          }
-        },
-        "tab_xrhDgN": {
-          "type": "tab",
-          "settings": {
-            "image": "shopify://shop_images/Rectangle412.png"
-          }
-        },
-        "tab_q33aHG": {
-          "type": "tab",
-          "settings": {
-            "image": "shopify://shop_images/VUU08524.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "tab_hmYNqp",
-        "tab_wyNRHF",
-        "tab_ANychY",
-        "tab_xrhDgN",
-        "tab_q33aHG"
-      ],
-      "name": "Image Tabs",
+    "image_with_products_bmYQRA": {
+      "type": "image-with-products",
+      "name": "Image with Products",
       "settings": {
-        "heading": "<p>Active Ingredients</p>",
-        "footnote": "<p>Based on an independent 32-subject clinical study after one use.</p>",
-        "static_image": "shopify://shop_images/06D99AFC-2677-46FF-877F-39A138356F9E.png",
-        "background_color": "#000000",
-        "content_bg_color": "",
-        "text_color": "#ffffff",
-        "light_text_color": "#6b6b6b",
-        "margin-top": 16,
-        "margin-bottom": 16,
-        "margin-top-mobile": 16,
-        "margin-bottom-mobile": 48
+        "desktop_image": "shopify://shop_images/banner.jpg",
+        "collection": "best-selling-products",
+        "products_to_show": 4,
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "enable_quick_add_button": true,
+        "show_product_rating": false,
+        "show_type": true,
+        "show_vendor": false,
+        "heading": "",
+        "margin_top": 0,
+        "margin_bottom": 0
       }
     },
-    "multicolumn_G6VPcz": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_DUzzrC": {
-          "type": "column",
-          "settings": {
-            "heading": "Tripeptide-1 Copper",
-            "heading_disable_on_mobile": false,
-            "text": "<p>How a tiny peptide resets the human genome to a healthier state.</p>",
-            "text_disable_on_mobile": false,
-            "button_select": "primary",
-            "button_label": "",
-            "button_disable_on_mobile": false,
-            "button_link": "",
-            "button_link_in_new_window": false,
-            "mobile_image": "shopify://shop_images/Rectangle_4339.png"
-          }
-        },
-        "column_pj7NQj": {
-          "type": "column",
-          "settings": {
-            "heading": "Tripeptide-1 Copper",
-            "heading_disable_on_mobile": false,
-            "text": "<p>How a tiny peptide resets the human genome to a healthier state.</p>",
-            "text_disable_on_mobile": false,
-            "button_select": "primary",
-            "button_label": "",
-            "button_disable_on_mobile": false,
-            "button_link": "",
-            "button_link_in_new_window": false,
-            "mobile_image": "shopify://shop_images/6FF5A788-E622-43B8-8DA4-68A7A41B252C.jpg"
-          }
-        },
-        "column_iWxD8a": {
-          "type": "column",
-          "settings": {
-            "heading": "Tripeptide-1 Copper",
-            "heading_disable_on_mobile": false,
-            "text": "<p>How a tiny peptide resets the human genome to a healthier state.</p>",
-            "text_disable_on_mobile": false,
-            "button_select": "primary",
-            "button_label": "",
-            "button_disable_on_mobile": false,
-            "button_link": "",
-            "button_link_in_new_window": false,
-            "mobile_image": "shopify://shop_images/Rectangle_4338.png"
-          }
-        }
-      },
-      "block_order": [
-        "column_DUzzrC",
-        "column_pj7NQj",
-        "column_iWxD8a"
-      ],
-      "disabled": true,
-      "name": "t:sections.multicolumn.presets.name",
+    "text_on_banner_zrFezq": {
+      "type": "text-on-banner",
+      "name": "Text on Banner",
       "settings": {
-        "advanced_heading": true,
-        "heading": "Multicolumn",
-        "heading_richtext": "<p>Active Ingredients</p>",
-        "enable_stack_products": false,
-        "full-width-enabled": false,
-        "video_controls": false,
-        "video_custom_play_controls": false,
-        "video_custom_mute_controls": false,
-        "number_of_column_desktop": 3,
-        "spacing_desktop": "32",
-        "number_of_column_mobile": "1",
-        "spacing_mobile": "32",
-        "image_ratio": "square",
-        "column_alignment": "left",
-        "size_heading": 100,
-        "size_heading_mobile": 100,
-        "color-body-text": "#ffffff",
-        "background_color": "#000000",
-        "margin-top": 32,
-        "margin-bottom": 0,
-        "margin-top-mobile": 20,
-        "margin-bottom-mobile": 20
-      }
-    },
-    "skinification_XezqLK": {
-      "type": "skinification",
-      "blocks": {
-        "item_GxXmh7": {
-          "type": "item",
-          "settings": {
-            "label": "mission",
-            "image": "shopify://shop_images/footer-hp_2000x_jpg.png",
-            "text": ""
-          }
-        },
-        "item_iJcgMh": {
-          "type": "item",
-          "settings": {
-            "label": "philanthropy",
-            "image": "shopify://shop_images/Rectangle_4338.png",
-            "text": ""
-          }
-        },
-        "item_HdBd9N": {
-          "type": "item",
-          "settings": {
-            "label": "sustainability",
-            "image": "shopify://shop_images/Rectangle_4339.png",
-            "text": ""
-          }
-        }
-      },
-      "block_order": [
-        "item_GxXmh7",
-        "item_iJcgMh",
-        "item_HdBd9N"
-      ],
-      "name": "Skinification",
-      "settings": {
-        "heading": "<p>Built on the SKINIFICATION OF HAIR — Korean-grade actives, clinical performance, zero compromises.</p>",
-        "text": "",
-        "background_color": "#000000",
-        "content_bg_color": "",
-        "text_color": "#ffffff",
-        "light_text_color": "#6b6b6b",
-        "margin-top": 16,
-        "margin-bottom": 16,
-        "margin-top-mobile": 16,
-        "margin-bottom-mobile": 16
+        "desktop_image": "shopify://shop_images/baner-girl-1.png",
+        "mobile_image": "shopify://shop_images/baner-girl-1-mobi.png",
+        "heading": "Kendall's Everyday Glow Essential",
+        "subheading": "Discover the secret behind Kendall's effortless daily glow.",
+        "button_label": "THE FULL REVIEW",
+        "button_link": "",
+        "heading_color": "#0d0d0d",
+        "text_color": "#8c8c8c",
+        "button_bg": "#000000",
+        "button_text_color": "#ffffff",
+        "button_border_color": "#1c1c1c",
+        "button_bg_hover": "#333333",
+        "button_text_hover": "#ffffff",
+        "margin_top": 0,
+        "margin_bottom": 0
       }
     }
   },
@@ -541,11 +283,8 @@
     "background_video_FjVNBe",
     "announcement_bar_thXin3",
     "featured_collection_YeQ7qY",
-    "image_banner_TkezHC",
-    "rich_text_Nm4gMM",
     "video_reels_xexCWw",
-    "image_tabs_BVPNaC",
-    "multicolumn_G6VPcz",
-    "skinification_XezqLK"
+    "image_with_products_bmYQRA",
+    "text_on_banner_zrFezq"
   ]
 }
