@@ -110,7 +110,7 @@
       "settings": {
         "marquee": true,
         "animation_speed": "100",
-        "color-body-text": "#FFFFFF",
+        "color-body-text": "#ffffff",
         "background_color": "#000000",
         "size_text_desktop": 100,
         "size_text_mobile": 100
@@ -139,7 +139,7 @@
         "text_alignment": "left",
         "image_ratio": "square",
         "show_video": false,
-        "show_secondary_image": true,
+        "show_secondary_image": false,
         "show_vendor": false,
         "enable_vendor_link": false,
         "show_type": true,
@@ -148,9 +148,9 @@
         "quick_add_mode": "hover_desktop",
         "color-body-text": "rgba(0,0,0,0)",
         "background_color": "rgba(0,0,0,0)",
-        "margin-top": 16,
-        "margin-bottom": 16,
-        "margin-top-mobile": 16,
+        "margin-top": 0,
+        "margin-bottom": 0,
+        "margin-top-mobile": 0,
         "margin-bottom-mobile": 0
       }
     },
@@ -233,8 +233,8 @@
         "video_button": true,
         "color-body-text": "#ffffff",
         "background_color": "#000000",
-        "margin-top": 56,
-        "margin-bottom": 56,
+        "margin-top": 100,
+        "margin-bottom": 100,
         "margin-top-mobile": 48,
         "margin-bottom-mobile": 48
       }
@@ -249,7 +249,7 @@
         "image_ratio": "adapt",
         "show_secondary_image": false,
         "enable_quick_add_button": true,
-        "show_product_rating": false,
+        "show_product_rating": true,
         "show_type": true,
         "show_vendor": false,
         "heading": "",

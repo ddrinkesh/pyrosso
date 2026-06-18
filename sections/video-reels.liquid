@@ -51,6 +51,10 @@
   .video-reels .swiper-slide-active {
     width: 330px!important;
 }
+  @media (max-width: 749px) {
+    /* Figma 309:10385 — active card 268.99/393 ≈ 68vw so side cards peek ~46px with a clean gap */
+    .video-reels .swiper-slide-active { width: 268px !important; }
+  }
 </style>
 
 <script type="module" src="{{ 'slider.js' | asset_url }}" defer="defer"></script>
@@ -121,8 +125,8 @@
     </div>
     <script data-swiper-configuration type="text/json">
       {
-        "slidesPerView": 1.35,
-        "spaceBetween": 15,
+        "slidesPerView": 1.85,
+        "spaceBetween": 16,
         "freeMode": false,
         "speed": 150,
         "grabCursor": false,
@@ -132,8 +136,12 @@
         "enableOnMedia": "(min-width: 0px)",
         "paginationType": "bullets",
         "breakpoints": {
+          "0": {
+            "slidesPerView": "auto",
+            "centeredSlides": true
+          },
           "600": {
-            "slidesPerView": 1.75
+            "slidesPerView": 1.5
           },
           "900": {
             "slidesPerView": 3.5

@@ -67,6 +67,7 @@
         "payment_icons_monochrome": false,
         "show-copyright": true,
         "text": "© 2026 Pyrosso. All Rights Reserved.",
+        "footer_logo": "shopify://shop_images/logo.svg",
         "big-logo-width": 100,
         "margin-top": 56,
         "margin-bottom": 8

@@ -90,154 +90,156 @@
     <script type="module" src="{{ 'slider.js' | asset_url }}" defer="defer"></script>
 
     <!-- Slider main container -->
-    <slideshow-section
-      class="wt-slider {% if section.settings.make_products_full_width %} wt-slider--full {% endif %}"
-      data-slides-group
-    >
-      <div
-        data-swiper
-        class="wt-slider__container--featured loading  {% if section.settings.make_products_full_width %} wt-slider__container--full {% endif %}"
+    <div class="wt-slider__container--featured">
+      <slideshow-section
+        class="wt-slider {% if section.settings.make_products_full_width %} wt-slider--full {% endif %}"
+        data-slides-group
       >
-        <!-- Additional required wrapper -->
         <div
-          data-swiper-container
-          {% if section.settings.enable_stack_products %}
-            class=" wt-slider__wrapper--stack {% if section.settings.number_of_column_desktop == 2%} wt-slider__wrapper--stack-2-col {% endif %}"
-          {% endif %}
+          data-swiper
+          class=" loading  {% if section.settings.make_products_full_width %} wt-slider__container--full {% endif %}"
         >
-          <!-- Slides -->
-          {%- if products_source == blank -%}
-            {% for i in (1..section.settings.products_to_show) %}
+          <!-- Additional required wrapper -->
+          <div
+            data-swiper-container
+            {% if section.settings.enable_stack_products %}
+              class=" wt-slider__wrapper--stack {% if section.settings.number_of_column_desktop == 2%} wt-slider__wrapper--stack-2-col {% endif %}"
+            {% endif %}
+          >
+            <!-- Slides -->
+            {%- if products_source == blank -%}
+              {% for i in (1..section.settings.products_to_show) %}
+                <div data-swiper-slide>
+                  <div
+                    {% if settings.animations %}
+                      data-cascade
+                      class="scroll-trigger animate--slide-in {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
+                      style="--animation-order: {{ i }};"
+                    {% else %}
+                      class="wt-slider__card-wrapper"
+                    {% endif %}
+                  >
+                    {% assign placeholder_image_index = i | modulo: 4 %}
+                    {% if placeholder_image_index == 0 %}
+                      {% assign placeholder_image_index = 1 %}
+                    {% endif %}
+                    {% render 'card',
+                      placeholder_image_index: placeholder_image_index,
+                      title: 'Example product title',
+                      subtitle: 'Vendor',
+                      price: '1999',
+                      rating: section.settings.show_product_rating,
+                      options: false,
+                      text_alignment: section.settings.text_alignment,
+                      enable_quick_add_button: section.settings.enable_quick_add_button,
+                      quick_add_mode: section.settings.quick_add_mode
+                    %}
+                  </div>
+                </div>
+              {% endfor %}
+            {%- endif -%}
+            {%- for product in products_source limit: section.settings.products_to_show -%}
               <div data-swiper-slide>
+                {% if section.settings.show_secondary_image and product.images[1] %}
+                  {% assign image_hover = product.images[1] %}
+                {% else %}
+                  {% assign image_hover = false %}
+                {% endif %}
                 <div
                   {% if settings.animations %}
                     data-cascade
                     class="scroll-trigger animate--slide-in {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
-                    style="--animation-order: {{ i }};"
+                    style="--animation-order: {{ forloop.index }};"
                   {% else %}
                     class="wt-slider__card-wrapper"
                   {% endif %}
                 >
-                  {% assign placeholder_image_index = i | modulo: 4 %}
-                  {% if placeholder_image_index == 0 %}
-                    {% assign placeholder_image_index = 1 %}
-                  {% endif %}
                   {% render 'card',
-                    placeholder_image_index: placeholder_image_index,
-                    title: 'Example product title',
-                    subtitle: 'Vendor',
-                    price: '1999',
+                    card_product: product,
+                    img: product.featured_media,
+                    img_hover: image_hover,
+                    title: product.title,
+                    subtitle: product.vendor,
                     rating: section.settings.show_product_rating,
+                    reviews: product.metafields.reviews,
                     options: false,
+                    url: product.url,
+                    uri: product.handle,
                     text_alignment: section.settings.text_alignment,
+                    variants: product.variants,
+                    product_options: product.options,
+                    product: product,
+                    media_aspect_ratio: section.settings.image_ratio,
                     enable_quick_add_button: section.settings.enable_quick_add_button,
-                    quick_add_mode: section.settings.quick_add_mode
+                    quick_add_mode: section.settings.quick_add_mode,
+                    enable_vendor_link: section.settings.enable_vendor_link,
+                    show_video: section.settings.show_video
                   %}
                 </div>
               </div>
-            {% endfor %}
-          {%- endif -%}
-          {%- for product in products_source limit: section.settings.products_to_show -%}
-            <div data-swiper-slide>
-              {% if section.settings.show_secondary_image and product.images[1] %}
-                {% assign image_hover = product.images[1] %}
-              {% else %}
-                {% assign image_hover = false %}
-              {% endif %}
-              <div
-                {% if settings.animations %}
-                  data-cascade
-                  class="scroll-trigger animate--slide-in {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
-                  style="--animation-order: {{ forloop.index }};"
-                {% else %}
-                  class="wt-slider__card-wrapper"
-                {% endif %}
-              >
-                {% render 'card',
-                  card_product: product,
-                  img: product.featured_media,
-                  img_hover: image_hover,
-                  title: product.title,
-                  subtitle: product.vendor,
-                  rating: section.settings.show_product_rating,
-                  reviews: product.metafields.reviews,
-                  options: false,
-                  url: product.url,
-                  uri: product.handle,
-                  text_alignment: section.settings.text_alignment,
-                  variants: product.variants,
-                  product_options: product.options,
-                  product: product,
-                  media_aspect_ratio: section.settings.image_ratio,
-                  enable_quick_add_button: section.settings.enable_quick_add_button,
-                  quick_add_mode: section.settings.quick_add_mode,
-                  enable_vendor_link: section.settings.enable_vendor_link,
-                  show_video: section.settings.show_video
-                %}
-              </div>
+            {%- endfor -%}
+          </div>
+
+          {% unless section.settings.enable_stack_products %}
+            <!-- Add Arrows -->
+            <div class="swiper-button-next wt-slider__nav-btn wt-slider__nav-next wt-slider__nav-next--featured">
+              {% render 'icons', id: 'arrow-right' %}
             </div>
-          {%- endfor -%}
-        </div>
+            <div class="swiper-button-prev wt-slider__nav-btn wt-slider__nav-prev wt-slider__nav-prev--featured">
+              {% render 'icons', id: 'arrow-left' %}
+            </div>
 
-        {% unless section.settings.enable_stack_products %}
-          <!-- Add Arrows -->
-          <div class="swiper-button-next wt-slider__nav-btn wt-slider__nav-next wt-slider__nav-next--featured">
-            {% render 'icons', id: 'arrow-right' %}
-          </div>
-          <div class="swiper-button-prev wt-slider__nav-btn wt-slider__nav-prev wt-slider__nav-prev--featured">
-            {% render 'icons', id: 'arrow-left' %}
-          </div>
+            <!-- If we need scrollbar -->
+            <div
+              class="swiper-scrollbar wt-slider__scrollbar wt-slider__scrollbar--featured {% if section.settings.make_products_full_width %} wt-slider__scrollbar--full {% endif %}"
+            ></div>
+          {% endunless %}
 
-          <!-- If we need scrollbar -->
-          <div
-            class="swiper-scrollbar wt-slider__scrollbar wt-slider__scrollbar--featured {% if section.settings.make_products_full_width %} wt-slider__scrollbar--full {% endif %}"
-          ></div>
-        {% endunless %}
-
-        <script data-swiper-configuration type="text/json">
-            {
-              "enabled": {% unless section.settings.enable_stack_products %}true{% else %}false{% endunless %},
-              "slidesPerView": "auto",
-              "freeMode": false,
-              "centeredSlides": false,
-              "slideToClickedSlide": false,
-              "centeredSlidesBounds": true,
-              "watchSlidesProgress": true,
-              "enableAnimation": {{ settings.animations }},
-              "disableAnimationOnMobile": {{ settings.disabled_animations_on_mobile }},
-              "speed": 150,
-              "grabCursor": false,
-              "paginationType": "bullets",
-            {% if section.settings.enable_stack_products %}
-              "navigation": false,
-              "scrollbar": false,
-            {% else %}
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": {{ section.settings.number_of_column_mobile }},
-                  "slidesPerGroup": {{ section.settings.number_of_column_mobile | floor }},
-                  "spaceBetween": {{ section.settings.spacing_mobile | floor }}
+          <script data-swiper-configuration type="text/json">
+              {
+                "enabled": {% unless section.settings.enable_stack_products %}true{% else %}false{% endunless %},
+                "slidesPerView": "auto",
+                "freeMode": false,
+                "centeredSlides": false,
+                "slideToClickedSlide": false,
+                "centeredSlidesBounds": true,
+                "watchSlidesProgress": true,
+                "enableAnimation": {{ settings.animations }},
+                "disableAnimationOnMobile": {{ settings.disabled_animations_on_mobile }},
+                "speed": 150,
+                "grabCursor": false,
+                "paginationType": "bullets",
+              {% if section.settings.enable_stack_products %}
+                "navigation": false,
+                "scrollbar": false,
+              {% else %}
+                "breakpoints": {
+                  "320": {
+                    "slidesPerView": {{ section.settings.number_of_column_mobile }},
+                    "slidesPerGroup": {{ section.settings.number_of_column_mobile | floor }},
+                    "spaceBetween": {{ section.settings.spacing_mobile | floor }}
+                  },
+                  "900": {
+                    "slidesPerView": {{ section.settings.number_of_column_desktop }},
+                    "slidesPerGroup": {{ section.settings.number_of_column_desktop | floor }},
+                    "spaceBetween": {{ section.settings.spacing_desktop | floor }}
+                  }
                 },
-                "900": {
-                  "slidesPerView": {{ section.settings.number_of_column_desktop }},
-                  "slidesPerGroup": {{ section.settings.number_of_column_desktop | floor }},
-                  "spaceBetween": {{ section.settings.spacing_desktop | floor }}
-                }
-              },
-              "navigation": {
-                "nextEl": ".wt-slider__nav-next--featured",
-                "prevEl": ".wt-slider__nav-prev--featured"
-              },
-              "scrollbar": {
-                "el": ".wt-slider__scrollbar--featured",
-                "draggable": true
-              },
-            {% endif %}
-            "pagination": false
-          }
-        </script>
-      </div>
-    </slideshow-section>
+                "navigation": {
+                  "nextEl": ".wt-slider__nav-next--featured",
+                  "prevEl": ".wt-slider__nav-prev--featured"
+                },
+                "scrollbar": {
+                  "el": ".wt-slider__scrollbar--featured",
+                  "draggable": true
+                },
+              {% endif %}
+              "pagination": false
+            }
+          </script>
+        </div>
+      </slideshow-section>
+    </div>
 
     {% if section.settings.show_view_all
       and section.settings.collection.products_count > section.settings.products_to_show
@@ -366,7 +368,7 @@
       "options": [
         {
           "value": "0",
-          "label": "0PX"
+          "label": "0px"
         },
         {
           "value": "8",
@@ -409,7 +411,7 @@
       "options": [
         {
           "value": "0",
-          "label": "0PX"
+          "label": "0px"
         },
         {
           "value": "4",

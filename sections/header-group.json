@@ -134,7 +134,7 @@
         "drawer_title": "",
         "enable_submenu_link_in_drawer": false,
         "show_search": true,
-        "typing_search": "Search...",
+        "typing_search": "Search for...",
         "suggestions_title": "Suggestions",
         "suggestions_menu": "search",
         "text_alignment": "left",
