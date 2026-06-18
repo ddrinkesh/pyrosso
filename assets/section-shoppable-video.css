@@ -333,10 +333,7 @@
   padding-left: 8px;
   margin-top: auto;
 }
-.video-carousel.active .shoppable-video__buttons {
-  margin-top: 0;
-  margin-bottom: auto;
-}
+.video-carousel.active .shoppable-video__buttons { margin-top: 0; }
 [dir=rtl] .shoppable-video__buttons {
   padding-left: 0;
   padding-right: 8px;

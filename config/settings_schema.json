@@ -1121,9 +1121,15 @@
       },
       {
         "type": "product_list",
-        "limit": 3,
+        "limit": 8,
         "id": "search_product_suggestion",
         "label": "Product suggestion"
+      },
+      {
+        "type": "collection_list",
+        "limit": 8,
+        "id": "search_collection_suggestion",
+        "label": "Collection suggestion"
       }
     ]
   },

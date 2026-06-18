@@ -17,6 +17,25 @@
       {% endif %}
     }
   {%- endfor -%}
+
+  .svg-anim-block {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .svg-anim-inner {
+    width: 100%;
+    max-width: 608px;
+    margin: 0;
+  }
+  #animated-svg path {
+    fill: #969696;
+    fill-opacity: 0;
+    stroke: white;
+    stroke-width: 0.816862;
+  }
 </style>
 
 {% if section.settings['show-scroll-effect'] %}
@@ -86,7 +105,200 @@
 {% endif %}
 
 <footer class="wt-footer {% if section.settings.show-scroll-effect %}wt-footer--scroll-effect{% endif %}">
-  <div class="wt-footer__body">
+  <div class="wt-footer__top wt-footer__body">
+    <div class="wt-footer__top__newsletter">
+      <section class="wt-newsletter wt-footer__additional wt-signup" data-signup>
+        <div class="wt-signup__head">
+          {%- if section.settings.heading_newsletter != blank -%}
+            <div class="wt-signup__heading">{{ section.settings.heading_newsletter }}</div>
+          {%- endif -%}
+
+          {%- if section.settings.enable_sms -%}
+            <div class="wt-signup__tabs" role="tablist" aria-label="Sign up method">
+              <button
+                type="button"
+                class="wt-signup__tab is-active"
+                data-signup-tab="email"
+                role="tab"
+                aria-selected="true"
+              >
+                {{ section.settings.email_tab_label | default: 'Email' }}
+              </button>
+              <button
+                type="button"
+                class="wt-signup__tab"
+                data-signup-tab="sms"
+                role="tab"
+                aria-selected="false"
+              >
+                {{ section.settings.sms_tab_label | default: 'SMS' }}
+              </button>
+            </div>
+          {%- endif -%}
+        </div>
+
+        <div class="wt-signup__body">
+          {%- comment -%} Email signup — its own customer form {%- endcomment -%}
+          {% form 'customer', class: 'newsletter-form wt-newsletter__form wt-signup__form wt-footer__additional__form wt-signup__panel is-active', data-signup-panel: 'email' %}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+
+            <div class="wt-signup__field-wrap">
+              <input
+                id="NewsletterForm--{{ section.id }}"
+                type="email"
+                name="contact[email]"
+                class="wt-signup__field"
+                value="{{ form.email }}"
+                aria-required="true"
+                autocorrect="off"
+                autocapitalize="off"
+                autocomplete="email"
+                placeholder="{{ section.settings.email_placeholder | default: 'Enter your email.' }}"
+                required
+              >
+              <button type="submit" class="wt-signup__submit" name="commit" aria-label="{{ 'newsletter.button_label' | t }}">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M2.5 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+
+            {%- if section.settings.disclaimer_text != blank -%}
+              <div class="wt-signup__disclaimer rte">{{ section.settings.disclaimer_text }}</div>
+            {%- endif -%}
+
+            {%- if form.errors -%}
+              <div class="form__message">
+                <div class="form__error-field">
+                  {% for error in form.errors %}
+                    <p id="Newsletter-error--{{ section.id }}">
+                      {% if error == 'form' %}
+                        {{ form.errors.messages[error] }}
+                      {% else %}
+                        {{ form.errors.translated_fields[error] }} - {{ form.errors.messages[error] }}
+                      {% endif %}
+                    </p>
+                  {% endfor %}
+                </div>
+              </div>
+            {%- endif -%}
+
+            {%- if form.posted_successfully? -%}
+              <div class="form__message">
+                <div class="form__success-field" tabindex="-1" autofocus>
+                  <p>{{- 'newsletter.success' | t }}</p>
+                </div>
+              </div>
+            {%- endif -%}
+          {% endform %}
+
+          {%- if section.settings.enable_sms -%}
+            {%- comment -%} SMS signup — separate customer form {%- endcomment -%}
+            {% form 'customer', class: 'newsletter-form wt-newsletter__form wt-signup__form wt-footer__additional__form wt-signup__panel', data-signup-panel: 'sms' %}
+              <input type="hidden" name="contact[tags]" value="newsletter,sms">
+              <input type="hidden" name="contact[accepts_marketing]" value="true">
+
+              {%- comment -%} Shopify customer form requires email; phone adds SMS consent {%- endcomment -%}
+              <div class="wt-signup__field-wrap">
+                <input
+                  id="NewsletterFormSmsEmail--{{ section.id }}"
+                  type="email"
+                  name="contact[email]"
+                  class="wt-signup__field"
+                  value="{{ form.email }}"
+                  aria-required="true"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  autocomplete="email"
+                  placeholder="{{ section.settings.email_placeholder | default: 'Enter your email.' }}"
+                  required
+                >
+              </div>
+
+              <div class="wt-signup__field-wrap">
+                <input
+                  id="NewsletterFormSms--{{ section.id }}"
+                  type="tel"
+                  name="contact[phone]"
+                  class="wt-signup__field"
+                  value="{{ form.phone }}"
+                  aria-required="true"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  autocomplete="tel"
+                  placeholder="{{ section.settings.sms_placeholder | default: 'Enter your phone number.' }}"
+                  required
+                >
+                <button type="submit" class="wt-signup__submit" name="commit" aria-label="{{ 'newsletter.button_label' | t }}">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M2.5 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+
+              {%- if section.settings.disclaimer_text != blank -%}
+                <div class="wt-signup__disclaimer rte">{{ section.settings.disclaimer_text }}</div>
+              {%- endif -%}
+
+              {%- if form.errors -%}
+                <div class="form__message">
+                  <div class="form__error-field">
+                    {% for error in form.errors %}
+                      <p id="NewsletterSms-error--{{ section.id }}">
+                        {% if error == 'form' %}
+                          {{ form.errors.messages[error] }}
+                        {% else %}
+                          {{ form.errors.translated_fields[error] }} - {{ form.errors.messages[error] }}
+                        {% endif %}
+                      </p>
+                    {% endfor %}
+                  </div>
+                </div>
+              {%- endif -%}
+
+              {%- if form.posted_successfully? -%}
+                <div class="form__message">
+                  <div class="form__success-field" tabindex="-1" autofocus>
+                    <p>{{- 'newsletter.success' | t }}</p>
+                  </div>
+                </div>
+              {%- endif -%}
+            {% endform %}
+          {%- endif -%}
+        </div>
+      </section>
+    </div>
+
+    <div class="svg-anim-block" id="svgAnimBlock">
+      <div class="svg-anim-inner">
+        <svg id="animated-svg" width="100%" viewBox="0 0 609 301" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path id="svg-path-0" d="M53.6398 299.904H48.608C33.2477 281.255 24.2434 269.224 14.9743 244.559C4.91061 218.391 0.408447 191.32 0.408447 165.754C0.408447 139.585 5.17544 112.515 14.9743 86.9487C24.2434 62.284 33.2477 49.9518 48.608 31.3032H53.6398C42.252 54.1628 21.3302 95.0691 21.3302 165.754C21.3302 236.438 42.252 277.645 53.6398 299.904Z"/>
+          <path id="svg-path-1" d="M300.143 177.487C300.143 180.795 297.23 180.795 296.171 180.795H253.533C253.798 189.518 254.062 227.717 254.062 234.034C254.062 252.381 251.679 265.014 228.109 271.331C224.136 258.698 222.017 252.081 202.685 245.765V243.358C206.128 243.659 223.871 245.163 224.666 245.163C238.437 245.163 238.967 241.253 239.232 235.838C239.496 228.018 239.232 189.518 239.232 180.795H113.966C113.966 186.811 114.231 193.728 114.231 203.955C114.231 212.679 114.495 255.991 114.231 260.202C113.701 270.429 102.843 271.632 101.784 271.632C98.8703 271.632 96.7517 270.128 96.7517 266.518C96.7517 265.616 97.0163 261.405 97.0163 260.503C97.811 249.073 99.1349 193.428 99.4003 180.795C88.0125 180.795 73.9761 181.697 63.1179 184.103L56.762 171.17C69.2091 172.373 86.6878 172.975 99.6649 173.576C100.46 149.213 100.989 128.759 100.989 101.388C100.989 79.1301 99.9296 70.4073 97.811 56.8721L117.144 68.6026H169.846V29.5007H104.697C99.4003 29.5007 83.2452 30.1023 70.798 32.8093L64.4421 19.8756C78.2133 21.0787 94.633 22.2819 108.404 22.2819H258.299L267.569 9.34817C269.158 6.94191 270.217 5.73877 271.541 5.73877C273.131 5.73877 276.043 8.44583 276.308 8.74661L289.815 21.6803C290.874 22.8835 292.463 24.0866 292.463 26.1921C292.463 29.5007 289.55 29.5007 288.491 29.5007H183.087V68.6026H236.849L239.761 62.8877C241.615 59.5791 242.41 58.6767 243.734 58.6767C244.793 58.6767 245.323 58.9776 248.236 61.083L258.829 68.9034C260.153 69.8058 261.477 71.3097 261.477 72.8136C261.477 75.8214 258.829 77.9269 252.208 82.4387C252.474 95.3727 253.268 159.139 253.533 173.576H266.509L275.778 159.741C276.838 158.236 278.427 156.13 279.751 156.13C280.546 156.13 282.134 156.732 284.518 159.139L297.495 172.975C299.084 174.479 300.143 175.682 300.143 177.487ZM239.232 120.638V75.8214H183.087V120.638H239.232ZM239.232 173.576V127.857H183.087V173.576H239.232ZM169.846 120.638V75.8214H114.231V120.638H169.846ZM169.846 173.576V127.857H114.231V173.576H169.846Z"/>
+          <path id="svg-path-2" d="M547.497 248.77C547.497 251.478 545.114 252.079 543.26 252.079H349.667C340.398 252.079 325.567 253.282 315.504 255.388L309.413 242.454C329.275 244.258 348.343 244.86 353.374 244.86H421.967V164.25H386.744C377.475 164.25 362.908 165.453 352.845 167.859L346.489 154.925C366.352 156.73 385.685 157.031 390.451 157.031H421.967C421.967 136.879 421.967 132.066 421.701 89.6557H362.379C345.165 140.488 327.421 168.762 313.65 181.996L311.531 180.192C333.248 146.504 358.406 56.5693 358.406 31.3035C358.406 30.1004 358.406 28.8972 357.877 25.5886L383.301 40.0263C384.625 40.9286 385.685 42.4325 385.685 44.538C385.685 48.4482 382.506 49.6514 381.447 49.9521C380.387 50.5537 375.091 52.6592 374.031 52.96C371.384 62.2842 369 70.4054 364.762 82.4368H421.701C421.437 73.714 421.701 34.9129 421.172 27.0925C420.642 18.3698 417.994 9.94781 415.081 0.623535L442.888 9.34625C444.477 9.94781 447.125 11.4517 447.125 13.8581C447.125 15.6627 445.802 17.4674 444.742 18.6706C443.683 20.1745 438.651 25.2878 437.592 26.4909C437.592 35.2137 437.326 74.6164 437.326 82.4368H493.471L501.946 69.5031C503.27 67.3976 504.329 65.8937 505.654 65.8937C507.242 65.8937 509.626 67.9992 510.685 68.9015L525.781 81.8353C527.105 83.0384 528.429 84.5419 528.429 86.6475C528.429 89.3552 526.045 89.6557 524.457 89.6557H437.326C437.062 111.312 437.062 136.278 437.062 157.031H479.7L487.909 144.097C490.028 140.488 490.558 140.488 491.882 140.488C492.941 140.488 494.001 140.789 496.914 143.496L510.685 156.43C512.01 157.934 513.334 159.137 513.334 161.242C513.334 163.949 510.95 164.25 509.096 164.25H437.062C436.797 177.183 437.062 233.43 436.797 244.86H510.685L522.073 231.024C524.457 228.017 524.721 227.715 526.045 227.715C527.635 227.715 529.489 229.22 531.077 230.723L544.849 244.258C546.173 245.763 547.497 246.665 547.497 248.77Z"/>
+          <path id="svg-path-3" d="M608.408 165.754C608.408 191.32 603.907 218.391 593.843 244.559C584.574 269.224 575.569 281.255 560.209 299.904H555.177C566.564 277.645 587.487 236.438 587.487 165.754C587.487 95.0691 566.83 54.1628 555.177 31.3032H560.209C575.569 49.9518 584.574 62.284 593.843 86.9487C603.641 112.515 608.408 139.585 608.408 165.754Z"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="wt-footer__mobile-bar">
+    <a href="{{ routes.root_url }}" class="wt-footer__mobile-logo" aria-label="{{ shop.name }}">
+      {%- if section.settings.footer_logo != blank -%}
+        {{
+          section.settings.footer_logo
+          | image_url: width: 370
+          | image_tag: loading: 'lazy', alt: shop.name, class: 'wt-footer__mobile-logo-img'
+        }}
+      {%- else -%}
+        <span class="wt-footer__mobile-logo-text">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+    <div class="wt-footer__mobile-social">
+      {% render 'social-links' %}
+    </div>
+  </div>
+
+  <div class="wt-footer__body wt-footer__menus">
     {% for block in section.blocks %}
       <div class="wt-footer__block wt-footer__block--{{ block.type }}">
         {%- case block.type -%}
@@ -383,88 +595,6 @@
               {% endif %}
               <div class="wt-footer__text rte">{{ block.settings.text }}</div>
             </section>
-
-          {%- when 'newsletter' -%}
-            <section class="wt-newsletter wt-footer__additional">
-              <div class="wt-footer__title wt-newsletter__title">{{ block.settings.heading_newsletter }}</div>
-              <div class="wt-footer__text rte">{{ block.settings.text_newsletter }}</div>
-
-              {% form 'customer', class: 'newsletter-form wt-newsletter__form wt-footer__additional__form' %}
-                <input type="hidden" name="contact[tags]" value="newsletter">
-
-                <div class="wt-newsletter__fieldset">
-                  <input
-                    id="NewsletterForm--{{ section.id }}"
-                    type="email"
-                    name="contact[email]"
-                    class="wt-newsletter__field"
-                    value="{{ form.email }}"
-                    aria-required="true"
-                    autocorrect="off"
-                    autocapitalize="off"
-                    autocomplete="email"
-                    placeholder="{{ 'newsletter.label' | t }}"
-                    required
-                  >
-
-                  <button
-                    type="submit"
-                    class="wt-newsletter__send wt-newsletter__send--{{ block.settings.button_type }}"
-                    name="commit"
-                    aria-label="aria-label={% if block.settings.button_label != blank %}{{ block.settings.button_label }}{% else %}{{'newsletter.button_label' | t }}{% endif %}"
-                  >
-                    <span class="wt-newsletter__send__text">
-                      {% if block.settings.button_label != blank -%}
-                        {{- block.settings.button_label -}}
-                      {%- else -%}
-                        {{- 'newsletter.button_label' | t -}}
-                      {%- endif %}
-                    </span>
-                  </button>
-                </div>
-                {% if block.settings.show_consent_checkbox %}
-                  <div class="wt-newsletter__consent">
-                    <label class="wt-newsletter__consent-label">
-                      <input
-                        type="checkbox"
-                        name="contact[tags]"
-                        value="newsletter_consent"
-                        required
-                        oninvalid="this.setCustomValidity('{{ block.settings.consent_validation_message | escape }}')"
-                        oninput="this.setCustomValidity('')"
-                      >
-                      {% if block.settings.consent_checkbox_label != blank %}
-                        <div class="rte">{{ block.settings.consent_checkbox_label }}</div>
-                      {% endif %}
-                    </label>
-                  </div>
-                {% endif %}
-
-                {%- if form.errors -%}
-                  <div class="form__message">
-                    <div class="form__error-field">
-                      {% for error in form.errors %}
-                        <p id="Newsletter-error--{{ section.id }}">
-                          {% if error == 'form' %}
-                            {{ form.errors.messages[error] }}
-                          {% else %}
-                            {{ form.errors.translated_fields[error] }} - {{ form.errors.messages[error] }}
-                          {% endif %}
-                        </p>
-                      {% endfor %}
-                    </div>
-                  </div>
-                {%- endif -%}
-
-                {%- if form.posted_successfully? -%}
-                  <div class="form__message">
-                    <div class="form__success-field" tabindex="-1" autofocus>
-                      <p>{{- 'newsletter.success' | t }}</p>
-                    </div>
-                  </div>
-                {%- endif -%}
-              {% endform %}
-            </section>
         {%- endcase -%}
       </div>
     {%- endfor -%}
@@ -550,6 +680,128 @@
   {% endif %}
 </footer>
 
+<script>
+  (function () {
+    document.querySelectorAll('[data-signup]').forEach(function (root) {
+      var tabs = root.querySelectorAll('[data-signup-tab]');
+      var panels = root.querySelectorAll('[data-signup-panel]');
+      if (!tabs.length) return;
+
+      function activate(name) {
+        tabs.forEach(function (tab) {
+          var on = tab.getAttribute('data-signup-tab') === name;
+          tab.classList.toggle('is-active', on);
+          tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        panels.forEach(function (panel) {
+          var on = panel.getAttribute('data-signup-panel') === name;
+          panel.classList.toggle('is-active', on);
+          // only the visible panel's field submits
+          panel.querySelectorAll('input').forEach(function (input) {
+            input.disabled = !on;
+          });
+        });
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          activate(tab.getAttribute('data-signup-tab'));
+        });
+      });
+
+      // On load: if a form posted (success/error), show that one; else the active tab.
+      var posted = root.querySelector('[data-signup-panel] .form__success-field, [data-signup-panel] .form__error-field');
+      if (posted) {
+        var postedPanel = posted.closest('[data-signup-panel]');
+        activate(postedPanel.getAttribute('data-signup-panel'));
+      } else {
+        var current = root.querySelector('[data-signup-tab].is-active') || tabs[0];
+        activate(current.getAttribute('data-signup-tab'));
+      }
+    });
+  })();
+</script>
+
+<script>
+  (function () {
+    var paths   = Array.from(document.querySelectorAll('#animated-svg path'));
+    var block   = document.getElementById('svgAnimBlock');
+    if (!paths.length || !block) return;
+    var lengths = paths.map(function(p) { return p.getTotalLength(); });
+    var animating = false;
+    var startTime = null;
+    var rafId     = null;
+    var DURATION  = 2200;
+
+    function resetPaths() {
+      paths.forEach(function(p, i) {
+        p.style.strokeDasharray  = lengths[i];
+        p.style.strokeDashoffset = lengths[i];
+        p.style.fillOpacity      = 0;
+      });
+    }
+
+    resetPaths();
+
+    function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+    function easeInOut(t) {
+      return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
+    }
+
+    function applyProgress(progress) {
+      var n = paths.length;
+      paths.forEach(function(p, i) {
+        var seg  = clamp((progress - i / n) / (1 / n), 0, 1);
+        var draw = clamp(seg * 2, 0, 1);
+        var fill = clamp((seg - 0.5) * 2, 0, 1);
+        p.style.strokeDashoffset = lengths[i] * (1 - draw);
+        p.style.fillOpacity      = fill * 0.718;
+      });
+    }
+
+    function animate(timestamp) {
+      if (!startTime) startTime = timestamp;
+      var raw      = clamp((timestamp - startTime) / DURATION, 0, 1);
+      var progress = easeInOut(raw);
+      applyProgress(progress);
+      if (raw < 1) {
+        rafId = requestAnimationFrame(animate);
+      } else {
+        animating = false;
+        rafId     = null;
+      }
+    }
+
+    function startAnimation() {
+      if (rafId) cancelAnimationFrame(rafId);
+      resetPaths();
+      animating = true;
+      startTime = null;
+      rafId = requestAnimationFrame(animate);
+    }
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            startAnimation();
+          } else {
+            if (rafId) cancelAnimationFrame(rafId);
+            animating = false;
+            rafId     = null;
+            resetPaths();
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(block);
+    } else {
+      applyProgress(1);
+    }
+  })();
+</script>
+
 {% schema %}
 {
   "name": "t:sections.footer.name",
@@ -567,6 +819,52 @@
       "label": "t:sections.footer.settings.scroll_effect.label",
       "info": "t:sections.footer.settings.scroll_effect.info",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.blocks.newsletter.name"
+    },
+    {
+      "type": "textarea",
+      "id": "heading_newsletter",
+      "label": "t:sections.settings.settings.heading.label",
+      "default": "Don't miss out on David updates."
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sms",
+      "label": "Enable SMS tab",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "email_tab_label",
+      "label": "Email tab label",
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "sms_tab_label",
+      "label": "SMS tab label",
+      "default": "SMS"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email placeholder",
+      "default": "Enter your email."
+    },
+    {
+      "type": "text",
+      "id": "sms_placeholder",
+      "label": "SMS placeholder",
+      "default": "Enter your phone number."
+    },
+    {
+      "type": "richtext",
+      "id": "disclaimer_text",
+      "label": "Disclaimer text",
+      "default": "<p>*By completing this form you are signing up to receive our marketing and can unsubscribe at any time.</p>"
     },
     {
       "type": "header",
@@ -651,6 +949,16 @@
       "id": "text",
       "default": "© 2022 Wonder Fashion Demo. <br/> Powered by Shopify.",
       "label": "t:sections.footer.settings.text.label"
+    },
+    {
+      "type": "header",
+      "content": "Mobile logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Mobile footer logo",
+      "info": "Shown in the mobile logo + social row. Falls back to the shop name if empty."
     },
     {
       "type": "header",
@@ -822,73 +1130,6 @@
           "default": "Socials"
         }
       ]
-    },
-    {
-      "type": "newsletter",
-      "name": "t:sections.footer.blocks.newsletter.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "header",
-          "content": "t:sections.footer.blocks.newsletter.settings.customers.content",
-          "info": "t:sections.footer.blocks.newsletter.settings.customers.info"
-        },
-        {
-          "type": "textarea",
-          "id": "heading_newsletter",
-          "label": "t:sections.settings.settings.heading.label",
-          "default": "Sign up to our Newsletter"
-        },
-        {
-          "type": "richtext",
-          "id": "text_newsletter",
-          "label": "t:sections.settings.settings.text.label",
-          "default": "<p>Be the first to know the least relases, news, collaborations, exclusives and offers!</p>"
-        },
-        {
-          "type": "select",
-          "id": "button_type",
-          "label": "t:sections.settings.settings.button_select.default.label",
-          "options": [
-            {
-              "value": "primary",
-              "label": "t:sections.settings.settings.button_select.primary.label"
-            },
-            {
-              "value": "secondary",
-              "label": "t:sections.settings.settings.button_select.secondary.label"
-            }
-          ],
-          "default": "primary"
-        },
-        {
-          "type": "text",
-          "id": "button_label",
-          "label": "t:sections.image-with-text.button.settings.button_label.label"
-        },
-        {
-          "type": "header",
-          "content": "t:sections.newsletter.blocks.email_form.settings.consent_checkbox.header"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_consent_checkbox",
-          "label": "t:sections.newsletter.blocks.email_form.settings.show_consent_checkbox.label",
-          "default": false
-        },
-        {
-          "type": "richtext",
-          "id": "consent_checkbox_label",
-          "label": "t:sections.newsletter.blocks.email_form.settings.consent_checkbox_label.label",
-          "default": "<p>I want to sign up for the Newsletter (information about promotions, discounts, premieres, contests).</p>"
-        },
-        {
-          "type": "text",
-          "id": "consent_validation_message",
-          "label": "t:sections.newsletter.blocks.email_form.settings.consent_validation_message.label",
-          "default": "Please check this box to proceed."
-        }
-      ]
     }
   ],
   "default": {
@@ -901,9 +1142,6 @@
       },
       {
         "type": "menu"
-      },
-      {
-        "type": "newsletter"
       }
     ]
   }

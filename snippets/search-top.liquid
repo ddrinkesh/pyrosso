@@ -1,111 +1,163 @@
 <div class="search-result-top">
   <div class="search-result-top-content">
+    {%- comment -%} Left — Suggestions pills {%- endcomment -%}
     <div class="search-result-top-left">
       <div class="search-result-top__title">{{ section.settings.suggestions_title }}</div>
-      <ul class="search-result-top__list collection-list">
+      <ul class="search-result-top__list">
         {%- for link in section.settings.suggestions_menu.links -%}
-          <li class="search-result-top__item {% if link.links.size > 0 %}search-result-top__item--row {% endif %} collection-list__item">
-            <a class="headline__title" href="{{ link.url }}"> {{ link.title }}</a>
-            {% comment %}
-              {% if link.links.size > 0 %}
-                <a class="headline__title" href="{{ link.url }}"> {{ link.title }}</a>
-                <div class="search-result-top__item__sublinks">
-                  {% for sublink in link.links %}
-                    <div class="search-result-top__item__sublink">
-                      {% if sublink.type == 'product_link' or sublink.type == 'collection_link' %}
-                        {% render 'card',
-                          img: sublink.object.featured_image,
-                          url: sublink.object.url,
-                          title: sublink.object.title,
-                          title_tag: 'div',
-                          product: null
-                        %}
-                      {% else %}
-                        <a class="card__title" href="{{ sublink.url }}"> {{ sublink.title }}</a>
-                      {% endif %}
-                    </div>
-                  {% endfor %}
-                </div>
-              {% else %}
-                {% if link.type == 'product_link' or link.type == 'collection_link' %}
-                  {% render 'card',
-                    img: link.object.featured_image,
-                    url: link.object.url,
-                    title: link.object.title,
-                    product: null
-                  %}
-                {% else %}
-                  <a class="card__title" href="{{ link.url }}"> {{ link.title }}</a>
-                {% endif %}
-              {% endif %}
-            {% endcomment %}
+          <li class="search-result-top__item">
+            <a class="search-suggest-pill" href="{{ link.url }}">{{ link.title }}</a>
           </li>
         {%- endfor -%}
       </ul>
     </div>
+
+    {%- comment -%} Right — Products / Collections tabs {%- endcomment -%}
     <div class="search-result-top-right">
-      <slideshow-section class="wt-slider">
-        <div data-swiper class="wt-slider__container">
-          <div data-swiper-container class="swiper-wrapper">
-            {% for product in settings.search_product_suggestion %}
-              {% if section.settings.show_secondary_image and product.images[1] %}
-                {% assign image_hover = product.images[1] %}
-              {% else %}
-                {% assign image_hover = false %}
-              {% endif %}
+      <div class="search-tabs">
+        <div class="search-tabs__nav" role="tablist">
+          <button type="button" class="search-tabs__btn active" data-search-tab="products">
+            {{ 'templates.search.titles.products' | t }}
+          </button>
+          <button type="button" class="search-tabs__btn" data-search-tab="collections">
+            {{ 'templates.search.titles.collections' | t }}
+          </button>
+        </div>
 
-              <div data-swiper-slide class="swiper-slide">
-                {% render 'card',
-                  card_product: product,
-                  img: product.featured_media,
-                  img_hover: image_hover,
-                  title: product.title,
-                  subtitle: product.vendor,
-                  rating: section.settings.show_product_rating,
-                  reviews: product.metafields.reviews,
-                  options: false,
-                  url: product.url,
-                  uri: product.handle,
-                  text_alignment: section.settings.text_alignment,
-                  variants: product.variants,
-                  product_options: product.options,
-                  product: product,
-                  media_aspect_ratio: section.settings.image_ratio,
-                  enable_quick_add_button: section.settings.enable_quick_add_button,
-                  quick_add_mode: section.settings.quick_add_mode,
-                  enable_vendor_link: section.settings.enable_vendor_link
-                %}
-              </div>
-            {% endfor %}
-          </div>
+        {%- comment -%} Products grid {%- endcomment -%}
+        <div class="search-tabs__panel" data-search-panel="products">
+          {% if settings.search_product_suggestion.count > 0 %}
+            <div class="search-grid">
+              {% for product in settings.search_product_suggestion %}
+                <a class="search-prod-card" href="{{ product.url }}">
+                  <div class="search-prod-card__media">
+                    {% if product.featured_media != blank %}
+                      <img
+                        class="search-prod-card__img"
+                        src="{{ product.featured_media | image_url: width: 400 }}"
+                        srcset="
+                          {{ product.featured_media | image_url: width: 200 }} 200w,
+                          {{ product.featured_media | image_url: width: 400 }} 400w
+                        "
+                        sizes="(min-width: 900px) 200px, 40vw"
+                        alt="{{ product.featured_media.alt | escape }}"
+                        loading="lazy"
+                        width="{{ product.featured_media.width }}"
+                        height="{{ product.featured_media.height }}"
+                      >
+                    {% else %}
+                      {{ 'product-apparel-2' | placeholder_svg_tag: 'search-prod-card__img search-prod-card__img--placeholder' }}
+                    {% endif %}
 
-          {% if settings.search_product_suggestion.count > 1 %}
-            <div class="swiper-button-next wt-slider__nav-btn wt-slider__nav-next wt-slider__nav-next--search">
-              {% render 'icons', id: 'arrow-right' %}
+                    {%- for tag in product.tags -%}
+                      {%- assign tag_down = tag | downcase -%}
+                      {%- if tag_down == 'trending' -%}
+                        <span class="search-prod-card__pill">{{ tag }}</span>
+                        {%- break -%}
+                      {%- endif -%}
+                    {%- endfor -%}
+
+                    <span class="search-prod-card__add" aria-hidden="true">
+                      <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.05 10.05V9.13c0-.73.29-1.43.81-1.94.51-.52 1.21-.81 1.94-.81.73 0 1.43.29 1.94.81.52.51.81 1.21.81 1.94v.92M8.37 10.05c-.12 0-.24.05-.32.13a.46.46 0 0 0-.14.32l-.61 6.2c0 .87.74 1.61 1.6 1.61h7.8c.87 0 1.61-.7 1.61-1.57l-.61-6.24a.46.46 0 0 0-.46-.46H8.37Z" stroke="#fff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </span>
+                  </div>
+
+                  <div class="search-prod-card__info">
+                    {%- assign review_rating = product.metafields.reviews.rating.value -%}
+                    {%- if review_rating != blank -%}
+                      {%- assign review_percent = review_rating.rating | times: 20 -%}
+                      <div class="search-prod-card__rating">
+                        {% render 'rating-stars', percent: review_percent %}
+                        {%- if product.metafields.reviews.rating_count != blank -%}
+                          <span class="search-prod-card__rating-count">{{ product.metafields.reviews.rating_count }}</span>
+                        {%- endif -%}
+                      </div>
+                    {%- endif -%}
+
+                    <div class="search-prod-card__title">{{ product.title }}</div>
+
+                    <div class="search-prod-card__meta">
+                      {%- if product.type != blank -%}
+                        <span class="search-prod-card__type">{{ product.type }}</span>
+                      {%- elsif product.vendor != blank -%}
+                        <span class="search-prod-card__type">{{ product.vendor }}</span>
+                      {%- endif -%}
+                      <span class="search-prod-card__price">
+                        {%- if settings.currency_code_enabled -%}
+                          {{ product.price | money_with_currency }}
+                        {%- else -%}
+                          {{ product.price | money }}
+                        {%- endif -%}
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              {% endfor %}
             </div>
-            <div class="swiper-button-prev wt-slider__nav-btn wt-slider__nav-prev wt-slider__nav-prev--search">
-              {% render 'icons', id: 'arrow-left' %}
-            </div>
+          {% else %}
+            <p class="search-tabs__empty">{{ 'templates.search.titles.products' | t }}</p>
           {% endif %}
         </div>
 
-        <script data-swiper-configuration type="text/json">
-          {
-            "slidesPerView": 1.3,
-            "spaceBetween": 16,
-            "autoHeight": false,
-            "watchSlidesProgress": true,
-            "breakpoints": {
-              "600": {
-                "slidesPerView": 2
-              },
-              "900": {
-                "slidesPerView": 3
-              }
-            }
-          }
-        </script>
-      </slideshow-section>
+        {%- comment -%} Collections grid {%- endcomment -%}
+        <div class="search-tabs__panel search-tabs__panel--hidden" data-search-panel="collections">
+          {% if settings.search_collection_suggestion.count > 0 %}
+            <div class="search-grid">
+              {% for collection in settings.search_collection_suggestion %}
+                <a class="search-collection-card" href="{{ collection.url }}">
+                  <div class="search-collection-card__media">
+                    {% if collection.featured_image != blank %}
+                      <img
+                        class="search-collection-card__img"
+                        src="{{ collection.featured_image | image_url: width: 400 }}"
+                        srcset="
+                          {{ collection.featured_image | image_url: width: 200 }} 200w,
+                          {{ collection.featured_image | image_url: width: 400 }} 400w
+                        "
+                        sizes="(min-width: 900px) 200px, 40vw"
+                        alt="{{ collection.featured_image.alt | escape }}"
+                        loading="lazy"
+                        width="{{ collection.featured_image.width }}"
+                        height="{{ collection.featured_image.height }}"
+                      >
+                    {% else %}
+                      {{ 'collection-apparel-1' | placeholder_svg_tag: 'search-collection-card__img search-collection-card__img--placeholder' }}
+                    {% endif %}
+                  </div>
+                  <div class="search-collection-card__title">{{ collection.title }}</div>
+                  <div class="search-collection-card__count">
+                    {{ collection.products_count }} {{ 'templates.search.titles.products' | t | downcase }}
+                  </div>
+                </a>
+              {% endfor %}
+            </div>
+          {% else %}
+            <p class="search-tabs__empty">{{ 'templates.search.titles.collections' | t }}</p>
+          {% endif %}
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+  (function () {
+    if (window.__searchTabsBound) return;
+    window.__searchTabsBound = true;
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('.search-tabs__btn');
+      if (!btn) return;
+      var tabs = btn.closest('.search-tabs');
+      if (!tabs) return;
+      var name = btn.getAttribute('data-search-tab');
+      tabs.querySelectorAll('.search-tabs__btn').forEach(function (b) {
+        b.classList.toggle('active', b === btn);
+      });
+      tabs.querySelectorAll('.search-tabs__panel').forEach(function (p) {
+        p.classList.toggle('search-tabs__panel--hidden', p.getAttribute('data-search-panel') !== name);
+      });
+    });
+  })();
+</script>
