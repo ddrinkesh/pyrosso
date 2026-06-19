@@ -1,0 +1,215 @@
+{{ 'shopping-box.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign bg_color = section.settings.background_color
+  assign text_color = section.settings.text_color
+-%}
+
+{% style %}
+  [data-section-id="{{ section.id }}"] {
+    --sb-bg: {{ bg_color }};
+    --sb-text: {{ text_color }};
+
+    background-color: var(--sb-bg);
+    color: var(--sb-text);
+
+    {% if section.settings['margin-top'] %}
+      --section-gap-top: {{ section.settings['margin-top'] }}px;
+    {% endif %}
+
+    {% if section.settings['margin-bottom'] %}
+      --section-gap-bottom: {{ section.settings['margin-bottom'] }}px;
+    {% endif %}
+  }
+
+  @media (max-width: 899px) {
+    [data-section-id="{{ section.id }}"] {
+
+      {% if section.settings['margin-top-mobile'] %}
+        --section-gap-top: {{ section.settings['margin-top-mobile'] }}px;
+      {% endif %}
+
+      {% if section.settings['margin-bottom-mobile'] %}
+        --section-gap-bottom: {{ section.settings['margin-bottom-mobile'] }}px;
+      {% endif %}
+    }
+  }
+{% endstyle %}
+
+<section class="shopping-box" data-section-id="{{ section.id }}">
+
+  <div class="shopping-box__wrapper">
+
+    <div class="shopping-box__grid">
+
+      {% for block in section.blocks %}
+
+        {% assign position = block.settings.card_position %}
+
+        <a
+          href="{{ block.settings.link }}"
+          class="shopping-box__card shopping-box__card--{{ position }}"
+          {{ block.shopify_attributes }}
+        >
+
+          {% if block.settings.image != blank %}
+            {{
+              block.settings.image
+              | image_url: width: 1600
+              | image_tag:
+                loading: 'lazy',
+                widths: '400,600,800,1200,1600',
+                sizes: '(max-width:767px) 100vw, 50vw',
+                class: 'shopping-box__image'
+            }}
+          {% endif %}
+
+          <div class="shopping-box__overlay">
+
+            {% if block.settings.title != blank %}
+              <h3 class="shopping-box__title">
+                {{ block.settings.title }}
+              </h3>
+            {% endif %}
+
+            {% if block.settings.cta != blank %}
+              <div class="shopping-box__cta">
+                {{ block.settings.cta }}
+                <span>></span>
+              </div>
+            {% endif %}
+
+          </div>
+
+        </a>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "Shopping Box",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "Top spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "Bottom spacing"
+    },
+
+    {
+      "type": "header",
+      "content": "Mobile spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top-mobile",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "Top spacing (mobile)"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom-mobile",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "Bottom spacing (mobile)"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "select",
+          "id": "card_position",
+          "label": "Position",
+          "options": [
+            { "value": "large", "label": "Large Left" },
+            { "value": "top", "label": "Right Top" },
+            { "value": "bottom", "label": "Right Bottom" }
+          ],
+          "default": "large"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "cta",
+          "label": "CTA"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Shopping Box"
+    }
+  ]
+}
+{% endschema %}

@@ -1,18 +1,18 @@
 .certifications { max-width: var(--site-max-width-big); padding-left: calc(var(--gap, 8px) * 2); padding-right: calc(var(--gap, 8px) * 2); overflow: hidden; margin-inline: auto; }
-.certifications .certifications__grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 48px; }
+.certifications .certifications__grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 64px; }
 .certifications .certifications__grid--single { grid-template-columns: 1fr; }
-.certifications .certifications__heading { font-size: 20px; line-height: 1.3; letter-spacing: -0.5%; margin-top: 0; margin-bottom: 20px }
-.certifications .certifications__list { display: grid; gap: 10px; }
+.certifications .certifications__heading { font-size: 16px; line-height: 1.3; letter-spacing: -0.08px; margin-top: 0; margin-bottom: 8px font-weight: 600; }
+.certifications .certifications__list { display: grid; gap: 8px; }
 .certifications .certifications__name { display: flex; gap: 24px; }
-.certifications .certifications__item { display: flex; justify-content: space-between; gap: 10px 16px; line-height: 1.35; letter-spacing: -1%; }
+.certifications .certifications__item { display: flex; justify-content: space-between; gap: 10px 16px; line-height: 1.35; letter-spacing: -0.16px; color: var(--text-color-light);}
 @media (min-width: 1200px) {
     .certifications { padding-left: calc(calc(var(--gap, 8px) * 2) + calc(var(--gap, 8px) * 2)); padding-right: calc(calc(var(--gap, 8px) * 2) + calc(var(--gap, 8px) * 2)); }
-    .certifications .certifications__heading { font-size: 24px; margin-bottom: 24px }
+    .certifications .certifications__heading { font-size: 20px; margin-bottom: 24px }
 }
 @media (max-width: 899px) {
   .certifications .certifications__grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
   .certifications .certifications__heading { font-size: 16px; margin-bottom: 16px; }
-  .certifications .certifications__item { font-size: 12px; }
+  .certifications .certifications__item { font-size: 14px;letter-spacing: -0.07px; line-height: 1.5; }
 }

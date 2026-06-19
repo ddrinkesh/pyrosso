@@ -25,20 +25,6 @@
     },
     "image_banner_bPMKVA": {
       "type": "image-banner",
-      "blocks": {
-        "heading_99P8dJ": {
-          "type": "heading",
-          "settings": {
-            "heading": "Get to know GLAZING \nMIST.",
-            "disable_on_mobile": false,
-            "size_heading": 100,
-            "size_heading_mobile": 100
-          }
-        }
-      },
-      "block_order": [
-        "heading_99P8dJ"
-      ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "advanced_heading": false,
@@ -46,8 +32,8 @@
         "heading_richtext": "<h2>Image banner</h2>",
         "full-width-enabled": true,
         "slide_height": "fixed_height",
-        "desktop_fixed_height": 900,
-        "mobile_fixed_height": 640,
+        "desktop_fixed_height": 700,
+        "mobile_fixed_height": 320,
         "desktop_image": "shopify://shop_images/VUU08221_SHOPIFY.png",
         "desktop_text_vertical_position": "center",
         "desktop_text_horizontal_position": "center",
@@ -80,7 +66,7 @@
           "settings": {
             "advanced_heading": true,
             "heading": "Born in California, Rooted in Seoul",
-            "heading_richtext": "<p>Our philosophy</p>",
+            "heading_richtext": "<h3>BORN IN LOS ANGELOS, ROOTED IN SEOUL</h3>",
             "disable_on_mobile": false,
             "size_heading": 100,
             "size_heading_mobile": 100,
@@ -91,7 +77,7 @@
         "text_QVnDBm": {
           "type": "text",
           "settings": {
-            "text": "<p>“We draw on Korea's most advanced biotech actives to treat the scalp with the same clinical precision dermatology applies to skin.”</p>",
+            "text": "<p>Pyrosso draws directly from South Korea’s cultural revolution in beauty, embracing a time-honored, \"root-first\" philosophy. We treat the scalp with the same precision, respect, and cellular care typically reserved for high-end skincare.</p>",
             "disable_on_mobile": false
           }
         }
@@ -107,10 +93,196 @@
         "color-body-text": "#ffffff",
         "background_color": "#000000",
         "background_gradient": "",
+        "margin-top": 100,
+        "margin-bottom": 100,
+        "margin-top-mobile": 92,
+        "margin-bottom-mobile": 92
+      }
+    },
+    "image_with_text_XTUHRH": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_HJLwMY": {
+          "type": "heading",
+          "settings": {
+            "heading": "OUR TECHNOLOGY",
+            "disable_on_mobile": false,
+            "size_heading": 100,
+            "size_heading_mobile": 100
+          }
+        },
+        "text_X8AHCt": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Using advanced formulation technologies like active biopolymers, amino acid complexes, and cellular delivery systems, our products are engineered to deliver visible, professional-level results</p>",
+            "text_style": "body",
+            "disable_on_mobile": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_HJLwMY",
+        "text_X8AHCt"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "advanced_heading": false,
+        "title": "",
+        "heading_richtext": "<h2>Image with text</h2>",
+        "layout": "text_first",
+        "desktop-percentage-image-width": 50,
+        "full-width-enabled": false,
+        "slide_height": "fixed_height",
+        "desktop_fixed_height": 700,
+        "mobile_fixed_height": 340,
+        "section-color-body-text": "rgba(0,0,0,0)",
+        "section-color-overlay": "rgba(0,0,0,0)",
+        "section-color-overlay-opacity": 100,
+        "color-body-text": "rgba(0,0,0,0)",
+        "color-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "desktop_image": "shopify://shop_images/banner.jpg",
+        "desktop_text_vertical_position": "center",
+        "desktop_text_horizontal_position": "left",
+        "mobile_text_horizontal_position": "left",
         "margin-top": 64,
         "margin-bottom": 64,
-        "margin-top-mobile": 48,
-        "margin-bottom-mobile": 48
+        "margin-top-mobile": 64,
+        "margin-bottom-mobile": 64
+      }
+    },
+    "certifications_tMxMLe": {
+      "type": "certifications",
+      "blocks": {
+        "certificate_dGbqWj": {
+          "type": "certificate",
+          "settings": {
+            "certificate_name": "CGMP Certified (Korea Cosmetic Association)",
+            "certificate_year": 2009,
+            "certificate_position": "left"
+          }
+        },
+        "certificate_6QKjcU": {
+          "type": "certificate",
+          "settings": {
+            "certificate_name": "ISO 14001 (Environmental Management)",
+            "certificate_year": 2009,
+            "certificate_position": "left"
+          }
+        },
+        "certificate_bJe8tb": {
+          "type": "certificate",
+          "settings": {
+            "certificate_name": "ISO 9001 (Quality Management)",
+            "certificate_year": 2008,
+            "certificate_position": "left"
+          }
+        },
+        "certificate_BNcKbG": {
+          "type": "certificate",
+          "settings": {
+            "certificate_name": "ISO 22716:2007 (Cosmetic GMP)",
+            "certificate_year": 2014,
+            "certificate_position": "left"
+          }
+        },
+        "certificate_Mfpw9p": {
+          "type": "certificate",
+          "settings": {
+            "certificate_name": "MFDS Compliant with Good Cosmetics",
+            "certificate_year": 2014,
+            "certificate_position": "left"
+          }
+        },
+        "certificate_xTw4k8": {
+          "type": "certificate",
+          "settings": {
+            "certificate_name": "EWG Verified",
+            "certificate_year": 2026,
+            "certificate_position": "right"
+          }
+        },
+        "certificate_8JNbyp": {
+          "type": "certificate",
+          "settings": {
+            "certificate_name": "Leaping Bunny Certified",
+            "certificate_year": 2026,
+            "certificate_position": "right"
+          }
+        }
+      },
+      "block_order": [
+        "certificate_dGbqWj",
+        "certificate_6QKjcU",
+        "certificate_bJe8tb",
+        "certificate_BNcKbG",
+        "certificate_Mfpw9p",
+        "certificate_xTw4k8",
+        "certificate_8JNbyp"
+      ],
+      "name": "Certifications",
+      "settings": {
+        "left_heading": "Manufacturer certifications",
+        "right_heading": "Manufacturer certifications",
+        "background_color": "#ffffff",
+        "text_color": "#0d0d0d",
+        "text_color_light": "#6b6b6b",
+        "margin-top": 128,
+        "margin-bottom": 128,
+        "margin-top-mobile": 128,
+        "margin-bottom-mobile": 128
+      }
+    },
+    "image_with_text_itaJnj": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_hXCTAy": {
+          "type": "heading",
+          "settings": {
+            "heading": "OUR COMMITMENT TO SAFETY",
+            "disable_on_mobile": false,
+            "size_heading": 100,
+            "size_heading_mobile": 100
+          }
+        },
+        "text_T43xYd": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At Pyrosso, performance and safety are engineered into every stage of formulation. Our products use precisely calibrated pH levels and molecular weights for the hair and scalp, delivering visible results from the outer cuticle down to the deeper follicle layers</p>",
+            "text_style": "body",
+            "disable_on_mobile": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_hXCTAy",
+        "text_T43xYd"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "advanced_heading": false,
+        "title": "",
+        "heading_richtext": "<h2>Image with text</h2>",
+        "layout": "image_first",
+        "desktop-percentage-image-width": 50,
+        "full-width-enabled": false,
+        "slide_height": "fixed_height",
+        "desktop_fixed_height": 700,
+        "mobile_fixed_height": 340,
+        "section-color-body-text": "rgba(0,0,0,0)",
+        "section-color-overlay": "rgba(0,0,0,0)",
+        "section-color-overlay-opacity": 100,
+        "color-body-text": "rgba(0,0,0,0)",
+        "color-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "desktop_image": "shopify://shop_images/banner.jpg",
+        "desktop_text_vertical_position": "center",
+        "desktop_text_horizontal_position": "left",
+        "mobile_text_horizontal_position": "left",
+        "margin-top": 64,
+        "margin-bottom": 64,
+        "margin-top-mobile": 64,
+        "margin-bottom-mobile": 64
       }
     },
     "image_with_text_PpNArB": {
@@ -155,6 +327,7 @@
         "text_b3XGmj",
         "text_RAjj7t"
       ],
+      "disabled": true,
       "settings": {
         "advanced_heading": false,
         "title": "",
@@ -235,6 +408,7 @@
         "column_pC9HXe",
         "column_mLmYy8"
       ],
+      "disabled": true,
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
         "advanced_heading": true,
@@ -261,89 +435,9 @@
         "margin-bottom-mobile": 0
       }
     },
-    "certifications_tMxMLe": {
-      "type": "certifications",
-      "blocks": {
-        "certificate_dGbqWj": {
-          "type": "certificate",
-          "settings": {
-            "certificate_name": "CGMP Certified (Korea Cosmetic Association)",
-            "certificate_year": 2009,
-            "certificate_position": "left"
-          }
-        },
-        "certificate_6QKjcU": {
-          "type": "certificate",
-          "settings": {
-            "certificate_name": "ISO 14001 (Environmental Management)",
-            "certificate_year": 2009,
-            "certificate_position": "left"
-          }
-        },
-        "certificate_bJe8tb": {
-          "type": "certificate",
-          "settings": {
-            "certificate_name": "ISO 9001 (Quality Management)",
-            "certificate_year": 2008,
-            "certificate_position": "left"
-          }
-        },
-        "certificate_BNcKbG": {
-          "type": "certificate",
-          "settings": {
-            "certificate_name": "ISO 22716:2007 (Cosmetic GMP)",
-            "certificate_year": 2014,
-            "certificate_position": "left"
-          }
-        },
-        "certificate_Mfpw9p": {
-          "type": "certificate",
-          "settings": {
-            "certificate_name": "MFDS Compliant with Good Cosmetics",
-            "certificate_year": 2014,
-            "certificate_position": "left"
-          }
-        },
-        "certificate_xTw4k8": {
-          "type": "certificate",
-          "settings": {
-            "certificate_name": "EWG Verified",
-            "certificate_year": 2026,
-            "certificate_position": "right"
-          }
-        },
-        "certificate_8JNbyp": {
-          "type": "certificate",
-          "settings": {
-            "certificate_name": "Leaping Bunny Certified",
-            "certificate_year": 2026,
-            "certificate_position": "right"
-          }
-        }
-      },
-      "block_order": [
-        "certificate_dGbqWj",
-        "certificate_6QKjcU",
-        "certificate_bJe8tb",
-        "certificate_BNcKbG",
-        "certificate_Mfpw9p",
-        "certificate_xTw4k8",
-        "certificate_8JNbyp"
-      ],
-      "name": "Certifications",
-      "settings": {
-        "left_heading": "Manufacturer certifications",
-        "right_heading": "Manufacturer certifications",
-        "background_color": "#000000",
-        "text_color": "#ffffff",
-        "margin-top": 128,
-        "margin-bottom": 128,
-        "margin-top-mobile": 48,
-        "margin-bottom-mobile": 48
-      }
-    },
     "featured_collection_awQcUD": {
       "type": "featured-collection",
+      "disabled": true,
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
         "advanced_heading": false,
@@ -385,9 +479,11 @@
     "main",
     "image_banner_bPMKVA",
     "rich_text_LXrd77",
+    "image_with_text_XTUHRH",
+    "certifications_tMxMLe",
+    "image_with_text_itaJnj",
     "image_with_text_PpNArB",
     "multicolumn_RAtWnN",
-    "certifications_tMxMLe",
     "featured_collection_awQcUD"
   ]
 }

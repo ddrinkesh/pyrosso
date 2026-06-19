@@ -30,7 +30,7 @@
         "heading_Cz4MF6": {
           "type": "heading",
           "settings": {
-            "heading": "Get to know GLAZING \nMIST.",
+            "heading": "",
             "disable_on_mobile": false,
             "size_heading": 100,
             "size_heading_mobile": 100
@@ -47,8 +47,8 @@
         "heading_richtext": "<h2>Image banner</h2>",
         "full-width-enabled": true,
         "slide_height": "fixed_height",
-        "desktop_fixed_height": 900,
-        "mobile_fixed_height": 640,
+        "desktop_fixed_height": 700,
+        "mobile_fixed_height": 320,
         "desktop_image": "shopify://shop_images/VUU08221_SHOPIFY.png",
         "desktop_text_vertical_position": "center",
         "desktop_text_horizontal_position": "center",
@@ -115,6 +115,7 @@
         "item_qgJxDb",
         "item_BMVfDR"
       ],
+      "disabled": true,
       "name": "Skinification",
       "settings": {
         "heading": "<p>Apply to be a PYROSSO CREATOR</p>",
@@ -231,6 +232,7 @@
         "column_C8RLeY",
         "column_mWfqXN"
       ],
+      "disabled": true,
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
         "advanced_heading": true,
@@ -256,12 +258,62 @@
         "margin-top-mobile": 32,
         "margin-bottom-mobile": 0
       }
+    },
+    "shopping_box_Wc87UK": {
+      "type": "shopping-box",
+      "blocks": {
+        "card_VfFA4h": {
+          "type": "card",
+          "settings": {
+            "card_position": "large",
+            "image": "shopify://shop_images/banner.jpg",
+            "title": "TikTok Shop Affiliate",
+            "cta": "Apply Here",
+            "link": ""
+          }
+        },
+        "card_gkpFQ8": {
+          "type": "card",
+          "settings": {
+            "card_position": "top",
+            "image": "shopify://shop_images/banner.jpg",
+            "title": "Amazon Storefront",
+            "cta": "Explore Our Selections",
+            "link": ""
+          }
+        },
+        "card_NdDi73": {
+          "type": "card",
+          "settings": {
+            "card_position": "bottom",
+            "image": "shopify://shop_images/banner.jpg",
+            "title": "Instagram, Youtube Facebook",
+            "cta": "Email Us Here",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_VfFA4h",
+        "card_gkpFQ8",
+        "card_NdDi73"
+      ],
+      "name": "Shopping Box",
+      "settings": {
+        "background_color": "#000000",
+        "text_color": "#ffffff",
+        "margin-top": 32,
+        "margin-bottom": 32,
+        "margin-top-mobile": 16,
+        "margin-bottom-mobile": 16
+      }
     }
   },
   "order": [
     "main",
     "image_banner_pT7cbQ",
     "skinification_KmpyVt",
-    "multicolumn_7pJPdD"
+    "multicolumn_7pJPdD",
+    "shopping_box_Wc87UK"
   ]
 }
