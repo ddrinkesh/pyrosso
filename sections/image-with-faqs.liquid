@@ -1,0 +1,326 @@
+{{ 'image-with-faqs.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign bg_color = section.settings.background_color
+  assign panel_bg = section.settings.content_bg_color
+  assign text_color = section.settings.text_color
+  assign sid = section.id
+-%}
+
+{% style %}
+[data-section-id="{{ section.id }}"]{
+  --iwf-bg: {{ bg_color }};
+  --iwf-panel-bg: {{ panel_bg }};
+  --iwf-text: {{ text_color }};
+  --iwf-question-color: {{ section.settings.que_color }};
+  --iwf-answer-color: {{ section.settings.ans_color }};
+  background: var(--iwf-bg);
+
+  {% if section.settings.margin-top %}
+    --section-gap-top: {{ section.settings.margin-top }}px;
+  {% endif %}
+
+  {% if section.settings.margin-bottom %}
+    --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+  {% endif %}
+}
+
+@media screen and (max-width:767px){
+  [data-section-id="{{ section.id }}"]{
+
+    {% if section.settings.margin-top-mobile %}
+      --section-gap-top: {{ section.settings.margin-top-mobile }}px;
+    {% endif %}
+
+    {% if section.settings.margin-bottom-mobile %}
+      --section-gap-bottom: {{ section.settings.margin-bottom-mobile }}px;
+    {% endif %}
+  }
+}
+{% endstyle %}
+
+<div data-section-id="{{ section.id }}">
+
+  <div
+    id="image-with-faqs-{{ sid }}"
+    class="image-with-faqs"
+  >
+
+    <div class="iwf__wrapper">
+
+      <div class="iwf__grid">
+
+        <!-- LEFT CONTENT -->
+
+        <div class="iwf__content">
+
+          {% if section.settings.heading != blank %}
+            <h2 class="iwf__heading">
+              {{ section.settings.heading }}
+            </h2>
+          {% endif %}
+
+          <div class="iwf__accordion">
+
+            {% for block in section.blocks %}
+
+              <div
+                class="iwf__item{% if forloop.first %} is-active{% endif %}"
+                {{ block.shopify_attributes }}
+              >
+
+                <div
+                  class="iwf__question"
+                >
+
+                  <span class="iwf__number">
+                    ({{ forloop.index | prepend: '0' | slice: -2, 2 }})
+                  </span>
+
+                  <span class="iwf__question-text">
+                    {{ block.settings.question }}
+                  </span>
+
+                </div>
+
+                <div class="iwf__answer">
+
+                  <div class="iwf__answer-inner rte">
+                    {{ block.settings.answer }}
+                  </div>
+
+                </div>
+
+              </div>
+
+            {% endfor %}
+
+          </div>
+
+        </div>
+
+        <!-- RIGHT IMAGE -->
+
+        <div class="iwf__media">
+
+          {% if section.settings.image != blank %}
+
+            {{
+              section.settings.image
+              | image_url: width: 1800
+              | image_tag:
+                loading: 'lazy',
+                widths: '600,800,1200,1600,1800',
+                sizes: '(max-width:767px) 100vw, 50vw',
+                alt: section.settings.heading
+            }}
+
+          {% else %}
+
+            <div class="iwf__placeholder">
+              {{ 'image' | placeholder_svg_tag }}
+            </div>
+
+          {% endif %}
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+(function(){
+
+  const root =
+    document.getElementById(
+      'image-with-faqs-{{ sid }}'
+    );
+
+  if(!root) return;
+
+  const items =
+    root.querySelectorAll('.iwf__item');
+
+  items.forEach((item)=>{
+
+    const trigger =
+      item.querySelector('.iwf__question');
+
+    trigger.addEventListener('click',()=>{
+
+      const isActive =
+        item.classList.contains('is-active');
+
+      items.forEach((el)=>{
+        el.classList.remove('is-active');
+      });
+
+      if(!isActive){
+        item.classList.add('is-active');
+      }
+
+    });
+
+  });
+
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Image With FAQs",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "FAQ's"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right Image"
+    },
+
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Content Background",
+      "default": "#efefef"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "que_color",
+      "label": "Question Color",
+      "default": "#4F4F52"
+    },
+    {
+      "type": "color",
+      "id": "ans_color",
+      "label": "Answer Color",
+      "default": "#A0A0A0"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40,
+      "unit": "px",
+      "label": "Top"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40,
+      "unit": "px",
+      "label": "Bottom"
+    },
+
+    {
+      "type": "header",
+      "content": "Mobile Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top-mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 24,
+      "unit": "px",
+      "label": "Top Mobile"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom-mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 24,
+      "unit": "px",
+      "label": "Bottom Mobile"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Are your products safe for daily use and sensitive scalps?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Yes. All our formulas are sulfate-free, paraben-free, and perfectly pH-balanced to be safe for daily use on all skin and hair types.</p>"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Image With FAQs",
+      "blocks": [
+        {
+          "type": "faq"
+        },
+        {
+          "type": "faq"
+        },
+        {
+          "type": "faq"
+        },
+        {
+          "type": "faq"
+        },
+        {
+          "type": "faq"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,355 @@
+{{ 'improvement.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign bg_color = section.settings.background_color
+  assign panel_bg = section.settings.content_bg_color
+  assign text_color = section.settings.text_color
+  assign sid = section.id
+-%}
+
+{% style %}
+[data-section-id="{{ section.id }}"]{
+  --imp-bg: {{ bg_color }};
+  --imp-panel-bg: {{ panel_bg }};
+  --imp-text: {{ text_color }};
+  --imp-heading-color: {{ section.settings.heading_color }};
+  --imp-subheading-color: {{ section.settings.subheading_color }};
+  background: var(--imp-bg);
+
+  {% if section.settings.margin-top %}
+    --section-gap-top: {{ section.settings.margin-top }}px;
+  {% endif %}
+
+  {% if section.settings.margin-bottom %}
+    --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+  {% endif %}
+}
+
+@media screen and (max-width:767px){
+  [data-section-id="{{ section.id }}"]{
+
+    {% if section.settings.margin-top-mobile %}
+      --section-gap-top: {{ section.settings.margin-top-mobile }}px;
+    {% endif %}
+
+    {% if section.settings.margin-bottom-mobile %}
+      --section-gap-bottom: {{ section.settings.margin-bottom-mobile }}px;
+    {% endif %}
+  }
+}
+{% endstyle %}
+
+<div data-section-id="{{ section.id }}">
+  <div id="improvement-{{ sid }}" class="improvement">
+
+    <div class="improvement__wrapper">
+
+      <div class="improvement__grid">
+
+        <!-- LEFT IMAGE -->
+
+        <div class="improvement__media-wrap">
+
+          {% for block in section.blocks %}
+            <div
+              class="improvement__media{% if forloop.first %} is-active{% endif %}"
+              data-media="{{ forloop.index0 }}"
+            >
+
+              {% if block.settings.image != blank %}
+                {{
+                  block.settings.image
+                  | image_url: width: 1800
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '400,600,800,1200,1600,1800',
+                    sizes: '(max-width:767px) 100vw, 50vw',
+                    alt: block.settings.title
+                }}
+              {% endif %}
+
+            </div>
+          {% endfor %}
+
+        </div>
+
+        <!-- RIGHT CONTENT -->
+
+        <div class="improvement__content">
+
+          <div class="improvement__avatars">
+
+  {% for block in section.blocks %}
+    <button
+      type="button"
+      class="improvement__avatar{% if forloop.first %} is-active{% endif %}"
+      data-index="{{ forloop.index0 }}"
+    >
+
+      {% if block.settings.image != blank %}
+        {{
+          block.settings.image
+          | image_url: width: 120
+          | image_tag:
+            loading: 'lazy',
+            widths: '60,80,100,120',
+            sizes: '60px',
+            alt: block.settings.title
+        }}
+      {% endif %}
+
+    </button>
+  {% endfor %}
+
+</div>
+<div class="improvement__content-items">
+          {% for block in section.blocks %}
+            <div
+              class="improvement__content-item{% if forloop.first %} is-active{% endif %}"
+              data-content="{{ forloop.index0 }}"
+            >
+
+              <h2 class="improvement__heading">
+                {{ block.settings.title }}
+              </h2>
+
+              <div class="improvement__quote rte">
+                {{ block.settings.quote }}
+              </div>
+
+            </div>
+          {% endfor %}
+
+          {% if section.settings.results_label != blank %}
+            <div class="improvement__results-label">
+              {{ section.settings.results_label }}
+            </div>
+          {% endif %}
+
+          {% if section.settings.disclaimer != blank %}
+            <div class="improvement__disclaimer rte">
+              {{ section.settings.disclaimer }}
+            </div>
+          {% endif %}
+</div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function(){
+
+  const root =
+    document.getElementById('improvement-{{ sid }}');
+
+  if(!root) return;
+
+  const thumbs =
+    root.querySelectorAll('.improvement__avatar');
+
+  const medias =
+    root.querySelectorAll('.improvement__media');
+
+  const contents =
+    root.querySelectorAll('.improvement__content-item');
+
+  function activate(index){
+
+    thumbs.forEach((item,i)=>{
+      item.classList.toggle(
+        'is-active',
+        i === index
+      );
+    });
+
+    medias.forEach((item,i)=>{
+      item.classList.toggle(
+        'is-active',
+        i === index
+      );
+    });
+
+    contents.forEach((item,i)=>{
+      item.classList.toggle(
+        'is-active',
+        i === index
+      );
+    });
+
+  }
+
+  thumbs.forEach((item,index)=>{
+
+    item.addEventListener('click',()=>{
+      activate(index);
+    });
+
+    item.addEventListener('mouseenter',()=>{
+
+      if(window.innerWidth > 767){
+        activate(index);
+      }
+
+    });
+
+  });
+
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Improvement",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "results_label",
+      "label": "Results Label",
+      "default": "CONSUMER RESULTS"
+    },
+    {
+      "type": "richtext",
+      "id": "disclaimer",
+      "label": "Disclaimer"
+    },
+
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Content Background",
+      "default": "#efefef"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#6B6B6B"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#4F4F52"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#67645E"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40,
+      "unit": "px",
+      "label": "Top"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40,
+      "unit": "px",
+      "label": "Bottom"
+    },
+
+    {
+      "type": "header",
+      "content": "Mobile Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top-mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 24,
+      "unit": "px",
+      "label": "Top"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom-mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 24,
+      "unit": "px",
+      "label": "Bottom"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "result",
+      "name": "Result",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "97% Improvement"
+        },
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Quote"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Improvement",
+      "blocks": [
+        {
+          "type": "result"
+        },
+        {
+          "type": "result"
+        },
+        {
+          "type": "result"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

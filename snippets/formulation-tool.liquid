@@ -1,0 +1,420 @@
+{%- comment -%}
+  Snippet: formulation-tool.liquid
+  Usage:   {% render 'formulation-tool', block: block %}
+  Requires block.settings: products (product_list), heading, button_label
+  Category label is driven by each product's "Product type" in Shopify admin.
+{%- endcomment -%}
+{% if block.settings.products != blank %}
+<style>
+  .ft {
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+
+  .ft__heading {
+    font-size: 13.2px;
+    line-height: 1.59;
+    color: #6B6B6B;
+    margin-bottom: 32px !important;
+    letter-spacing: 0.28px;
+    font-weight: 400;
+  }
+
+  /* 2-column grid */
+  .ft__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  /* Card */
+  .ft__card {
+    display: block;
+    background: #F6F6F6;
+    border-radius: 0;
+    padding: 10px 14px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s ease;
+    user-select: none;
+  }
+  .ft__card:has(.ft__checkbox:checked) {
+    background: #ebebeb;
+  }
+  .ft__card--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .ft__card-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  /* Product image */
+  .ft__img-wrap {
+    flex-shrink: 0;
+    width: 60px;
+  }
+  .ft__img {
+    width: 60px;
+    height: 80px;
+    display: block;
+  }
+
+  /* Text info */
+  .ft__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+    padding-right: 20px; /* room for checkbox */
+  }
+  .ft__category {
+    font-size: 13px;
+font-style: normal;
+font-weight: 600;
+line-height: 1.5; 
+letter-spacing: -0.065px;
+    color: #000;
+  }
+  .ft__name {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000;
+    line-height: 1.35;
+    letter-spacing: -0.12px;
+  }
+  .ft__price {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    margin-top: 15px;
+    line-height: 1.5;
+  }
+
+  /* Checkbox — top-right corner */
+  .ft__checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+  .ft__checkmark {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid #999;
+    border-radius: 4px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .ft__checkmark::after { content: ''; display: block; width: 5px; height: 10px; border: 2px solid #fff; border-top: none; border-left: none; transform: rotate(45deg) translate(-1px,-1px); opacity: 0; transition: opacity 0.15s ease; }
+  .ft__checkbox:checked ~ .ft__checkmark {
+    background: #000;
+    border-color: #000;
+  }
+  .ft__checkbox:checked ~ .ft__checkmark::after {
+    opacity: 1;
+  }
+
+  /* SELECT ITEMS button */
+  .ft__btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 11px 24px;
+    background: transparent;
+    border: 1px solid #6B6B6B;
+    border-radius: 50px;
+    font-size: 13.9px;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    line-height: 1;
+    color: #6B6B6B;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    text-align: center;
+  }
+  .ft__btn:hover {
+    background: #f5f5f5;
+    border-color: #aaa;
+  }
+  .ft__btn:disabled {
+    opacity: 0.45;
+    cursor: default;
+  }
+  .ft__btn--loading {
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+   @media (max-width: 899px) {
+      .ft {margin-top: 30px; }
+    .ft__heading { margin-bottom: 16px !important; }
+  .ft__grid { grid-template-columns: 1fr;gap:16px;}
+  .ft__btn { margin-top: 16px;   }
+  }
+</style>
+
+<div class="ft" data-formulation-tool data-block-id="{{ block.id }}">
+
+  {% if block.settings.heading != blank %}
+    <p class="ft__heading">{{ block.settings.heading }}</p>
+  {% endif %}
+
+  {% if block.settings.products != blank %}
+
+    <div class="ft__grid">
+
+      {% for ft_product in block.settings.products %}
+
+        {%- assign ft_variant = ft_product.selected_or_first_available_variant -%}
+        {%- assign ft_available = ft_variant.available -%}
+
+        <label
+          class="ft__card{% unless ft_available %} ft__card--disabled{% endunless %}"
+          for="ft-{{ block.id }}-{{ forloop.index }}"
+          aria-label="{{ ft_product.title | escape }}"
+        >
+          <div class="ft__card-inner">
+
+            <div class="ft__img-wrap">
+              {% if ft_product.featured_image %}
+                <img
+                  src="{{ ft_product.featured_image | image_url: width: 120 }}"
+                  alt="{{ ft_product.featured_image.alt | default: ft_product.title | escape }}"
+                  width="56"
+                  height="70"
+                  loading="lazy"
+                  class="ft__img"
+                >
+              {% endif %}
+            </div>
+
+            <div class="ft__info">
+              {%- comment -%}
+                Category label = product.type set in Shopify admin.
+                e.g. product type "Shampoo" → displays as "SHAMPOO"
+              {%- endcomment -%}
+              {% if ft_product.type != blank %}
+                <span class="ft__category">{{ ft_product.type }}</span>
+              {% endif %}
+              <span class="ft__name">{{ ft_product.title }}</span>
+              <span class="ft__price">{{ ft_variant.price | money }}</span>
+            </div>
+
+          </div>
+
+          <input
+            type="checkbox"
+            id="ft-{{ block.id }}-{{ forloop.index }}"
+            class="ft__checkbox"
+            value="{{ ft_variant.id }}"
+            data-ft-checkbox
+            {% unless ft_available %}
+              disabled
+            {% endunless %}
+          >
+          <span class="ft__checkmark" aria-hidden="true"></span>
+
+        </label>
+
+      {% endfor %}
+
+    </div>
+
+  {% endif %}
+
+  <button
+    type="button"
+    class="ft__btn"
+    data-ft-btn
+    disabled
+  >
+    {{ block.settings.button_label | default: 'SELECT ITEMS' }}
+  </button>
+
+</div>
+
+<script>
+(function () {
+
+  const root = document.querySelector(
+    '[data-formulation-tool][data-block-id="{{ block.id }}"]'
+  );
+
+  if (!root) return;
+
+  const checkboxes = root.querySelectorAll('[data-ft-checkbox]');
+  const btn = root.querySelector('[data-ft-btn]');
+  const defaultLabel = btn.textContent.trim();
+
+  /* ---------------------------
+     Enable / Disable button
+  --------------------------- */
+
+  function updateBtn() {
+    const hasSelection = [...checkboxes].some(cb => cb.checked);
+    btn.disabled = !hasSelection;
+  }
+
+  checkboxes.forEach(cb => {
+    cb.addEventListener('change', updateBtn);
+  });
+
+  updateBtn();
+
+  function getCartSections() {
+    const cartDrawer = document.querySelector('cart-drawer');
+
+    if (cartDrawer && typeof cartDrawer.getSectionsToRender === 'function') {
+      return cartDrawer.getSectionsToRender().map(section => section.id);
+    }
+
+    return ['cart-drawer', 'cart-icon-bubble'];
+  }
+
+  function updateSection(id, html, selector = '.shopify-section') {
+    const target = document.getElementById(id);
+
+    if (!target || !html) return;
+
+    const parsed = new DOMParser()
+      .parseFromString(html, 'text/html')
+      .querySelector(selector);
+
+    if (parsed) {
+      target.innerHTML = parsed.innerHTML;
+    }
+  }
+
+  function updateCartUi(responseData) {
+    const cartDrawer = document.querySelector('cart-drawer');
+
+    if (
+      cartDrawer &&
+      cartDrawer.dataset.cartType === 'drawer' &&
+      typeof cartDrawer.renderContents === 'function' &&
+      responseData.sections
+    ) {
+      const isClosedCart = !document.body.classList.contains('page-overlay-cart-on');
+
+      cartDrawer.classList.remove('is-empty');
+      cartDrawer.renderContents(responseData, isClosedCart);
+      return;
+    }
+
+    if (responseData.sections) {
+      updateSection('cart-icon-bubble', responseData.sections['cart-icon-bubble']);
+    }
+
+    if (typeof publish === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
+      publish(PUB_SUB_EVENTS.cartUpdate, {
+        source: 'formulation-tool',
+        cartData: responseData
+      });
+    }
+  }
+
+  /* ---------------------------
+     Add selected products
+  --------------------------- */
+
+  btn.addEventListener('click', async function () {
+
+    const selected = [...checkboxes]
+      .filter(cb => cb.checked)
+      .map(cb => ({
+        id: Number(cb.value),
+        quantity: 1
+      }));
+
+    if (!selected.length) return;
+
+    btn.disabled = true;
+    btn.classList.add('ft__btn--loading');
+    btn.textContent = 'ADDING...';
+
+    try {
+
+      const cartAddUrl =
+        window.routes && window.routes.cart_add_url
+          ? window.routes.cart_add_url
+          : '/cart/add.js';
+
+      const response = await fetch(cartAddUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          items: selected,
+          sections: getCartSections(),
+          sections_url: window.location.pathname
+        })
+      });
+
+      const responseData = await response.json();
+
+      if (!response.ok || responseData.status) {
+        throw new Error(
+          responseData.description ||
+          responseData.message ||
+          'Unable to add items'
+        );
+      }
+
+      try {
+        updateCartUi(responseData);
+      } catch (cartUiError) {
+        console.warn('Formulation Tool cart UI update skipped:', cartUiError);
+      }
+
+      /* Reset selections */
+
+      checkboxes.forEach(cb => {
+        cb.checked = false;
+      });
+
+      updateBtn();
+
+      btn.textContent = defaultLabel;
+
+    } catch (error) {
+
+      console.error('Formulation Tool Error:', error);
+
+      btn.textContent =
+        error.message || 'Error - Try Again';
+
+      setTimeout(() => {
+        btn.textContent = defaultLabel;
+        updateBtn();
+      }, 2000);
+
+    } finally {
+
+      btn.classList.remove('ft__btn--loading');
+
+      if (![...checkboxes].some(cb => cb.checked)) {
+        btn.disabled = true;
+      }
+
+    }
+
+  });
+
+})();
+</script>
+{% endif %}
