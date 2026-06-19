@@ -1172,13 +1172,7 @@ button[disabled],
 @media (min-width: 1200px) {
   .card__container {
     padding: 60px 16px 16px;
-  }
-  .card__container .wt-rating {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    margin: 0;
-  }
+  }   
 }
 .card__picture {
   position: relative;

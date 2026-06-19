@@ -4212,7 +4212,7 @@ mega-menu-section {
   }
 }
 .wt-header__body .wt-drawer-search .wt-header__search__close {
-  padding: calc(var(--gap, 8px) * 0.5);
+  padding: 0;
   background: none;
   color: inherit;
 }
@@ -4268,7 +4268,7 @@ mega-menu-section {
 }
 .search-overlay-on .wt-header__search__body {
   /* max-width: var(--site-max-width); */
-  max-width: 1232px;
+  max-width: 1440px;
   padding-left: calc(var(--gap, 8px) * 2);
   padding-right: calc(var(--gap, 8px) * 2);
   margin-left: auto;

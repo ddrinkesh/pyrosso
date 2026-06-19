@@ -18,7 +18,14 @@
           "type": "menu",
           "settings": {
             "heading_links": "Navigate",
-            "links": "navigate"
+            "links": "footer-navigate"
+          }
+        },
+        "menu_DzCNd6": {
+          "type": "menu",
+          "settings": {
+            "heading_links": "INFORMATION",
+            "links": "information"
           }
         },
         "social_menu_eYPrxC": {
@@ -27,29 +34,29 @@
             "heading_links": "Socials"
           }
         },
-        "menu_DzCNd6": {
-          "type": "menu",
-          "settings": {
-            "heading_links": "Legal",
-            "links": "legal"
-          }
-        },
         "text_DY7pny": {
           "type": "text",
           "settings": {
-            "heading_text": "Contact",
-            "text": "<p>PR + Wholesale inquiry:<br/><a href=\"mailto:sales@pyrsso.com\" title=\"mailto:sales@pyrsso.com\">Sales@pyrsso.com</a></p><p>Customer Service:<br/><a href=\"mailto:info@pyrosso.com\" title=\"mailto:info@pyrosso.com\">info@pyrosso.com</a></p>"
+            "heading_text": "HELP",
+            "text": "<p>Customer Service:<br/><a href=\"mailto:info@pyrosso.com\" title=\"mailto:info@pyrosso.com\">info@pyrosso.com</a></p><p>PR + Wholesale inquiry:<br/><a href=\"mailto:Sales@pyrsso.com\" title=\"mailto:Sales@pyrsso.com\">Sales@pyrsso.com</a></p>"
           }
         }
       },
       "block_order": [
         "menu_TyWCqJ",
-        "social_menu_eYPrxC",
         "menu_DzCNd6",
+        "social_menu_eYPrxC",
         "text_DY7pny"
       ],
       "settings": {
         "show-scroll-effect": false,
+        "heading_newsletter": "Don't miss out on David updates.",
+        "enable_sms": true,
+        "email_tab_label": "Email",
+        "sms_tab_label": "SMS",
+        "email_placeholder": "Enter your email.",
+        "sms_placeholder": "Enter your phone number.",
+        "disclaimer_text": "<p>*By completing this form you are signing up to receive our marketing and can unsubscribe at any time.</p>",
         "show-social-media-icons": false,
         "show_country_selector": false,
         "show_country_selector_label": false,
@@ -60,6 +67,7 @@
         "payment_icons_monochrome": false,
         "show-copyright": true,
         "text": "© 2026 Pyrosso. All Rights Reserved.",
+        "footer_logo": "shopify://shop_images/logo.svg",
         "big-logo-width": 100,
         "margin-top": 56,
         "margin-bottom": 8

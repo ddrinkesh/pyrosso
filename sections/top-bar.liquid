@@ -13,48 +13,46 @@
     <script type="module" src="{{ 'slider.js' | asset_url }}" defer="defer"></script>
 
     <div data-swiper class="top-bar loading">
-      <div class="hero__wrapper">
-         <div data-swiper-container class="swiper top-bar__swiper">
-            <div class="swiper-wrapper">
-              {%- for block in section.blocks -%}
-                {%- if block.type == 'item' -%}
-                  <div
-                    data-swiper-slide
-                    class="swiper-slide top-bar__slide"
-                    {{ block.shopify_attributes }}
-                  >
-                    {%- if block.settings.link != blank -%}
-                      <a class="top-bar__link" href="{{ block.settings.link }}">
-                        {{- block.settings.text | escape -}}
-                      </a>
-                    {%- else -%}
-                      <span>{{- block.settings.text | escape -}}</span>
-                    {%- endif -%}
-                  </div>
-                {%- endif -%}
-              {%- endfor -%}
+      <div data-swiper-container class="top-bar__swiper">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'item' -%}
+            <div
+              data-swiper-slide
+              class="top-bar__slide"
+              {{ block.shopify_attributes }}
+            >
+              {%- if block.settings.link != blank -%}
+                <a class="top-bar__link" href="{{ block.settings.link }}">
+                  {{- block.settings.text | escape -}}
+                </a>
+              {%- else -%}
+                <span>{{- block.settings.text | escape -}}</span>
+              {%- endif -%}
             </div>
-          </div>
-        </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
     </div>
 
     <script data-swiper-configuration type="text/json">
       {
-        "slidesPerView": 1,
-        "slidesPerGroup": 1,
-        "loop": true,
+        "slidesPerView": 2,          
+        "loop": false,
         "speed": 600,
-        "spaceBetween": 0,
-        "watchSlidesProgress": true,
+        "spaceBetween": 0,       
         "autoplay": {
           "delay": {{ section.settings.autoplay_delay }},
           "disableOnInteraction": false,
           "pauseOnMouseEnter": true
         },
         "breakpoints": {
+          "0": {
+            "slidesPerView": 1,          
+            "spaceBetween": 0,
+            "centeredSlides": true
+          },
           "750": {
             "slidesPerView": 3,
-            "slidesPerGroup": 1,
             "spaceBetween": 0
           }
         }

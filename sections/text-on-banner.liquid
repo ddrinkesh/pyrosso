@@ -1,0 +1,198 @@
+{{ 'text-on-banner.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="tob-section {% if settings.animations %} scroll-trigger animate--slide-in {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}{% endif %}"
+  data-section-id="{{ section.id }}"
+  style="
+    --tob-gap-top: {{ section.settings.margin_top }}px;
+    --tob-gap-bottom: {{ section.settings.margin_bottom }}px;
+    --tob-heading-color: {{ section.settings.heading_color }};
+    --tob-text-color: {{ section.settings.text_color }};
+    --tob-btn-bg: {{ section.settings.button_bg }};
+    --tob-btn-text: {{ section.settings.button_text_color }};
+    --tob-btn-border: {{ section.settings.button_border_color }};
+    --tob-btn-bg-hover: {{ section.settings.button_bg_hover }};
+    --tob-btn-text-hover: {{ section.settings.button_text_hover }};
+  "
+>
+  <div class="tob-banner">
+    {%- if section.settings.desktop_image != blank or section.settings.mobile_image != blank -%}
+      <picture>
+        {%- if section.settings.mobile_image != blank -%}
+          <source
+            media="(max-width: 749px)"
+            srcset="{{ section.settings.mobile_image | image_url: width: 900 }}"
+          >
+        {%- endif -%}
+        <img
+          src="{{ section.settings.desktop_image | image_url: width: 1600 }}"
+          srcset="
+            {{ section.settings.desktop_image | image_url: width: 800 }} 800w,
+            {{ section.settings.desktop_image | image_url: width: 1200 }} 1200w,
+            {{ section.settings.desktop_image | image_url: width: 1600 }} 1600w,
+            {{ section.settings.desktop_image | image_url: width: 2000 }} 2000w
+          "
+          sizes="100vw"
+          alt="{{ section.settings.desktop_image.alt | escape }}"
+          class="tob-image"
+          loading="lazy"
+          width="{{ section.settings.desktop_image.width }}"
+          height="{{ section.settings.desktop_image.height }}"
+        >
+      </picture>
+    {%- else -%}
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'tob-image tob-image--placeholder' }}
+    {%- endif -%}
+
+    <div class="content-box-wrapper">
+    <div class="tob-text">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="tob-heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="tob-subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.button_label != blank -%}
+      <a
+        class="tob-button"
+        {% if section.settings.button_link != blank %}href="{{ section.settings.button_link }}"{% else %}href="#"{% endif %}
+      >
+        {{ section.settings.button_label | escape }}
+      </a>
+    {%- endif -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Text on Banner",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Kendall's Everyday Glow Essential"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Discover the secret behind Kendall's effortless daily glow."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "THE FULL REVIEW"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#0d0d0d"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Subheading color",
+      "default": "#8c8c8c"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button border",
+      "default": "#1c1c1c"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_hover",
+      "label": "Button background (hover)",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "button_text_hover",
+      "label": "Button text (hover)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "label": "Top spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px",
+      "label": "Bottom spacing"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text on Banner",
+      "category": "Image"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}
