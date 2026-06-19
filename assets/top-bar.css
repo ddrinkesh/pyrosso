@@ -11,6 +11,7 @@
 
 @media (max-width: 749px) {
 
+  .top-bar-wrapper { opacity: 1 !important; z-index: 99; }
   .top-bar-wrapper .top-bar__slide { font-size: 10px; font-weight: 700; line-height: 130%; letter-spacing: -0.2px; white-space: normal; padding: 8px 0; }
   
   .top-bar-wrapper .top-bar__slide { min-height: auto; }
