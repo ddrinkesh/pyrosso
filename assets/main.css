@@ -5816,8 +5816,8 @@ body .wt-filter__close.wt-filter__close {
   body.page-overlay-cart-on > cart-drawer {
     opacity: 1;
   }
-   .collection .collection__grid[data-cols-desktop="3"]{--cols: 1;}
-  .collection .collection__grid[data-cols-desktop="2"]{--cols: 2;}
+   .collection .collection__grid[data-cols="3"]{--cols: 1;}
+  .collection .collection__grid[data-cols="2"]{--cols: 2;}
 }
 
 .wt-cart__list {
