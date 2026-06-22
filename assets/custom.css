@@ -176,9 +176,9 @@ body:has(
   letter-spacing: 0;
   padding: 4px 8px;
 }
-.wt-page-nav-mega__sublist__wrapper .card__container .product-card-content {
+/* .wt-page-nav-mega__sublist__wrapper .card__container .product-card-content {
   margin-top: 22px;
-}
+} */
 .wt-page-nav-mega__sublist__wrapper .card__container .card__title {
   font-size: 15px;
   letter-spacing: 0;
