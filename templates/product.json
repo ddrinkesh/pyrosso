@@ -201,8 +201,8 @@
         "show-scrollbar-mobile": false,
         "text_color": "#000000",
         "background_color": "#ffffff",
-        "margin-top": 0,
-        "margin-bottom": 0
+        "margin-top": 32,
+        "margin-bottom": 32
       }
     },
     "background_video_axipNV": {
@@ -243,7 +243,7 @@
         "mobile_text_vertical_position": "center",
         "mobile_text_horizontal_position": "center",
         "margin-top": 16,
-        "margin-bottom": 16,
+        "margin-bottom": 8,
         "margin-top-mobile": 8,
         "margin-bottom-mobile": 8
       }

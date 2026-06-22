@@ -84,7 +84,6 @@
       "settings": {
         "bg_color": "#000000",
         "text_color": "#ffffff",
-        "font_size": 12
         "font_size": 12,
         "autoplay_delay": 3000
       }
