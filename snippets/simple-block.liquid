@@ -1,5 +1,7 @@
 {% if blocks %}
+  {%- assign has_button_block = false -%}
   {%- for block in blocks -%}
+    {%- if block.type == 'button' -%}{%- assign has_button_block = true -%}{%- endif -%}
     {%- case block.type -%}
       {%- when 'subheading' -%}
         {% if block.settings.subheading %}
@@ -125,6 +127,11 @@
         {% endif %}
       {%- when 'button' -%}
         <div class="hero__button--gap {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}">
+          {% if show_inline_play_button %}
+            <div data-inline-play-button class="hero__inline-play-button">
+              {% render 'play-pause-button' %}
+            </div>
+          {% endif %}
           {% if block.settings.button_link and block.settings.button_label != blank %}
             <a
               href="{{ block.settings.button_link }}"
@@ -226,6 +233,13 @@
         %}
     {%- endcase -%}
   {%- endfor -%}
+  {%- if show_inline_play_button and has_button_block == false -%}
+    <div class="hero__button--gap hero__button--gap--play-only">
+      <div data-inline-play-button class="hero__inline-play-button">
+        {% render 'play-pause-button' %}
+      </div>
+    </div>
+  {%- endif -%}
   {{ 'simple-block.css' | asset_url | stylesheet_tag }}
 {% else %}
   {% if title %}

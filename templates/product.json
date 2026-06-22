@@ -229,6 +229,7 @@
         "autoplay": false,
         "video_controls": false,
         "video_custom_play_controls": true,
+        "play_button_position": "next_to_text",
         "video_custom_mute_controls": false,
         "video_url": "",
         "original_ratio": "fixed_height",
