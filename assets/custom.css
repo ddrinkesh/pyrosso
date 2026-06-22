@@ -134,6 +134,88 @@ body:has(
   }
 }
 
+/* MEGA-MENU — collections (Figma 2119:5173) */
+/* Tabs */
+.wt-page-nav-mega__sublist__wrapper .mega-tabs { display:flex; justify-content:center; align-items:center; gap:80px; padding:36px 16px; margin:0; }
+.wt-page-nav-mega__sublist__wrapper .mega-tab { font-size:18px; font-weight:600; line-height:1.5; letter-spacing:-0.09px; padding:0; background:transparent; color:#BFBFBF; border:0; cursor:pointer; text-transform:uppercase; }
+.wt-page-nav-mega__sublist__wrapper .mega-tab:is(.active, :hover) { color:#fff; }
+
+/* Cards row: 4 × 176.5px, gap 8, centered */
+.wt-page-nav-mega__sublist__wrapper .mega-products-grid { display:grid; grid-template-columns:repeat(4, 176.5px); gap:8px; justify-content:center; }
+.wt-page-nav-mega__sublist__wrapper .mega-products-grid .card__container { padding:0; background:transparent; border-radius:0; }
+
+/* Media: 176.5×243 box, #0d0d0d, image cover, white-border pill top-left */
+.wt-page-nav-mega__sublist__wrapper .card__picture-container { position:relative; aspect-ratio:176.5 / 243; background:#0d0d0d; overflow:hidden; }
+.wt-page-nav-mega__sublist__wrapper .card__img { width:100%; height:100%; object-fit:cover; border-radius:0; }
+.wt-page-nav-mega__sublist__wrapper .card__badges { top:8px; left:8px; right:auto; }
+.wt-page-nav-mega__sublist__wrapper .card__badges--item { background:transparent !important; border:1px solid #fff !important; color:#fff !important; font-size:8px; line-height:1.3; letter-spacing:-0.16px; padding:3px 6px; border-radius:10.8px; }
+
+/* Hide price + quick-add (not in Figma) */
+.wt-page-nav-mega__sublist__wrapper .card__price,
+.wt-page-nav-mega__sublist__wrapper .card__quick-add-container,
+.wt-page-nav-mega__sublist__wrapper .card__quick-add-container--desktop,
+.wt-page-nav-mega__sublist__wrapper .wt-product__add-to-cart { display:none !important; }
+
+/* No hover-slide in mega cards (Figma: title always visible, no add-to-cart) */
+.wt-page-nav-mega__sublist__wrapper .card__container:hover .product-card-content { transform:none; opacity:1; user-select:auto; }
+
+/* Text: title 13px white, type/subtitle 10px grey, left-aligned */
+.wt-page-nav-mega__sublist__wrapper .product-card-content { margin-top:16px; text-align:left; align-items:flex-start; }
+.wt-page-nav-mega__sublist__wrapper .card__title { margin:0; }
+.wt-page-nav-mega__sublist__wrapper .card__title a { font-size:13px; font-weight:600; line-height:1.5; letter-spacing:-0.065px; color:#fff; text-transform:uppercase; text-decoration:none; }
+.wt-page-nav-mega__sublist__wrapper :is(.card__product-type, .card__subtitle) { font-size:10px; font-weight:400; line-height:1.3; letter-spacing:-0.2px; color:#BFBFBF; margin:4.7px 0 0; padding:0; }
+
+/* View collection button */
+.wt-page-nav-mega__sublist__wrapper .mega-shop-btn-wrap { text-align:center; padding:32px 10px; margin:0; }
+.wt-page-nav-mega__sublist__wrapper .mega-shop-btn { display:inline-flex; align-items:center; justify-content:center; background:#000; border:1px solid #fff; opacity:0.75; border-radius:50px; padding:12px 25px; min-height:0; font-size:13.9px; line-height:14px; font-weight:400; letter-spacing:0; color:#fff; text-transform:uppercase; }
+.wt-page-nav-mega__sublist__wrapper .mega-shop-btn:hover { opacity:1; background:#000; color:#fff; }
+
+/* === MEGA-MENU mobile drawer — product rows (Figma 2120:5343) === */
+/* Tabs: full-width spread, 13px */
+.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .mega-tabs { gap:0; justify-content:space-between; padding:16px 16px 28px; }
+.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .mega-tab { font-size:13px; letter-spacing:-0.065px; }
+
+/* Products: stacked rows (image | text | pill) */
+.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .mega-products-grid { display:flex; flex-direction:column; gap:8px; }
+.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .mega-products-grid .card__container { display:flex; flex-direction:row; align-items:center; gap:10px; background:#0d0d0d; padding:0 16px; border-radius:0; position:relative; overflow:hidden; }
+.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .card__picture-container { order:1; flex:0 0 75px; width:75px; height:90px; aspect-ratio:auto; background:transparent; }
+.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .product-card-content { order:2; flex:1 1 auto; min-width:0; margin:0; padding:8px 0; }
+.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .card__title a { font-size:13px; }
+.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper :is(.card__product-type, .card__subtitle) { font-size:12px; letter-spacing:-0.12px; line-height:1.35; }
+/* Badge → right-side bordered pill, in flow */
+.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .card__badges { order:3; position:static; top:auto; left:auto; right:auto; display:flex; align-items:center; align-self:baseline; flex:0 0 auto; margin-left:auto; }
+.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .card__badges--item { font-size:10px; letter-spacing:-0.2px; padding:3px 8px; border-radius:10px; }
+
+/* View collection: full-width pill */
+.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .mega-shop-btn-wrap { padding:24px 16px; }
+.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .mega-shop-btn { width:100%; height:38px; padding:12px 25px; }
+
+/* Top-level menu links (ABOUT / COMMUNITY / … ) — 13px uppercase, px-16, 24 gap, no dividers */
+.wt-drawer--nav .wt-page-nav-mega__item:not(:last-child)::after { display:none; }
+.wt-drawer--nav .wt-page-nav-mega__item { padding:12px 0; }
+.wt-drawer--nav .wt-page-nav-mega__link { padding:0 16px; }
+.wt-drawer--nav .wt-page-nav-mega__link__text { font-size:13px; font-weight:600; line-height:1.5; letter-spacing:-0.065px; text-transform:uppercase; }
+
+/* Drawer footer (Figma 2119:5092) — hide login, Country/Region row (left-aligned) */
+.wt-drawer--nav .wt-page-nav-mega__login { display:none; }
+.wt-drawer--nav .wt-page-nav-mega__aside { background:transparent; padding:0; margin-top:auto; }
+.wt-drawer--nav .wt-page-nav-mega__aside-list { text-align:left; }
+.wt-drawer--nav .wt-page-nav-mega__country { display:flex; justify-content:flex-start; border-top:1px solid #6B6B6B; padding:16px; text-align:left; }
+.wt-drawer--nav .wt-country-trigger { display:flex; align-items:center; justify-content:flex-start; gap:16px; width:100%; background:none; border:0; padding:0; cursor:pointer; text-align:left; }
+.wt-drawer--nav .wt-country-trigger__label { color:#fff; font-size:12px; font-weight:400; line-height:1.35; letter-spacing:-0.12px; }
+.wt-drawer--nav .wt-country-trigger__value { color:#fff; font-size:12px; font-weight:700; line-height:1.35; letter-spacing:-0.12px; }
+.wt-drawer--nav .wt-country-trigger .svg-icon { --size-icon:6px; --size-icon-desk:6px; width:6px; height:6px; min-width:6px; color:#fff; }
+
+/* Mobile menu open — keep header bar (hamburger) visible above the drawer */
+@media (max-width: 1199px) {
+  body.menu-open #header { position:sticky; top:0; z-index:101; }
+}
+
+/* Drawer starts below the header (offset kept in sync by JS: --wt-drawer-top) */
+.wt-drawer--nav { top: var(--wt-drawer-top, 0px); height: calc(100% - var(--wt-drawer-top, 0px)); }
+
+/* Open mega parent: hide its label link (tabs take its place); closed megas keep their link */
+.wt-drawer--nav .wt-page-nav-mega__link--parent.submenu-opened { display:none; }
 /* MEGA-MENU */
 .wt-page-nav-mega__sublist__wrapper .mega-tabs {
   display: flex;
@@ -1896,6 +1978,18 @@ custom-select.collection__sort .wt-options__list__item[selected] {
   }
 }
 
+
+
+/* NEW CSS */
+
+
+@media (max-width: 750px) {
+
+    .wt-page-nav-mega { padding-top: 0; }
+    .wt-page-nav-mega .wt-page-nav-mega__sublist { margin: 0 !important; }
+    .wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .mega-tabs { padding-top: 0; }
+
+}
 .wt-product__main .wt-product__name {
   margin-bottom: 16px;
 }
@@ -2004,3 +2098,80 @@ custom-select.collection__sort .wt-options__list__item[selected] {
 
 .section-image-with-text .hero,
 .section-image-with-text .image-with-text-50 .hero--grid>* { border-radius:0; }
+
+/* ============================================================
+   Background-video section: Play button position options
+   ============================================================ */
+
+/* --- Option 1: bottom_of_video (default) -------------------
+   Uses existing .shoppable-video__control-button absolute positioning.
+   No extra CSS needed. */
+.background-video-section .shoppable-video__control-button {
+  display: flex;
+}
+
+/* --- Option 2: next_to_text --------------------------------
+   The [data-inline-play-button] wrapper sits inside .hero__button--gap
+   as a flex sibling of any CTA buttons. Strip absolute positioning and
+   display inline so it flows naturally with the text. */
+
+/* Make hero__button--gap a flex row so play icon + CTAs sit side-by-side */
+.background-video-section .hero__button--gap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Inline wrapper */
+.hero__inline-play-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Override absolute positioning — make button static and match Option 1 visually */
+[data-inline-play-button] .shoppable-video__control-button {
+  position: static !important;
+  top: auto !important;
+  bottom: auto !important;
+  right: auto !important;
+  left: auto !important;
+  /* Exact same size, bg, blur as the default bottom-of-video button */
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #00000050;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  border: none;
+  flex-shrink: 0;
+}
+
+/* Match icon sizes to the default button */
+[data-inline-play-button] .shoppable-video__icon-play,
+[data-inline-play-button] .shoppable-video__icon-play svg {
+  width: 20px;
+  height: 20px;
+}
+
+[data-inline-play-button] .shoppable-video__icon-pause,
+[data-inline-play-button] .shoppable-video__icon-pause svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Mobile: match the responsive override from section-shoppable-video.css */
+@media (max-width: 1199px) {
+  [data-inline-play-button] .shoppable-video__control-button {
+    width: 40px;
+    height: 40px;
+  }
+  [data-inline-play-button] .shoppable-video__icon-pause,
+  [data-inline-play-button] .shoppable-video__icon-pause svg {
+    width: 24px;
+    height: 24px;
+  }
+}
