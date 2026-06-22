@@ -25,15 +25,15 @@
 /* === Card overrides — scoped to .iwp-section only === */
 
 /* Card container: dark bg, no padding (image fills from top edge) */
-.iwp-section .card__container { padding: 0; background: #0d0d0d; overflow: hidden; position: relative; border-radius: 0; }
-.iwp-section .card__picture-container { overflow: hidden; }
+.iwp-section .card__container { padding: 0; overflow: hidden; position: relative; border-radius: 0;background: transparent; }
+.iwp-section .card__picture-container { overflow: hidden; padding: 0 10px; }
 
 /* Image: portrait ratio ~335:430, edge-to-edge, no radius */
 .iwp-section .card__img { border-radius: 0; aspect-ratio: 335/430; object-fit: cover; width: 100%; }
 .iwp-section .card__badges { display: none; }
 
 /* Quick-add: always visible, white circle 42px at top-right of image (Figma: p-[10px] from image edge) */
-.iwp-section .card__quick-add-container--desktop { position: absolute; top: 10px; right: 10px; bottom: auto; width: 42px; height: 42px; opacity: 1 !important; transform: none !important; pointer-events: auto !important; z-index: 2; }
+.iwp-section .card__quick-add-container--desktop { position: absolute; top: 10px; right: 2cqh; bottom: auto; width: 42px; height: 42px; opacity: 1 !important; transform: none !important; pointer-events: auto !important; z-index: 2; }
 .iwp-section .card__quick-add-container--desktop .hero__button,
 .iwp-section .card__quick-add-container--desktop button { background: #ffffff !important; color: transparent !important; border: none !important; border-radius: 50% !important; width: 42px !important; height: 42px !important; min-width: unset !important; min-height: unset !important; max-width: unset !important; padding: 0 !important; font-size: 0 !important; line-height: 0 !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer; position: relative; overflow: hidden !important; }
 .iwp-section .card__quick-add-container--desktop .quick-add-desktop { display: none !important; }
@@ -43,12 +43,12 @@
 .iwp-section .card__quick-add-container--desktop button::after { content: ''; display: block; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28.5 28.5' fill='none'%3E%3Cpath d='M11.2074 11.1213V10.1092C11.2074 9.30386 11.5273 8.53153 12.0967 7.96209C12.6662 7.39265 13.4385 7.07274 14.2438 7.07274C15.0491 7.07274 15.8215 7.39265 16.3909 7.96209C16.9604 8.53153 17.2803 9.30386 17.2803 10.1092V11.1213M9.35179 11.1213C9.21757 11.1213 9.08885 11.1746 8.99394 11.2695C8.89903 11.3645 8.84571 11.4932 8.84571 11.6274L8.17095 18.4594C8.17095 19.4162 8.98539 20.2306 9.94221 20.2306H18.5454C19.5023 20.2306 20.3167 19.4553 20.3167 18.4992L19.6419 11.6274C19.6419 11.4932 19.5886 11.3645 19.4937 11.2695C19.3988 11.1746 19.2701 11.1213 19.1359 11.1213H9.35179Z' stroke='%23000000' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; background-size: 42px 42px; }
 
 /* Rating: in text flow above title, not absolute (Figma: 14px stars, pb-[15px] gap to title) */
-.iwp-section .card__container .wt-rating { position: static !important; top: auto !important; left: auto !important; background: #0d0d0d; padding: 16px 20px 0; margin: 0 0 15px; }
+.iwp-section .card__container .wt-rating { position: static !important; top: auto !important; left: auto !important; background: transparent; padding: 16px 20px 0; margin: 0 0 15px; }
 .iwp-section .card__container .wt-rating__star, .iwp-section .card__container .wt-rating__star-fill { font-size: 14px !important; }
 .iwp-section .card__container .wt-rating__counter { color: #bfbfbf; font-size: 11px; }
 
 /* Text area: Figma pl-[20px] pb-[20px] pt-[16px] */
-.iwp-section .product-card-content { display: flex; flex-wrap: wrap; align-items: baseline; padding: 16px 20px 20px; background: #0d0d0d; gap: 0; }
+.iwp-section .product-card-content { display: flex; flex-wrap: wrap; align-items: baseline; padding: 16px 20px 20px; background: transparent; gap: 0; }
 /* When rating above provides the 16px top spacing, remove duplicate */
 .iwp-section .card__container:has(.wt-rating) .product-card-content { padding-top: 0; }
 
@@ -71,6 +71,10 @@
 /* Prevent global hover-hide (custom.css:124) from affecting this section */
 .iwp-section .card__container:hover .product-card-content { transform: none !important; opacity: 1 !important; user-select: auto !important; }
 
+.iwp-section .card__container .card__picture { background: #0D0D0D; padding: 15px; }
+
+
+
 /* === Mobile (Figma 309:10568) — placed last so it overrides base card rules above === */
 @media (max-width: 749px) {
   /* Stack: square image on top (16px padding), products below */
@@ -87,8 +91,10 @@
   /* Card image: h-243 (aspect ~176/243), p-10 button offset */
   .iwp-section .card__img { aspect-ratio: 176/243; }
 
+  .iwp-section .card__picture-container { padding: 0; }
+  
   /* Button: 26px white circle, 10px from image edge */
-  .iwp-section .card__quick-add-container--desktop { top: 10px; right: 10px; width: 26px; height: 26px; }
+  .iwp-section .card__quick-add-container--desktop { top: 10px; right: 20px; width: 26px; height: 26px; }
   .iwp-section .card__quick-add-container--desktop .hero__button,
   .iwp-section .card__quick-add-container--desktop button { width: 26px !important; height: 26px !important; }
   .iwp-section .card__quick-add-container--desktop button::after { background-size: 26px 26px; }

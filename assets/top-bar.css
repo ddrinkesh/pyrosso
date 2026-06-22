@@ -9,7 +9,11 @@
 .top-bar-wrapper .top-bar__link:hover { opacity: 0.7; }
 
 
-@media (max-width: 749px) {
+/* Mobile top-bar treatment spans the whole mobile-nav range (drawer is active
+   up to 1199px). opacity:1 !important keeps it visible above the open drawer,
+   overriding the theme's menu-open opacity:0 hide; z-index 99 sits below the
+   header (101) so the bar stays pinned at top while the drawer slides in below. */
+@media (max-width: 1199px) {
 
   .top-bar-wrapper { opacity: 1 !important; z-index: 99; }
   .top-bar-wrapper .top-bar__slide { font-size: 10px; font-weight: 700; line-height: 130%; letter-spacing: -0.2px; white-space: normal; padding: 8px 0; }

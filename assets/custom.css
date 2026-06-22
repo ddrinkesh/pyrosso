@@ -176,14 +176,14 @@ body:has(
 .wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .mega-tab { font-size:13px; letter-spacing:-0.065px; }
 
 /* Products: stacked rows (image | text | pill) */
-.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .mega-products-grid { display:flex; flex-direction:column; gap:8px; }
-.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .mega-products-grid .card__container { display:flex; flex-direction:row; align-items:center; gap:10px; background:#0d0d0d; padding:0 16px; border-radius:0; position:relative; overflow:hidden; }
+.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .mega-products-grid { display:flex; flex-direction:column; gap:8px; padding: 0 16px; }
+.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .mega-products-grid .card__container { display:flex; flex-direction:row; align-items:center; gap:10px;  padding:0 16px; border-radius:0; position:relative; overflow:hidden; background: #0d0d0d; }
 .wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .card__picture-container { order:1; flex:0 0 75px; width:75px; height:90px; aspect-ratio:auto; background:transparent; }
 .wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .product-card-content { order:2; flex:1 1 auto; min-width:0; margin:0; padding:8px 0; }
 .wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .card__title a { font-size:13px; }
 .wt-drawer--nav .wt-page-nav-mega__sublist__wrapper :is(.card__product-type, .card__subtitle) { font-size:12px; letter-spacing:-0.12px; line-height:1.35; }
 /* Badge → right-side bordered pill, in flow */
-.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .card__badges { order:3; position:static; top:auto; left:auto; right:auto; display:flex; align-items:center; align-self:baseline; flex:0 0 auto; margin-left:auto; }
+.wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .card__badges { order:3; position:absolute; top:auto; left:auto; right:auto; display:flex; align-items:center; align-self:baseline; flex:0 0 auto; margin-left:auto; }
 .wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .card__badges--item { font-size:10px; letter-spacing:-0.2px; padding:3px 8px; border-radius:10px; }
 
 /* View collection: full-width pill */
@@ -209,6 +209,21 @@ body:has(
 /* Mobile menu open — keep header bar (hamburger) visible above the drawer */
 @media (max-width: 1199px) {
   body.menu-open #header { position:sticky; top:0; z-index:101; }
+  /* Solid dark header while the drawer is open. Header is transparent on hero
+     pages (--header-bg-opacity:0), so the page bled through at tablet like the
+     drawer did. Force black bg + white text/icons so the header bar matches the
+     dark drawer below it. (id beats the var-based .wt-header background rule.) */
+  body.menu-open #header { background: #000; --color-header-text: #fff; }
+  /* Mobile nav drawer = full-width phone design across the WHOLE <=1199px range.
+     Theme caps every .wt-drawer at 50rem from 600px up, which turned the tablet
+     view into a ~500px side panel instead of the mobile layout. Scoped to the nav
+     drawer only (.wt-drawer.wt-drawer--nav) so cart/search/localization keep 50rem. */
+  .wt-drawer.wt-drawer--nav { max-width: 500px; width: 100%; }
+  /* Solid dark drawer background. The drawer + its content are transparent by
+     default; on phones the page behind is hidden (opacity:0) so the dark body
+     showed through, but at tablet (600-1199px) the page bleeds through and the
+     drawer looked transparent. Give the nav drawer its own black bg. */
+  .wt-drawer--nav .wt-drawer__content { background: #000; }
 }
 
 /* Drawer starts below the header (offset kept in sync by JS: --wt-drawer-top) */
@@ -220,8 +235,7 @@ body:has(
 .wt-page-nav-mega__sublist__wrapper .mega-tabs {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  margin-bottom: 36px;
+  gap: 40px; 
 }
 .wt-page-nav-mega__sublist__wrapper .mega-tab {
   font-size: 14px;
@@ -248,8 +262,8 @@ body:has(
   padding: 46px 12px 12px;
 }
 .wt-page-nav-mega__sublist__wrapper .card__container .card__badges {
-  top: 12px;
-  right: 12px;
+  top: 8px;
+  right: 16px;
 }
 .wt-page-nav-mega__sublist__wrapper .card__container .card__badges--item {
   font-size: 10px;
@@ -257,9 +271,7 @@ body:has(
   letter-spacing: 0;
   padding: 4px 8px;
 }
-.wt-page-nav-mega__sublist__wrapper .card__container .product-card-content {
-  margin-top: 22px;
-}
+ 
 .wt-page-nav-mega__sublist__wrapper .card__container .card__title {
   font-size: 15px;
   letter-spacing: 0;
@@ -284,8 +296,7 @@ body:has(
   max-height: 30px;
 }
 .wt-page-nav-mega__sublist__wrapper .mega-shop-btn-wrap {
-  text-align: center;
-  margin-top: 32px;
+  text-align: center; 
 }
 .wt-page-nav-mega__sublist__wrapper .mega-shop-btn {
   font-size: 14px;
@@ -1983,9 +1994,9 @@ custom-select.collection__sort .wt-options__list__item[selected] {
 /* NEW CSS */
 
 
-@media (max-width: 750px) {
+@media (max-width: 1199px) {
 
-    .wt-page-nav-mega { padding-top: 0; }
+    .wt-page-nav-mega { padding-top: 0; padding-bottom: 20px; }
     .wt-page-nav-mega .wt-page-nav-mega__sublist { margin: 0 !important; }
     .wt-drawer--nav .wt-page-nav-mega__sublist__wrapper .mega-tabs { padding-top: 0; }
 
@@ -2173,5 +2184,16 @@ custom-select.collection__sort .wt-options__list__item[selected] {
   [data-inline-play-button] .shoppable-video__icon-pause svg {
     width: 24px;
     height: 24px;
+  }
+}
+
+/* Localization drawer opens FROM the mobile nav drawer (trigger lives inside it).
+   critical.css forces opacity:0 on every direct <body> child except .page-header
+   and .menu-drawer-overlay while the nav drawer is open (<=599px), which hid the
+   localization drawer even though it opened correctly. Exempt it + its overlay. */
+@media (max-width: 599px) {
+  .menu-drawer-overlay-on > .wt-localization-drawer,
+  .menu-drawer-overlay-on > .wt-localization-drawer-overlay {
+    opacity: 1;
   }
 }

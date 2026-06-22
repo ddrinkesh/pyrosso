@@ -121,6 +121,7 @@
         "large_screen_logo_width": 192,
         "mobile_screen_logo_width": 160,
         "menu": "header",
+        "mobile_menu": "header-mobile",
         "mobile_footer_menu": "",
         "customer_account_menu": "customer-account-main-menu",
         "teaser_menu": "header",
