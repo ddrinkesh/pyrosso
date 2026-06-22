@@ -2004,3 +2004,80 @@ custom-select.collection__sort .wt-options__list__item[selected] {
 
 .section-image-with-text .hero,
 .section-image-with-text .image-with-text-50 .hero--grid>* { border-radius:0; }
+
+/* ============================================================
+   Background-video section: Play button position options
+   ============================================================ */
+
+/* --- Option 1: bottom_of_video (default) -------------------
+   Uses existing .shoppable-video__control-button absolute positioning.
+   No extra CSS needed. */
+.background-video-section .shoppable-video__control-button {
+  display: flex;
+}
+
+/* --- Option 2: next_to_text --------------------------------
+   The [data-inline-play-button] wrapper sits inside .hero__button--gap
+   as a flex sibling of any CTA buttons. Strip absolute positioning and
+   display inline so it flows naturally with the text. */
+
+/* Make hero__button--gap a flex row so play icon + CTAs sit side-by-side */
+.background-video-section .hero__button--gap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Inline wrapper */
+.hero__inline-play-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Override absolute positioning — make button static and match Option 1 visually */
+[data-inline-play-button] .shoppable-video__control-button {
+  position: static !important;
+  top: auto !important;
+  bottom: auto !important;
+  right: auto !important;
+  left: auto !important;
+  /* Exact same size, bg, blur as the default bottom-of-video button */
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #00000050;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  border: none;
+  flex-shrink: 0;
+}
+
+/* Match icon sizes to the default button */
+[data-inline-play-button] .shoppable-video__icon-play,
+[data-inline-play-button] .shoppable-video__icon-play svg {
+  width: 20px;
+  height: 20px;
+}
+
+[data-inline-play-button] .shoppable-video__icon-pause,
+[data-inline-play-button] .shoppable-video__icon-pause svg {
+  width: 28px;
+  height: 28px;
+}
+
+/* Mobile: match the responsive override from section-shoppable-video.css */
+@media (max-width: 1199px) {
+  [data-inline-play-button] .shoppable-video__control-button {
+    width: 40px;
+    height: 40px;
+  }
+  [data-inline-play-button] .shoppable-video__icon-pause,
+  [data-inline-play-button] .shoppable-video__icon-pause svg {
+    width: 24px;
+    height: 24px;
+  }
+}
