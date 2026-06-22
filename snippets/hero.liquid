@@ -45,6 +45,14 @@
   endif
 
   # --------------------------------
+  # Play button position
+  # --------------------------------
+  assign play_button_inline = false
+  if play_button_position == 'next_to_text'
+    assign play_button_inline = true
+  endif
+
+  # --------------------------------
   # Presence flags
   # --------------------------------
   assign has_desktop_image = false
@@ -143,7 +151,7 @@
           {% endif %}
 
           {% if mobile_video %}
-            {% if play_pause_button %}
+            {% if play_pause_button and play_button_inline == false %}
               <video-controls class="{{ mobile_video_class }}">
                 {% render 'play-pause-button', classname: mobile_video_class %}
             {% endif %}
@@ -163,7 +171,7 @@
                 class: mobile_video_class
             }}
 
-            {% if play_pause_button %}
+            {% if play_pause_button and play_button_inline == false %}
               </video-controls>
             {% endif %}
           {% else %}
@@ -172,7 +180,7 @@
         {% endif %}
 
         {% if video %}
-          {% if play_pause_button %}
+          {% if play_pause_button and play_button_inline == false %}
             <video-controls class="{{ video_class }}">
               {% render 'play-pause-button', classname: video_class %}
           {% endif %}
@@ -192,7 +200,7 @@
               class: video_class
           }}
 
-          {% if play_pause_button %}
+          {% if play_pause_button and play_button_inline == false %}
             </video-controls>
           {% endif %}
         {% endif %}
@@ -309,7 +317,7 @@
     >
       <div class="hero__overlay__content hero__overlay__content--{{ desktop_text_horizontal_position }} hero__overlay__content--mobile--{{ mobile_text_horizontal_position }} rte">
         {% if blocks %}
-          {% render 'simple-block', prefix: 'hero', blocks: blocks, rich_text_with_image: rich_text_with_image %}
+          {% render 'simple-block', prefix: 'hero', blocks: blocks, rich_text_with_image: rich_text_with_image, show_inline_play_button: play_button_inline %}
         {% else %}
           {% if review_star_rating != blank %}
             <div class="hero__star-rating">

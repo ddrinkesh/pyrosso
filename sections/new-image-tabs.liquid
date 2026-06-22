@@ -1,0 +1,352 @@
+{{ 'new-image-tabs.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign bg_color = section.settings.background_color
+  assign panel_bg = section.settings.content_bg_color
+  assign text_color = section.settings.text_color
+  assign light_text_color = section.settings.light_text_color
+  assign sid = section.id
+-%}
+
+{% style %}
+[data-section-id="{{ section.id }}"]{
+  --nit-bg: {{ bg_color }};
+  --nit-panel-bg: {{ panel_bg }};
+  --nit-text: {{ text_color }};
+  --nit-light-text: {{ light_text_color }};
+  --nit-subheading-text: {{ section.settings.subheading_text_color }};
+  background: var(--nit-bg);
+
+  {% if section.settings.margin-top %}
+    --section-gap-top: {{ section.settings.margin-top }}px;
+  {% endif %}
+
+  {% if section.settings.margin-bottom %}
+    --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+  {% endif %}
+}
+
+@media screen and (max-width:767px){
+  [data-section-id="{{ section.id }}"]{
+
+    {% if section.settings.margin-top-mobile %}
+      --section-gap-top: {{ section.settings.margin-top-mobile }}px;
+    {% endif %}
+
+    {% if section.settings.margin-bottom-mobile %}
+      --section-gap-bottom: {{ section.settings.margin-bottom-mobile }}px;
+    {% endif %}
+  }
+}
+{% endstyle %}
+
+<div data-section-id="{{ section.id }}">
+  <div id="new-image-tabs-{{ sid }}" class="new-image-tabs">
+
+    <div class="nitabs__wrapper">
+
+      <div class="nitabs__grid">
+
+        <!-- IMAGE SIDE -->
+        <div class="nitabs__media-wrap">
+
+          {% for block in section.blocks %}
+            <div
+              class="nitabs__media{% if forloop.first %} is-active{% endif %}"
+              data-media="{{ forloop.index0 }}"
+              aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+
+              {% if block.settings.image != blank %}
+                {{
+                  block.settings.image
+                  | image_url: width: 1600
+                  | image_tag:
+                    loading: 'lazy',
+                    widths: '400,600,800,1200,1600',
+                    sizes: '(max-width:767px) 100vw, 50vw',
+                    alt: block.settings.title
+                }}
+              {% else %}
+                <div class="nitabs__placeholder">
+                  {{ 'image' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+
+            </div>
+          {% endfor %}
+
+        </div>
+
+        <!-- CONTENT SIDE -->
+        <div class="nitabs__content">
+
+          {% for block in section.blocks %}
+            <div
+              class="nitabs__content-item{% if forloop.first %} is-active{% endif %}"
+              data-content="{{ forloop.index0 }}"
+            >
+
+              {% if block.settings.label != blank %}
+                <div class="nitabs__label">
+                  {{ block.settings.label }}
+                </div>
+              {% endif %}
+
+              <div class="nitabs__title-wrap">
+
+                <span class="nitabs__step">
+                  ({{ forloop.index | prepend: '0' | slice: -2, 2 }})
+                </span>
+
+                {% if block.settings.title != blank %}
+                  <h2 class="nitabs__title">
+                    {{ block.settings.title }}
+                  </h2>
+                {% endif %}
+
+              </div>
+
+              {% if block.settings.description != blank %}
+                <div class="nitabs__description rte">
+                  {{ block.settings.description }}
+                </div>
+              {% endif %}
+
+            </div>
+          {% endfor %}
+
+          <div class="nitabs__nav">
+
+            {% for block in section.blocks %}
+              <button
+                type="button"
+                class="nitabs__nav-item{% if forloop.first %} is-active{% endif %}"
+                data-index="{{ forloop.index0 }}"
+                aria-label="Tab {{ forloop.index }}"
+              >
+                {{ forloop.index | prepend: '0' | slice: -2, 2 }}
+              </button>
+            {% endfor %}
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+
+  const root = document.getElementById('new-image-tabs-{{ sid }}');
+
+  if (!root) return;
+
+  const navItems = root.querySelectorAll('.nitabs__nav-item');
+  const mediaItems = root.querySelectorAll('.nitabs__media');
+  const contentItems = root.querySelectorAll('.nitabs__content-item');
+
+  let current = 0;
+
+  function activate(index){
+
+    current = index;
+
+    navItems.forEach((item,i)=>{
+      item.classList.toggle('is-active', i === index);
+    });
+
+    mediaItems.forEach((item,i)=>{
+      const active = i === index;
+
+      item.classList.toggle('is-active', active);
+      item.setAttribute(
+        'aria-hidden',
+        active ? 'false' : 'true'
+      );
+    });
+
+    contentItems.forEach((item,i)=>{
+      item.classList.toggle('is-active', i === index);
+    });
+  }
+
+  navItems.forEach((item,index)=>{
+
+    item.addEventListener('click',()=>{
+      activate(index);
+    });
+
+    item.addEventListener('mouseenter',()=>{
+
+      if(window.innerWidth > 767){
+        activate(index);
+      }
+
+    });
+
+    item.addEventListener('keydown',(e)=>{
+
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        activate(index);
+      }
+
+    });
+
+  });
+
+})();
+</script>
+
+{% schema %}
+{
+  "name": "New Image Tabs",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Content Background",
+      "default": "#f1f1f1"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#4f4f4f"
+    },
+    {
+      "type": "color",
+      "id": "light_text_color",
+      "label": "Light Text Color",
+      "default": "#bdbdbd"
+    },
+    {
+      "type": "color",
+      "id": "subheading_text_color",
+      "label": "Subheading Text Color",
+      "default": "#67645E"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40,
+      "unit": "px",
+      "label": "Top"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40,
+      "unit": "px",
+      "label": "Bottom"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top-mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 24,
+      "unit": "px",
+      "label": "Top"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom-mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 24,
+      "unit": "px",
+      "label": "Bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "APPLICATION"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Rinse"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Start with damp hair then start to blow dry your hair from tip to the top of your hair.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Image Tabs",
+      "blocks": [
+        {
+          "type": "tab"
+        },
+        {
+          "type": "tab"
+        },
+        {
+          "type": "tab"
+        },
+        {
+          "type": "tab"
+        },
+        {
+          "type": "tab"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

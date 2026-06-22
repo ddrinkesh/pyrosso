@@ -165,6 +165,7 @@
           video_controls: section.settings.video_controls,
           video_custom_play_controls: section.settings.video_custom_play_controls,
           video_custom_mute_controls: section.settings.video_custom_mute_controls,
+          play_button_position: section.settings.play_button_position,
           autoplay: section.settings.autoplay
         %}
       </div>
@@ -173,6 +174,52 @@
 </low-power-video>
 
 {{ 'section-video.css' | asset_url | stylesheet_tag }}
+
+{% if section.settings.video_custom_play_controls and section.settings.play_button_position == 'next_to_text' %}
+<script>
+  (function () {
+    function initInlinePlayButton(sectionEl) {
+      var btn = sectionEl.querySelector('[data-inline-play-button] .shoppable-video__control-button');
+      if (!btn) return;
+
+      var video = sectionEl.querySelector('.hero--video-background video');
+      if (!video) return;
+
+      function syncIcon() {
+        var playing = !video.paused && !video.ended;
+        btn.classList.toggle('shoppable-video__control-button--play', playing);
+        btn.classList.toggle('shoppable-video__control-button--pause', !playing);
+      }
+
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (video.paused || video.ended) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+
+      video.addEventListener('play',  syncIcon);
+      video.addEventListener('pause', syncIcon);
+      syncIcon();
+    }
+
+    function tryInit() {
+      var section = document.getElementById('shopify-section-{{ section.id }}');
+      if (!section) return;
+      initInlinePlayButton(section);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', tryInit);
+    } else {
+      tryInit();
+    }
+  })();
+</script>
+{% endif %}
 
 {% schema %}
 {
@@ -244,6 +291,23 @@
       "label": "t:sections.background-video.settings.video_custom_play_controls.label",
       "visible_if": "{{ section.settings.video_controls == false }}",
       "default": false
+    },
+    {
+      "type": "select",
+      "id": "play_button_position",
+      "label": "Play button position",
+      "visible_if": "{{ section.settings.video_custom_play_controls == true and section.settings.video_controls == false }}",
+      "options": [
+        {
+          "value": "bottom_of_video",
+          "label": "Bottom of video"
+        },
+        {
+          "value": "next_to_text",
+          "label": "Next to text"
+        }
+      ],
+      "default": "bottom_of_video"
     },
     {
       "type": "checkbox",

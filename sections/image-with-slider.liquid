@@ -1,0 +1,506 @@
+{{ 'image-with-slider.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign bg_color = section.settings.background_color
+  assign panel_bg = section.settings.content_bg_color
+  assign text_color = section.settings.text_color
+  assign sid = section.id
+-%}
+
+{% style %}
+[data-section-id="{{ section.id }}"]{
+  --iws-bg: {{ bg_color }};
+  --iws-panel-bg: {{ panel_bg }};
+  --iws-text: {{ text_color }};
+  background: var(--iws-bg);
+
+
+  {% if section.settings.margin-top %}
+    --section-gap-top: {{ section.settings.margin-top }}px;
+  {% endif %}
+
+  {% if section.settings.margin-bottom %}
+    --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+  {% endif %}
+}
+
+@media screen and (max-width:767px){
+  [data-section-id="{{ section.id }}"]{
+
+    {% if section.settings.margin-top-mobile %}
+      --section-gap-top: {{ section.settings.margin-top-mobile }}px;
+    {% endif %}
+
+    {% if section.settings.margin-bottom-mobile %}
+      --section-gap-bottom: {{ section.settings.margin-bottom-mobile }}px;
+    {% endif %}
+  }
+}
+{% endstyle %}
+
+<div data-section-id="{{ section.id }}">
+
+  <div
+    id="image-with-slider-{{ sid }}"
+    class="image-with-slider"
+  >
+
+    <div class="iws__wrapper">
+
+      <div class="iws__grid">
+
+        <!-- LEFT CONTENT -->
+
+        <div class="iws__content">
+
+          {% for block in section.blocks %}
+
+            <div
+              class="iws__content-item{% if forloop.first %} is-active{% endif %}"
+              data-content="{{ forloop.index0 }}"
+            >
+
+              {% if block.settings.ingredient_image != blank %}
+                <div class="iws__ingredient-image">
+
+                  {{
+                    block.settings.ingredient_image
+                    | image_url: width: 400
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '120,200,300,400',
+                      sizes: '140px',
+                      alt: block.settings.ingredient_title
+                  }}
+
+                </div>
+              {% endif %}
+
+              <div class="iws__text-wrap">
+              {% if block.settings.ingredient_label != blank %}
+                <div class="iws__label">
+                  {{ block.settings.ingredient_label }}
+                </div>
+              {% endif %}
+
+              {% if block.settings.ingredient_title != blank %}
+                <h2 class="iws__title">
+                  {{ block.settings.ingredient_title }}
+                </h2>
+              {% endif %}
+              <div class="iws__description-wrap">
+              {% if block.settings.ingredient_description != blank %}
+                <div class="iws__description rte">
+                  {{ block.settings.ingredient_description }}
+                </div>
+              {% endif %}
+
+              <button
+                type="button"
+                class="iws__arrow"
+                aria-label="Next Slide"
+              >
+                <svg width="30" height="17" viewBox="0 0 30 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19.7109 16.5739L28.2822 8.47879L19.7109 0.383789" stroke="#67645E" stroke-width="1.05588"/>
+                  <path d="M28.1569 8.41992H0" stroke="#67645E" stroke-width="1.05588"/>
+                </svg>
+
+              </button>
+              </div>
+              </div>
+
+            </div>
+
+          {% endfor %}
+
+        </div>
+
+        <!-- RIGHT SLIDER -->
+
+        <div class="iws__slider">
+
+          <div class="iws__slides">
+
+            {% for block in section.blocks %}
+
+              <div
+                class="iws__slide{% if forloop.first %} is-active{% endif %}"
+                data-slide="{{ forloop.index0 }}"
+                {{ block.shopify_attributes }}
+              >
+
+                {% if block.settings.slide_image != blank %}
+                  {{
+                    block.settings.slide_image
+                    | image_url: width: 1800
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '600,800,1200,1600,1800',
+                      sizes: '(max-width:767px) 100vw, 50vw',
+                      alt: block.settings.ingredient_title
+                  }}
+                {% endif %}
+
+              </div>
+
+            {% endfor %}
+
+          </div>
+
+          <div class="iws__pagination">
+
+            {% for block in section.blocks %}
+
+              <button
+                type="button"
+                class="iws__dot{% if forloop.first %} is-active{% endif %}"
+                data-index="{{ forloop.index0 }}"
+                aria-label="Slide {{ forloop.index }}"
+              ></button>
+
+            {% endfor %}
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+(function(){
+
+  const root =
+    document.getElementById(
+      'image-with-slider-{{ sid }}'
+    );
+
+  if(!root) return;
+
+  const slides =
+    root.querySelectorAll('.iws__slide');
+
+  const contents =
+    root.querySelectorAll('.iws__content-item');
+
+  const dots =
+    root.querySelectorAll('.iws__dot');
+
+  const arrows =
+    root.querySelectorAll('.iws__arrow');
+
+  const contentWrapper =
+    root.querySelector('.iws__content');
+
+  const slider =
+    root.querySelector('.iws__slider');
+
+  let current = 0;
+  let autoPlay;
+
+  function updateContentHeight() {
+
+    if(window.innerWidth > 899) {
+      contentWrapper.style.height = '';
+      return;
+    }
+
+    const activeContent =
+      root.querySelector('.iws__content-item.is-active');
+
+    if(activeContent){
+      contentWrapper.style.height =
+        activeContent.offsetHeight + 'px';
+    }
+
+  }
+
+  function activate(index){
+
+    if(index >= slides.length){
+      index = 0;
+    }
+
+    if(index < 0){
+      index = slides.length - 1;
+    }
+
+    current = index;
+
+    slides.forEach((slide,i)=>{
+      slide.classList.toggle(
+        'is-active',
+        i === index
+      );
+    });
+
+    contents.forEach((content,i)=>{
+      content.classList.toggle(
+        'is-active',
+        i === index
+      );
+    });
+
+    dots.forEach((dot,i)=>{
+      dot.classList.toggle(
+        'is-active',
+        i === index
+      );
+    });
+
+    updateContentHeight();
+
+  }
+
+  dots.forEach((dot,index)=>{
+
+    dot.addEventListener('click',()=>{
+      activate(index);
+      restartAutoplay();
+    });
+
+  });
+
+  arrows.forEach((arrow)=>{
+
+    arrow.addEventListener('click',()=>{
+
+      activate(current + 1);
+      restartAutoplay();
+
+    });
+
+  });
+
+  function startAutoplay(){
+
+    autoPlay = setInterval(function(){
+
+      activate(current + 1);
+
+    },5000);
+
+  }
+
+  function restartAutoplay(){
+
+    clearInterval(autoPlay);
+    startAutoplay();
+
+  }
+
+  /* ==========================
+     TOUCH SWIPE
+  ========================== */
+
+  let startX = 0;
+  let endX = 0;
+  let isDragging = false;
+
+  function handleSwipe(){
+
+    const diff = startX - endX;
+
+    if(Math.abs(diff) < 50){
+      return;
+    }
+
+    if(diff > 0){
+      activate(current + 1);
+    }else{
+      activate(current - 1);
+    }
+
+    restartAutoplay();
+
+  }
+
+  slider.addEventListener(
+    'touchstart',
+    function(e){
+
+      startX = e.touches[0].clientX;
+
+    },
+    { passive:true }
+  );
+
+  slider.addEventListener(
+    'touchend',
+    function(e){
+
+      endX = e.changedTouches[0].clientX;
+
+      handleSwipe();
+
+    },
+    { passive:true }
+  );
+
+  /* ==========================
+     DESKTOP DRAG
+  ========================== */
+
+  slider.addEventListener('mousedown',function(e){
+
+    isDragging = true;
+    startX = e.clientX;
+
+  });
+
+  window.addEventListener('mouseup',function(e){
+
+    if(!isDragging) return;
+
+    isDragging = false;
+    endX = e.clientX;
+
+    handleSwipe();
+
+  });
+
+  slider.addEventListener('mouseleave',function(){
+
+    isDragging = false;
+
+  });
+
+  window.addEventListener('resize',updateContentHeight);
+
+  window.addEventListener('load',updateContentHeight);
+
+  activate(0);
+
+  startAutoplay();
+
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Image With Slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Content Background",
+      "default": "#efefef"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40,
+      "unit": "px",
+      "label": "Top"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40,
+      "unit": "px",
+      "label": "Bottom"
+    },
+    {
+      "type": "range",
+      "id": "margin-top-mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 24,
+      "unit": "px",
+      "label": "Top Mobile"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom-mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 24,
+      "unit": "px",
+      "label": "Bottom Mobile"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "ingredient_image",
+          "label": "Ingredient Image"
+        },
+        {
+          "type": "text",
+          "id": "ingredient_label",
+          "label": "Label",
+          "default": "INGREDIENTS"
+        },
+        {
+          "type": "text",
+          "id": "ingredient_title",
+          "label": "Title",
+          "default": "Jojoba Oil"
+        },
+        {
+          "type": "richtext",
+          "id": "ingredient_description",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "slide_image",
+          "label": "Slider Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image With Slider",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

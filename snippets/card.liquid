@@ -165,6 +165,17 @@
           {% endif %}
         </picture>
       </a>
+
+      {% if enable_quick_add_button %}
+      <div class="card__quick-add-container {% if quick_add_mode == 'hover_desktop' %}card__quick-add-container--hidden{% endif %}">
+        {% render 'quick-add-button',
+          card_product: product,
+          product: card_product,
+          product_variations: product_variations
+        %}
+      </div>
+    {% endif %}
+    
     </div>
 
     {% if enable_quick_add_button and quick_add_mode == 'hover_desktop' %}
@@ -345,14 +356,6 @@
       %}
     {% endif %}
 
-    {% if enable_quick_add_button %}
-      <div class="card__quick-add-container {% if quick_add_mode == 'hover_desktop' %}card__quick-add-container--hidden{% endif %}">
-        {% render 'quick-add-button',
-          card_product: product,
-          product: card_product,
-          product_variations: product_variations
-        %}
-      </div>
-    {% endif %}
+    
   </div>
 </color-swatch>

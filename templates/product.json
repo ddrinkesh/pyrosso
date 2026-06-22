@@ -23,6 +23,10 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
         "title_9RfeUG": {
           "type": "title",
           "settings": {
@@ -32,13 +36,20 @@
             "size_text_mobile": 100
           }
         },
-        "type_MRU8D4": {
-          "type": "type",
-          "settings": {}
+        "size_Npgbfa": {
+          "type": "size",
+          "settings": {
+            "heading": "{{ product.metafields.custom.size.value }}"
+          }
         },
-        "rating": {
-          "type": "rating",
-          "settings": {}
+        "text_tbbwd4": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "heading": "",
+            "content": "<p>{{ product.metafields.custom.size.value }}</p>",
+            "page": ""
+          }
         },
         "text_XfU9zt": {
           "type": "text",
@@ -48,29 +59,21 @@
             "page": ""
           }
         },
-        "text_tbbwd4": {
-          "type": "text",
+        "images_Nj3cky": {
+          "type": "images",
           "settings": {
             "heading": "",
-            "content": "<p>{{ product.metafields.custom.size.value }}</p>",
-            "page": ""
-          }
-        },
-        "feature_tags_44iTGm": {
-          "type": "feature_tags",
-          "settings": {
-            "metafield": "",
-            "limit": 4,
-            "text_color": "#717171",
-            "border_color": "#ececec"
-          }
-        },
-        "inventory_WhQUX3": {
-          "type": "inventory",
-          "settings": {
-            "inventory_threshold": 10,
-            "show_inventory_quantity": true,
-            "inventory_quantity_threshold": 0
+            "image_reels_1": "shopify://shop_images/banner.jpg",
+            "image_reels_1_product": "",
+            "image_reels_2": "shopify://shop_images/baner-girl-1.png",
+            "image_reels_2_product": "",
+            "image_reels_3": "shopify://shop_images/Group_1141.png",
+            "image_reels_3_product": "",
+            "image_reels_4_product": "",
+            "image_reels_5_product": "",
+            "video_reels_5_product": "",
+            "image_reels_6_product": "",
+            "video_reels_6_product": ""
           }
         },
         "buy_buttons": {
@@ -85,20 +88,89 @@
             "background_color": "rgba(0,0,0,0)"
           }
         },
+        "formulation_tool_qrRCeB": {
+          "type": "formulation_tool",
+          "settings": {
+            "heading": "Formulation Compatibility Tool:",
+            "products": "{{ product.metafields.custom.product_upsell.value }}",
+            "button_label": "SELECT ITEMS"
+          }
+        },
+        "product_details_h6cnTz": {
+          "type": "product_details",
+          "settings": {
+            "heading": "SUITED FOR",
+            "content": "<p>{{ product.metafields.custom.suited_for.value }}</p>"
+          }
+        },
+        "product_details_kBxkAi": {
+          "type": "product_details",
+          "settings": {
+            "heading": "FORMAT",
+            "content": "<p>{{ product.metafields.custom.format.value }}</p>"
+          }
+        },
+        "collapsible_tab_tnwCQH": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "KEY INGREDIENTS",
+            "content": "<p>{{ product.metafields.custom.ingredients | metafield_tag }}</p>",
+            "metafield_variables": "",
+            "page": "",
+            "open_by_default": false,
+            "icon": "none",
+            "icon_advanced_settings": false,
+            "icon_height_desktop": 28,
+            "icon_height": 27,
+            "icon_margin_desktop": 0,
+            "icon_margin": 0
+          }
+        },
+        "type_MRU8D4": {
+          "type": "type",
+          "disabled": true,
+          "settings": {}
+        },
+        "feature_tags_44iTGm": {
+          "type": "feature_tags",
+          "disabled": true,
+          "settings": {
+            "metafield": "",
+            "limit": 4,
+            "text_color": "#717171",
+            "border_color": "#ececec"
+          }
+        },
+        "inventory_WhQUX3": {
+          "type": "inventory",
+          "disabled": true,
+          "settings": {
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true,
+            "inventory_quantity_threshold": 0
+          }
+        },
         "payment_note_UHfEte": {
           "type": "payment_note",
+          "disabled": true,
           "settings": {}
         }
       },
       "block_order": [
-        "title_9RfeUG",
-        "type_MRU8D4",
         "rating",
-        "text_XfU9zt",
+        "title_9RfeUG",
+        "size_Npgbfa",
         "text_tbbwd4",
+        "text_XfU9zt",
+        "images_Nj3cky",
+        "buy_buttons",
+        "formulation_tool_qrRCeB",
+        "product_details_h6cnTz",
+        "product_details_kBxkAi",
+        "collapsible_tab_tnwCQH",
+        "type_MRU8D4",
         "feature_tags_44iTGm",
         "inventory_WhQUX3",
-        "buy_buttons",
         "payment_note_UHfEte"
       ],
       "custom_css": [],
@@ -112,10 +184,12 @@
         "sticky_shadow": true,
         "sticky_button_show_image": "yes",
         "sticky_button_product_info": "title_and_price",
-        "full-width-enabled": true,
+        "full-width-enabled": false,
         "desktop-media-size": "normal",
         "desktop-layout": "carousel-horizontal",
         "desktop-image-ratio": "square",
+        "hide_desktop_thumbnails": true,
+        "gallery_pagination_style": "dots",
         "enable_video_looping": true,
         "video_controls": false,
         "video_custom_play_controls": true,
@@ -124,14 +198,27 @@
         "enable-image-zoom": true,
         "mobile-image": "small",
         "show-thumbnails-mobile": false,
+        "show-scrollbar-mobile": false,
         "text_color": "#000000",
         "background_color": "#ffffff",
-        "margin-top": 0,
-        "margin-bottom": 0
+        "margin-top": 32,
+        "margin-bottom": 32
       }
     },
     "background_video_axipNV": {
       "type": "background-video",
+      "blocks": {
+        "text_FhF3bB": {
+          "type": "text",
+          "settings": {
+            "text": "<p>See how HAILEY uses GLAZING MILK in her DAILY SKIN ROUTINE.</p>",
+            "disable_on_mobile": false
+          }
+        }
+      },
+      "block_order": [
+        "text_FhF3bB"
+      ],
       "name": "t:sections.background-video.presets.name",
       "settings": {
         "advanced_heading": false,
@@ -142,11 +229,12 @@
         "autoplay": false,
         "video_controls": false,
         "video_custom_play_controls": true,
+        "play_button_position": "next_to_text",
         "video_custom_mute_controls": false,
         "video_url": "",
         "original_ratio": "fixed_height",
-        "desktop_fixed_height": 680,
-        "mobile_fixed_height": 320,
+        "desktop_fixed_height": 760,
+        "mobile_fixed_height": 640,
         "color-body-heading": "#000000",
         "color-overlay": "#ffffff",
         "color-overlay-opacity": 100,
@@ -155,7 +243,234 @@
         "desktop_text_horizontal_position": "center",
         "mobile_text_vertical_position": "center",
         "mobile_text_horizontal_position": "center",
-        "margin-top": 32,
+        "margin-top": 16,
+        "margin-bottom": 8,
+        "margin-top-mobile": 8,
+        "margin-bottom-mobile": 8
+      }
+    },
+    "improvement_nwDfxT": {
+      "type": "improvement",
+      "blocks": {
+        "result_b7nyAV": {
+          "type": "result",
+          "settings": {
+            "image": "shopify://shop_images/banner.jpg",
+            "title": "97% Improvement",
+            "quote": "<p>\"It’s honestly been my daily go-to wash in the morning to get that refreshed, hydrated feeling before hair prep and styling.\"</p>"
+          }
+        },
+        "result_icN6Eg": {
+          "type": "result",
+          "settings": {
+            "image": "shopify://shop_images/banner.jpg",
+            "title": "97% Improvement",
+            "quote": "<p>\"It’s honestly been my daily go-to wash in the morning to get that refreshed, hydrated feeling before hair prep and styling.\"</p>"
+          }
+        },
+        "result_3LKGAL": {
+          "type": "result",
+          "settings": {
+            "image": "shopify://shop_images/banner.jpg",
+            "title": "97% Improvement",
+            "quote": "<p>\"It’s honestly been my daily go-to wash in the morning to get that refreshed, hydrated feeling before hair prep and styling.\"</p>"
+          }
+        }
+      },
+      "block_order": [
+        "result_b7nyAV",
+        "result_icN6Eg",
+        "result_3LKGAL"
+      ],
+      "name": "Improvement",
+      "settings": {
+        "results_label": "CONSUMER RESULTS",
+        "disclaimer": "<p>*Based on a 31-subject consumer perception study after one week of use. Photos have not been retouched. Individual results may vary.</p>",
+        "background_color": "#ffffff",
+        "content_bg_color": "#f6f6f6",
+        "heading_color": "#6b6b6b",
+        "text_color": "#4f4f52",
+        "subheading_color": "#67645e",
+        "margin-top": 16,
+        "margin-bottom": 16,
+        "margin-top-mobile": 8,
+        "margin-bottom-mobile": 8
+      }
+    },
+    "image_with_slider_pDhXE8": {
+      "type": "image-with-slider",
+      "blocks": {
+        "slide_M9F33C": {
+          "type": "slide",
+          "settings": {
+            "ingredient_image": "shopify://shop_images/Group_276_1_4c061278-b799-478d-82dc-b0780f4321cf.png",
+            "ingredient_label": "INGREDIENTS",
+            "ingredient_title": "Jojoba Oil",
+            "ingredient_description": "<p>“It’s honestly been my daily go-to cleanser in the morning to get that refreshed, supple feeling before skin prep and makeup.”</p>",
+            "slide_image": "shopify://shop_images/Group_252_1.png"
+          }
+        },
+        "slide_JBC4ih": {
+          "type": "slide",
+          "settings": {
+            "ingredient_image": "shopify://shop_images/banner.jpg",
+            "ingredient_label": "INGREDIENTS",
+            "ingredient_title": "Jojoba Oil",
+            "ingredient_description": ""
+          }
+        },
+        "slide_Xz8zKc": {
+          "type": "slide",
+          "settings": {
+            "ingredient_image": "shopify://shop_images/06D99AFC-2677-46FF-877F-39A138356F9E.png",
+            "ingredient_label": "INGREDIENTS",
+            "ingredient_title": "Jojoba Oil",
+            "ingredient_description": "",
+            "slide_image": "shopify://shop_images/Group_275.png"
+          }
+        }
+      },
+      "block_order": [
+        "slide_M9F33C",
+        "slide_JBC4ih",
+        "slide_Xz8zKc"
+      ],
+      "name": "Image With Slider",
+      "settings": {
+        "background_color": "#ffffff",
+        "content_bg_color": "#efefef",
+        "text_color": "#666666",
+        "margin-top": 16,
+        "margin-bottom": 16,
+        "margin-top-mobile": 8,
+        "margin-bottom-mobile": 8
+      }
+    },
+    "new_image_tabs_wFinzB": {
+      "type": "new-image-tabs",
+      "blocks": {
+        "tab_9LeBfy": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/Group_276_1_4c061278-b799-478d-82dc-b0780f4321cf.png",
+            "label": "APPLICATION",
+            "title": "Rinse",
+            "description": "<p>Start with damp hair then start to blow dry your hair from tip to the top of your hair.</p>"
+          }
+        },
+        "tab_WqRcyJ": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/06D99AFC-2677-46FF-877F-39A138356F9E.png",
+            "label": "APPLICATION",
+            "title": "Rinse",
+            "description": "<p>Start with damp hair then start to blow dry your hair from tip to the top of your hair.</p>"
+          }
+        },
+        "tab_8HPMMG": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/footer-hp_2000x_jpg.png",
+            "label": "APPLICATION",
+            "title": "Rinse",
+            "description": "<p>Start with damp hair then start to blow dry your hair from tip to the top of your hair.</p>"
+          }
+        },
+        "tab_iBwHhX": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/Group_270.png",
+            "label": "APPLICATION",
+            "title": "Rinse",
+            "description": "<p>Start with damp hair then start to blow dry your hair from tip to the top of your hair.</p>"
+          }
+        },
+        "tab_gpzfVN": {
+          "type": "tab",
+          "settings": {
+            "image": "shopify://shop_images/Rectangle_4338.png",
+            "label": "APPLICATION",
+            "title": "Rinse",
+            "description": "<p>Start with damp hair then start to blow dry your hair from tip to the top of your hair.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "tab_9LeBfy",
+        "tab_WqRcyJ",
+        "tab_8HPMMG",
+        "tab_iBwHhX",
+        "tab_gpzfVN"
+      ],
+      "name": "New Image Tabs",
+      "settings": {
+        "background_color": "#ffffff",
+        "content_bg_color": "#f6f6f6",
+        "text_color": "#6b6b6b",
+        "light_text_color": "#4f4f52",
+        "subheading_text_color": "#67645e",
+        "margin-top": 16,
+        "margin-bottom": 16,
+        "margin-top-mobile": 8,
+        "margin-bottom-mobile": 8
+      }
+    },
+    "image_with_faqs_fWE7wq": {
+      "type": "image-with-faqs",
+      "blocks": {
+        "faq_mk8ghB": {
+          "type": "faq",
+          "settings": {
+            "question": "Are your products safe for daily use and sensitive scalps?",
+            "answer": "<p>Yes. All our formulas are sulfate-free, paraben-free, and perfectly pH-balanced to be safe for daily use on all skin and hair types.</p>"
+          }
+        },
+        "faq_ecdwir": {
+          "type": "faq",
+          "settings": {
+            "question": "Will the styling products cause buildup or flakes?",
+            "answer": "<p>Yes. All our formulas are sulfate-free, paraben-free, and perfectly pH-balanced to be safe for daily use on all skin and hair types.</p>"
+          }
+        },
+        "faq_KJrpKF": {
+          "type": "faq",
+          "settings": {
+            "question": "Will this help with hair thinning or shedding?",
+            "answer": "<p>Yes. All our formulas are sulfate-free, paraben-free, and perfectly pH-balanced to be safe for daily use on all skin and hair types.</p>"
+          }
+        },
+        "faq_Fei8Fy": {
+          "type": "faq",
+          "settings": {
+            "question": "How does Pyrosso actually improve long-term hair health?",
+            "answer": "<p>Yes. All our formulas are sulfate-free, paraben-free, and perfectly pH-balanced to be safe for daily use on all skin and hair types.</p>"
+          }
+        },
+        "faq_JyYbVV": {
+          "type": "faq",
+          "settings": {
+            "question": "Why does scalp health matter for my everyday style?",
+            "answer": "<p>Yes. All our formulas are sulfate-free, paraben-free, and perfectly pH-balanced to be safe for daily use on all skin and hair types.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_mk8ghB",
+        "faq_ecdwir",
+        "faq_KJrpKF",
+        "faq_Fei8Fy",
+        "faq_JyYbVV"
+      ],
+      "name": "Image With FAQs",
+      "settings": {
+        "heading": "FAQ's",
+        "image": "shopify://shop_images/banner.jpg",
+        "background_color": "#ffffff",
+        "content_bg_color": "#f6f6f6",
+        "text_color": "#6b6b6b",
+        "que_color": "#4f4f52",
+        "ans_color": "#a0a0a0",
+        "margin-top": 16,
         "margin-bottom": 16,
         "margin-top-mobile": 8,
         "margin-bottom-mobile": 8
@@ -168,14 +483,16 @@
           "type": "item",
           "settings": {
             "label": "consumer study results",
-            "image": "shopify://shop_images/Rectangle_4340.png"
+            "image": "shopify://shop_images/Rectangle_4340.png",
+            "text": ""
           }
         },
         "item_FLtNYR": {
           "type": "item",
           "settings": {
             "label": "clinical results",
-            "image": "shopify://shop_images/Rectangle_4338.png"
+            "image": "shopify://shop_images/Rectangle_4338.png",
+            "text": ""
           }
         }
       },
@@ -183,6 +500,7 @@
         "item_VMeAez",
         "item_FLtNYR"
       ],
+      "disabled": true,
       "name": "Skinification",
       "settings": {
         "heading": "<p>Take your rhode ON THE GO.</p>",
@@ -238,6 +556,7 @@
         "tab_xUXnwi",
         "tab_HwD3xa"
       ],
+      "disabled": true,
       "name": "Image Tabs",
       "settings": {
         "heading": "<p>Take your Rhode ON THE GO.</p>",
@@ -295,6 +614,7 @@
         "text_qxy4yB",
         "text_fYrpVb"
       ],
+      "disabled": true,
       "settings": {
         "advanced_heading": false,
         "title": "",
@@ -331,8 +651,8 @@
         "light_text_color": "#6b6b6b",
         "margin-top": 16,
         "margin-bottom": 16,
-        "margin-top-mobile": 16,
-        "margin-bottom-mobile": 16
+        "margin-top-mobile": 8,
+        "margin-bottom-mobile": 8
       }
     },
     "product_recommendations_R93X6g": {
@@ -365,6 +685,10 @@
     "breadcrumbs",
     "main",
     "background_video_axipNV",
+    "improvement_nwDfxT",
+    "image_with_slider_pDhXE8",
+    "new_image_tabs_wFinzB",
+    "image_with_faqs_fWE7wq",
     "skinification_VaGfRd",
     "image_tabs_74igTb",
     "image_with_text_jUtNrr",

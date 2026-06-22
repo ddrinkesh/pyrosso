@@ -4,6 +4,7 @@
   [data-section-id="{{ section.id }}"] {
     --background-color: {{ section.settings.background_color }};
     --text-color: {{ section.settings.text_color }};
+    --text-color-light: {{ section.settings.text_color_light }};
     background-color: var(--background-color);
     color: var(--text-color);
       {% if section.settings.margin-top %}
@@ -146,6 +147,12 @@
       "id": "text_color",
       "label": "Text Color",
       "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "text_color_light",
+      "label": "Text Color Light",
+      "default": "#6B6B6B"
     },
     {
       "type": "header",

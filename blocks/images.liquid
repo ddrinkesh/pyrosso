@@ -1,0 +1,32 @@
+<div class="swiper-slide shade-slider__slide" {{ block.shopify_attributes }}>
+
+  <div class="shade-card">
+
+    <div class="shade-card__images">
+
+      {% if block.settings.image %}
+        {{
+          block.settings.image
+          | image_url: width: 800
+          | image_tag
+        }}
+      {% endif %}
+
+
+    </div>
+
+  </div>
+
+</div>
+{% schema %}
+  {
+    "name": "Images",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      }
+    ]
+  }
+{% endschema %}

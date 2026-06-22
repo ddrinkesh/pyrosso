@@ -211,6 +211,8 @@ custom-select[open] [custom-select-body] {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 .wt-options__title {
   display: flex;

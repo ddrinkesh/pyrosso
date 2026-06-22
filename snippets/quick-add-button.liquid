@@ -84,13 +84,38 @@
           {% endif %}
         >
           <span class="quick-add-desktop">
-            {%- if card_product.selected_or_first_available_variant.available -%}
+            {% comment %} {%- if card_product.selected_or_first_available_variant.available -%}
               {{ 'products.product.add_to_cart' | t }}
             {%- else -%}
               {{ 'products.product.sold_out' | t }}
-            {%- endif -%}
+            {%- endif -%} {% endcomment %}
+             {% if settings.bag_icon %}
+            {{
+              settings.bag_icon
+              | image_url: width: settings.bag_icon.width
+              | image_tag: class: 'svg-icon svg-icon--bag'
+            }}
+          {% else %}
+            {% render 'icons', id: 'bag' %}
+          {% endif %}
           </span>
-          <svg
+          <span class="quick-add-mobile">
+            {% comment %} {%- if card_product.selected_or_first_available_variant.available -%}
+              {{ 'products.product.add_to_cart' | t }}
+            {%- else -%}
+              {{ 'products.product.sold_out' | t }}
+            {%- endif -%} {% endcomment %}
+             {% if settings.bag_icon %}
+            {{
+              settings.bag_icon
+              | image_url: width: settings.bag_icon.width
+              | image_tag: class: 'svg-icon svg-icon--bag'
+            }}
+          {% else %}
+            {% render 'icons', id: 'bag' %}
+          {% endif %}
+          </span>
+          {% comment %} <svg
             class="quick-add-mobile"
             width="7"
             height="7"
@@ -99,7 +124,7 @@
             xmlns="http://www.w3.org/2000/svg"
           >
             <line x1="3.5" x2="3.5" y2="7" stroke="currentColor"></line> <line x1="7" y1="3.5" y2="3.5" stroke="currentColor"></line>
-          </svg>
+          </svg> {% endcomment %}
 
           {% render 'button-loading-indicator' %}
         </button>

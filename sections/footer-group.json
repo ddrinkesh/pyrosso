@@ -50,13 +50,6 @@
       ],
       "settings": {
         "show-scroll-effect": false,
-        "heading_newsletter": "Don't miss out on David updates.",
-        "enable_sms": true,
-        "email_tab_label": "Email",
-        "sms_tab_label": "SMS",
-        "email_placeholder": "Enter your email.",
-        "sms_placeholder": "Enter your phone number.",
-        "disclaimer_text": "<p>*By completing this form you are signing up to receive our marketing and can unsubscribe at any time.</p>",
         "show-social-media-icons": false,
         "show_country_selector": false,
         "show_country_selector_label": false,
@@ -67,7 +60,6 @@
         "payment_icons_monochrome": false,
         "show-copyright": true,
         "text": "© 2026 Pyrosso. All Rights Reserved.",
-        "footer_logo": "shopify://shop_images/logo.svg",
         "big-logo-width": 100,
         "margin-top": 56,
         "margin-bottom": 8
