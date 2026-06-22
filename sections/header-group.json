@@ -100,7 +100,7 @@
               "featured",
               "hair",
               "sets",
-              "best-selling-products"
+              "skin"
             ]
           }
         }
@@ -121,20 +121,21 @@
         "large_screen_logo_width": 192,
         "mobile_screen_logo_width": 160,
         "menu": "header",
+        "mobile_menu": "header-mobile",
         "mobile_footer_menu": "",
         "customer_account_menu": "customer-account-main-menu",
         "teaser_menu": "header",
         "teaser_menu_limit": 5,
         "transparent_logo": "shopify://shop_images/logo.svg",
         "transparent_header_color": "#ffffff",
-        "show_country_selector": false,
+        "show_country_selector": true,
         "show_country_selector_label": false,
         "show_country_selector_flag": false,
         "show_language_selector": false,
         "drawer_title": "",
         "enable_submenu_link_in_drawer": false,
         "show_search": true,
-        "typing_search": "Search for...",
+        "typing_search": "Search...",
         "suggestions_title": "Suggestions",
         "suggestions_menu": "search",
         "text_alignment": "left",

@@ -1,5 +1,6 @@
 {% assign highlight_names_arr = highlight_names | split: '|||' %}
 {% assign highlight_ids_arr = highlight_block_ids | split: '|||' %}
+{%- assign menu = menu | default: section.settings.menu -%}
 
 <ul
   class="wt-page-nav-mega__list wt-page-nav-mega__list--center"
@@ -11,7 +12,7 @@
     {%- endif -%}
   {%- endfor -%}
 
-  {%- for link in section.settings.menu.links -%}
+  {%- for link in menu.links -%}
     {% assign menu_class = '--simple' %}
     {% assign show_mega = false %}
     {% assign promo_blocks = false %}
@@ -261,8 +262,7 @@
                           href="{{ collection.url }}"
                           class="hero__button--primary  hero__button--secondary hero__button mega-shop-btn"
                         >
-                          {{ 'shop' | t }}
-                          {{ collection.title | upcase }}
+                          View collection
                         </a>
                       </div>
                     </div>

@@ -3,7 +3,7 @@
   font-style: var(--font-navigation-style);
   font-size: var(--font-navigation-size);
   font-weight: var(--font-navigation-weight);
-  padding: calc(var(--gap)*3); }
+  padding: calc(var(--gap)*3);  }
   .wt-page-nav-mega__sublist {
     border: 1px dashed orange;
     overflow: hidden;

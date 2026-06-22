@@ -838,9 +838,13 @@
       {% endif %}
     >
       <nav class="wt-page-nav-mega {% if section.settings.show_shadow %} wt-page-nav-mega--shadow{% endif %}">
-        {%- if section.settings.menu != blank -%}
+        {%- assign drawer_menu = section.settings.menu -%}
+        {%- if section.settings.mobile_menu != blank -%}
+          {%- assign drawer_menu = section.settings.mobile_menu -%}
+        {%- endif -%}
+        {%- if drawer_menu != blank -%}
           {% render 'mega-menu',
-            menu: section.settings.menu,
+            menu: drawer_menu,
             blocks: section.blocks,
             highlight_names: highlight_names,
             highlight_block_ids: highlight_block_ids
@@ -898,21 +902,23 @@
               </li>
             {%- endif -%}
             {% if section.settings.show_country_selector or section.settings.show_language_selector %}
-              <li class="wt-page-nav-mega__aside-list__item">
-                <div
-                  class="wt-header__localization__triggers wt-header__localization__triggers--menu-drawer"
-                >
-                  {% if section.settings.show_country_selector -%}
-                    {%- render 'localization-btn-local',
-                      show_country_code: section.settings.show_country_selector_label,
-                      show_country_flag: section.settings.show_country_selector_flag,
-                      tabindex: '-1'
-                    -%}
-                  {%- endif %}
-                  {% if section.settings.show_language_selector -%}
+              <li class="wt-page-nav-mega__aside-list__item wt-page-nav-mega__country">
+                {% if section.settings.show_country_selector -%}
+                  <button
+                    class="wt-localization-trigger wt-localization-trigger--local wt-country-trigger"
+                    data-open-drawer="country"
+                    tabindex="-1"
+                  >
+                    <span class="wt-country-trigger__label">{{ 'localization.country_label' | t | default: 'Country/Region:' }}</span>
+                    <span class="wt-country-trigger__value">{{ localization.country.name }}</span>
+                    {% render 'icons', id: 'arrow-down' %}
+                  </button>
+                {%- endif %}
+                {% if section.settings.show_language_selector -%}
+                  <div class="wt-header__localization__triggers wt-header__localization__triggers--menu-drawer">
                     {%- render 'localization-btn-lang', tabindex: '-1' -%}
-                  {%- endif %}
-                </div>
+                  </div>
+                {%- endif %}
               </li>
             {% endif %}
           </ul>
@@ -1072,6 +1078,12 @@
       "id": "menu",
       "default": "main-menu",
       "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "link_list",
+      "id": "mobile_menu",
+      "label": "Mobile menu",
+      "info": "Optional. Shown in the mobile drawer instead of the main menu. Leave empty to reuse the main menu."
     },
 
     {

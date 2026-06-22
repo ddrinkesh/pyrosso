@@ -26,6 +26,35 @@ class DrawerNavSection extends HTMLElement {
 
   connectedCallback() {
     this.init();
+    this._syncDrawerOffset = this.syncDrawerOffset.bind(this);
+    window.addEventListener("scroll", this._syncDrawerOffset, { passive: true });
+    window.addEventListener("resize", this._syncDrawerOffset, { passive: true });
+  }
+
+  // Drawer top offset = header height, plus topbar height while NOT sticky (page at top).
+  // Once the header is sticky-enabled (scrolled), only the header height is subtracted.
+  setDrawerOffset() {
+    // Header bar height (e.g. 57px)
+    const header =
+      document.querySelector(".wt-header__body") ||
+      document.querySelector(".page-header") ||
+      document.querySelector("#header");
+    let offset = header ? header.offsetHeight : 0;
+
+    // At top (header not yet sticky) also subtract the topbar (e.g. 29px) → 86px total
+    const isSticky = !!document.querySelector(".page-header.sticky-enabled");
+    if (!isSticky) {
+      const topbar = document.querySelector(".top-bar-wrapper");
+      if (topbar) offset += topbar.offsetHeight;
+    }
+
+    document.documentElement.style.setProperty("--wt-drawer-top", offset + "px");
+  }
+
+  // Live update while open (scroll/resize)
+  syncDrawerOffset() {
+    if (!document.body.classList.contains("menu-open")) return;
+    this.setDrawerOffset();
   }
 
   openMobileSubmenu(linkValue) {
@@ -108,6 +137,11 @@ class DrawerNavSection extends HTMLElement {
   toggleMenu(e) {
     e.preventDefault();
 
+    // Measure header offset BEFORE menu-open changes header positioning
+    if (!this.isOpen) {
+      this.setDrawerOffset();
+    }
+
     if (this.isOpen) {
       this.closeMenu(e);
     } else {
@@ -133,9 +167,7 @@ class DrawerNavSection extends HTMLElement {
 
     // this.handleFocus();
 
-    const isFullHeightDrawer = () =>
-      document.querySelectorAll("body.nav-drawer-big").length;
-    const drawerTopPadding = isFullHeightDrawer() ? 0 : this.getHeaderHeight();
+    const drawerEl = document.querySelector(".wt-drawer--nav");
     const drawerBodeEl = document.querySelector(".wt-drawer__content");
     const activeNavBodyClass = "menu-open";
     const activeOverlayBodyClass = "menu-drawer-overlay-on";
@@ -145,9 +177,27 @@ class DrawerNavSection extends HTMLElement {
       this.openMobileSubmenu(e.currentTarget.attributes?.href?.value);
     }
 
-    document.body.classList.toggle(activeNavBodyClass);
+    const isOpening = document.body.classList.toggle(activeNavBodyClass);
     document.body.classList.toggle(activeOverlayBodyClass);
-    drawerBodeEl.style.setProperty("padding-top", drawerTopPadding);
+
+    drawerBodeEl.style.setProperty("padding-top", "0px");
+
+    // If the first menu item is a mega (collections) item, expand it on open
+    if (isOpening && drawerEl) {
+      const firstItem = drawerEl.querySelector(
+        ".wt-page-nav-mega__list > .wt-page-nav-mega__item",
+      );
+      const firstParentLink = firstItem?.querySelector(
+        ".wt-page-nav-mega__link--parent",
+      );
+      if (firstParentLink) {
+        firstParentLink.classList.add("submenu-opened");
+        const subLinks = firstParentLink.nextElementSibling?.querySelectorAll(
+          'a[data-menu-level="2"]',
+        );
+        if (subLinks) setTabindex(subLinks, "0");
+      }
+    }
   }
 
   toggleMenuButtonAttr() {
