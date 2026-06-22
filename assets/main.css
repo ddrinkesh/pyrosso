@@ -5233,7 +5233,7 @@ switch-column .loading-overlay--hidden {
   top: 0;
   left: 0;
   /* z-index: -1; */
-  border-radius: var(--border-radius);
+  border-radius: 0;
   overflow: hidden;
   aspect-ratio: var(--aspect-ratio, auto);
   height: 100%;
