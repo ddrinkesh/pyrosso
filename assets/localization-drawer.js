@@ -207,22 +207,35 @@ class LocalizationDrawer extends HTMLElement {
       }
     });
 
-    document.querySelectorAll(this.triggerQuery).forEach((trigger) => {
-      trigger.addEventListener("click", (e) => {
-        e.preventDefault();
+    // Delegated click handling: triggers can live in server-rendered markup
+    // (header) OR inside the mobile nav drawer, which may upgrade/bind at a
+    // different time. Delegation on document binds them all regardless of order.
+    document.addEventListener("click", (e) => {
+      const trigger = e.target.closest(this.triggerQuery);
+      if (!trigger) return;
 
-        // IMPORTANT: remember what opened the drawer
-        // Use currentTarget (the element with the listener), not e.target
-        this.storeOpenerElement(e.currentTarget);
+      e.preventDefault();
 
-        const openTab = trigger.dataset.openDrawer;
+      // remember what opened the drawer (the matched trigger, not e.target)
+      this.storeOpenerElement(trigger);
 
-        if (openTab) {
-          this.setActiveTab(openTab);
-        }
+      const isControl =
+        trigger.classList.contains("wt-localization-drawer__close") ||
+        trigger.classList.contains("wt-localization-drawer-overlay");
 
-        this.toggleDrawerClasses();
-      });
+      // Opened from inside the mobile nav drawer? Close it first so the
+      // localization drawer isn't left hidden behind the open menu overlay.
+      if (!isControl && document.body.classList.contains("menu-open")) {
+        const menuTrigger = document.querySelector(".wt-header__menu-trigger");
+        if (menuTrigger) menuTrigger.click();
+      }
+
+      const openTab = trigger.dataset.openDrawer;
+      if (openTab) {
+        this.setActiveTab(openTab);
+      }
+
+      this.toggleDrawerClasses();
     });
 
     const searchInput = this.querySelector(
