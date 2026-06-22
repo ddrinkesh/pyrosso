@@ -22,6 +22,27 @@
       --color-body-text: {{ section.settings.text_color }};
   }
 
+  .collection-grid-section .collection__grid { row-gap: 16px; }
+
+  .collection-grid-section .collection__grid__item .card__container { --aspect-ratio-portait: 1/1.10; border-radius: 0; background: transparent !important; padding: 0;  --aspect-ratio: 1/1.10 !important; } 
+  .collection-grid-section .card__container .card__img, 
+  .collection-grid-section .card__container .card__video { aspect-ratio: 1/1.10; } 
+  .collection-grid-section .card__container .wt-rating { margin-top: 16px; }
+  .collection-grid-section .collection__grid__item .card__picture { background: #F6F6F6; }
+
+  .collection-grid-section .card__quick-add-container--desktop, 
+  .collection-grid-section .card__container:hover .card__quick-add-container--desktop{ display: none; }
+
+  .collection-grid-section .card__container:hover .product-card-content { transform: unset; opacity: 1; }
+
+  .collection-grid-section .card__container .card__quick-add-container--hidden { display: flex; top: auto; width: 42px; height: 42px; border-radius: 50%; right: 16px; bottom: 16px; top: auto; }
+  .collection-grid-section .card__container .card__quick-add-container--hidden button { width: 42px; height: 42px; border-radius: 50%; padding: 0; background: #000; color: #fff; }
+  .collection-grid-section .card__container .card__quick-add-container--hidden button .svg-icon { width: 20px; height: 20px; }
+
+  @media (max-width: 899px) {
+  .collection .product-filter-wrappers {align-items: center;}
+  .collection .collection__counter.mobile {align-items: center;}
+  }
   @media (max-width: 899px) {
     .collection__grid {
       {% if section.settings.columns_mobile == "1" %}
@@ -39,6 +60,22 @@
           --section-gap-bottom: {{ section.settings.margin-bottom-mobile }}px;
       {% endif %}
     }
+
+      .collection-grid-section .collection__grid__item .card__container { --aspect-ratio-portait: 1/1.33;  --aspect-ratio: 1/1.38068181818 !important; } 
+
+      .collection-grid-section .card__container .card__title { font-size: 13px; letter-spacing: -0.065px; }
+      .collection-grid-section .product-card-content { gap:4px; }
+      .collection-grid-section .card__container .card__price, 
+      .collection-grid-section .card__container .wt-product__price__final,
+      .collection-grid-section .card__container .card__product-type { font-size:10px; font-weight: 400; line-height: 1.3; letter-spacing: -0.2px; }
+      .collection-grid-section .card__container .wt-rating { margin-top: 8px; }
+
+      .collection-grid-section .card__container .card__img, 
+      .collection-grid-section .card__container .card__video{ aspect-ratio: 1/1.33; } 
+
+      .collection-grid-section .collection__grid[data-cols="1"] .card__container .card__img, 
+      .collection-grid-section .collection__grid[data-cols="1"] .card__container .card__video{ aspect-ratio: 1/1.1108033241; } 
+      
   }
 </style>
 
@@ -141,24 +178,24 @@
             {%- endif -%}
           </span>
           <div class="collection-view-toggle">
-                <button
-                  type="button"
-                  class="grid-toggle"
-                  data-cols="3"
-                  aria-label="3 Column View"
-                >
-                  {% render 'icon--grid-col-2' %}
-                </button>
+            <button
+              type="button"
+              class="grid-toggle"
+              data-cols-mobile="1"
+              aria-label="1 Column View"
+            >
+              {% render 'icon--grid-col-1' %}
+            </button>
 
-                <button
-                  type="button"
-                  class="grid-toggle"
-                  data-cols="2"
-                  aria-label="2 Column View"
-                >
-                  {% render 'icon--grid-col-3' %}
-                </button>
-              </div>
+            <button
+              type="button"
+              class="grid-toggle"
+              data-cols-mobile="2"
+              aria-label="2 Column View"
+            >
+              {% render 'icon--grid-col-2' %}
+            </button>
+          </div>
         </div>
 
         <div class="collection__sticky-header collection__sticky-header--{{ section.settings.toolbar_style }}">
@@ -183,10 +220,19 @@
                 <button
                   type="button"
                   class="grid-toggle"
+                  data-cols="4"
+                  aria-label="4 Column View"
+                >
+                  {% render 'icon--grid-col-4' %}
+                </button>
+
+                <button
+                  type="button"
+                  class="grid-toggle"
                   data-cols="3"
                   aria-label="3 Column View"
                 >
-                  {% render 'icon--grid-col-2' %}
+                  {% render 'icon--grid-col-3' %}
                 </button>
 
                 <button
@@ -195,7 +241,7 @@
                   data-cols="2"
                   aria-label="2 Column View"
                 >
-                  {% render 'icon--grid-col-3' %}
+                  {% render 'icon--grid-col-2' %}
                 </button>
               </div>
             </div>
@@ -413,39 +459,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!productGrid || !buttons.length) return;
 
-  // Default = 2 columns button active
-  const currentCols =
-    localStorage.getItem('collectionDesktopCols') || '2';
+  const savedDesktopCols = localStorage.getItem('collectionDesktopCols');
+  const savedMobileCols = localStorage.getItem('collectionMobileCols');
 
-  // Set active state on ALL matching buttons (desktop + mobile)
+  const currentDesktopCols = savedDesktopCols || '{{ section.settings.columns_desktop }}';
+  const currentMobileCols = savedMobileCols || '{{ section.settings.columns_mobile }}';
+
   document.querySelectorAll('.grid-toggle').forEach((btn) => {
-    btn.classList.toggle(
-      'active',
-      btn.dataset.cols === currentCols
-    );
+    if (btn.dataset.cols) {
+      btn.classList.toggle('active', btn.dataset.cols === currentDesktopCols);
+    }
+    if (btn.dataset.colsMobile) {
+      btn.classList.toggle('active', btn.dataset.colsMobile === currentMobileCols);
+    }
   });
 
-  // Set grid view
-  productGrid.setAttribute('data-cols-desktop', currentCols);
+  productGrid.setAttribute('data-cols-desktop', currentDesktopCols);
+  productGrid.setAttribute('data-cols', currentMobileCols);
 
-  // Click handler
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
-      const cols = button.dataset.cols;
+      const desktopCols = button.dataset.cols;
+      const mobileCols = button.dataset.colsMobile;
 
-      // Sync active state across all toggles
-      document.querySelectorAll('.grid-toggle').forEach((btn) => {
-        btn.classList.toggle(
-          'active',
-          btn.dataset.cols === cols
-        );
-      });
+      if (desktopCols) {
+        document.querySelectorAll('.grid-toggle[data-cols]').forEach((btn) => {
+          btn.classList.toggle('active', btn.dataset.cols === desktopCols);
+        });
+        productGrid.setAttribute('data-cols-desktop', desktopCols);
+        localStorage.setItem('collectionDesktopCols', desktopCols);
+      }
 
-      // Update grid
-      productGrid.setAttribute('data-cols-desktop', cols);
-
-      // Save preference
-      localStorage.setItem('collectionDesktopCols', cols);
+      if (mobileCols) {
+        document.querySelectorAll('.grid-toggle[data-cols-mobile]').forEach((btn) => {
+          btn.classList.toggle('active', btn.dataset.colsMobile === mobileCols);
+        });
+        productGrid.setAttribute('data-cols', mobileCols);
+        localStorage.setItem('collectionMobileCols', mobileCols);
+      }
     });
   });
 });
@@ -486,6 +537,10 @@ document.addEventListener('DOMContentLoaded', () => {
       "id": "columns_desktop",
       "options": [
         {
+          "value": "4",
+          "label": "4"
+        },
+        {
           "value": "3",
           "label": "3"
         },
@@ -494,7 +549,7 @@ document.addEventListener('DOMContentLoaded', () => {
           "label": "2"
         }
       ],
-      "default": "2",
+      "default": "4",
       "label": "t:sections.main-collection-product-grid.settings.columns_desktop.label"
     },
     {
