@@ -1999,3 +1999,8 @@ custom-select.collection__sort .wt-options__list__item[selected] {
 .wt-product__info .wt-product__text-block { font-size: 14px; letter-spacing: -0.07px; }
 
 }
+
+
+
+.section-image-with-text .hero,
+.section-image-with-text .image-with-text-50 .hero--grid>* { border-radius:0; }
