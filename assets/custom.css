@@ -169,6 +169,7 @@ body:has(
 .wt-page-nav-mega__sublist__wrapper .card__container .card__badges {
   top: 12px;
   right: 12px;
+  margin-top: 8px;
 }
 .wt-page-nav-mega__sublist__wrapper .card__container .card__badges--item {
   font-size: 10px;
