@@ -68,7 +68,7 @@
 }
 @media (max-width: 480px) {
   .vg-section .vg-title, .vg-section .vg-modal-title-text { font-size: 16px; }
-  .vg-section .vg-play-btn { width: 36px; height: 36px; }
+  .vg-section .vg-play-btn { width: 40px; height: 40px; }
   .vg-section .vg-duration { padding: 4px 8px; font-size: 10px; }
   .vg-section .vg-subtitle { font-size: 12px; }
   .vg-section .vg-date { font-size: 10px; }
