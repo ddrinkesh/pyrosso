@@ -72,6 +72,6 @@
   .vg-section .vg-duration { padding: 4px 8px; font-size: 10px; }
   .vg-section .vg-subtitle { font-size: 12px; }
   .vg-section .vg-date { font-size: 10px; }
-  .vg-section .vg-filter-btn { padding: 5px 23px; font-size: 12px; line-height: 18px;  }
+  .vg-section .vg-filter-btn { padding: 5px 23px; font-size: 14px; line-height: 1.5; letter-spacing: -0.07px; }
   .vg-section .vg-play-btn *, .vg-section .vg-play-btn svg { width: 17px; height: 17px; }
 }
