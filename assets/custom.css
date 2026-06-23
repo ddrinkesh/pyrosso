@@ -2227,7 +2227,7 @@ custom-select.collection__sort .wt-options__list__item[selected] {
 .section-background-video .hero { border-radius: 0; }
 .section-background-video .hero__overlay__content .hero__button--gap { margin-top: 12px; }
 .section-background-video .hero__overlay__content .hero__button--gap .wt-button { width: 64px; height: 64px; }
-.section-background-video .hero__overlay__content .hero__button--gap .wt-button svg { width: 24px; height: 24px; }
+/* .section-background-video .hero__overlay__content .hero__button--gap .wt-button svg { width: 24px; height: 24px; } */
 
 .section-background-video .hero__subheading { font-size: 18px; margin-bottom: 10px; }
 
