@@ -61,7 +61,6 @@
         },
         "images_Nj3cky": {
           "type": "images",
-          "disabled": true,
           "settings": {
             "heading": "",
             "image_reels_1": "shopify://shop_images/banner.jpg",
