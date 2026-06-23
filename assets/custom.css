@@ -1642,6 +1642,22 @@ custom-select.collection__sort .wt-options__list__item[selected] {
 #ProductGridContainer .grid-toggle.active {
   color: #000;
 }
+/* Collection view toggle at 900-1199px = 2/3 columns.
+   The visible toggle in this range is the mobile one (.collection__counter.mobile);
+   its buttons write data-cols on the grid (e.g. data-cols="2"). The theme only maps
+   data-cols -> --cols at <=899px, so it did nothing at 900-1199. We add a 3-col
+   button to that toggle (markup), show 2 & 3 here (hide the 1-col button), and map
+   data-cols 2->2 / 3->3 columns. .collection prefix (0,3,0) + later source order
+   than main.css -> wins. */
+@media (min-width: 900px) and (max-width: 1199px) {
+  .collection__counter.mobile .grid-toggle[data-cols-mobile="1"] { display: none; }
+  .collection .collection__grid[data-cols="2"] { --cols: 2; }
+  .collection .collection__grid[data-cols="3"] { --cols: 3; }
+}
+/* The 3-col option is for 900-1199px only; hide it on phones (<=899px stays 1/2). */
+@media (max-width: 899px) {
+  .collection__counter.mobile .grid-toggle[data-cols-mobile="3"] { display: none; }
+}
 #ProductGridContainer .grid-toggle .svg-icon--grid-col-2 {
   width: 25px;
   height: 25px;
