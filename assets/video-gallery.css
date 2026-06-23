@@ -51,7 +51,7 @@
 }
 @media (min-width: 1200px) {
   .vg-section .vg-wrapper { padding-left: calc(calc(var(--gap, 8px) * 2) + calc(var(--gap, 8px) * 2)); padding-right: calc(calc(var(--gap, 8px) * 2) + calc(var(--gap, 8px) * 2)); }
-  .vg-section .vg-title, .vg-section .vg-modal-title-text { font-size: 24px; }
+  /* .vg-section .vg-title, .vg-section .vg-modal-title-text { font-size: 24px; } */
   .vg-section .vg-subtitle, .vg-section .vg-date { font-size: 18px; }
 }
 @media (max-width: 1199px) {
