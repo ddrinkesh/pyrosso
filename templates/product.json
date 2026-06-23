@@ -205,7 +205,7 @@
         "show-thumbnails-mobile": false,
         "show-scrollbar-mobile": false,
         "text_color": "#000000",
-        "background_color": "#ffffff",
+        "background_color": "#1D1A1A",
         "margin-top": 32,
         "margin-bottom": 32
       }
