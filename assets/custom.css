@@ -1048,6 +1048,7 @@ body:has(
   color: var(--color-custom-text);
   border-color: var(--color-custom-text);
 }
+.card__container .wt-product__add-to-cart_form--wrapper button .quick-add-mobile{width: 24px; height: 24px} 
 .card__container .wt-product__add-to-cart_form--wrapper button:hover {
   background: var(--color-custom-text);
   color: var(--color-body-text);
