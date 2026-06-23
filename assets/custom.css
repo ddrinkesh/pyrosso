@@ -2241,5 +2241,5 @@ custom-select.collection__sort .wt-options__list__item[selected] {
 
 @media (max-width: 1199px) {
   .wt-featured-collection .card__container .card__badges { left: 0; right: auto; }
-  .card__container .wt-product__add-to-cart_form--wrapper .button:has(.quick-add-mobile) { width:40px; height: 40px; }  
+  .card__container .wt-product__add-to-cart_form--wrapper button:has(.quick-add-mobile) { width:40px; height: 40px; }  
 }
