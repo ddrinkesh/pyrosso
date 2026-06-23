@@ -3392,11 +3392,11 @@ slideshow-section .hero__subheading {
   font-style: var(--font-headline-style);
   font-weight: var(--font-headline-weight);
   text-transform: var(--font-headline-transform, none);
-  /* font-size: var(--font-headline-size); */
+  font-size: var(--font-headline-size);
   letter-spacing: -1%;
   line-height: 1.4;
   color: var(--color-custom-text, var(--color-headings-text, var(--color-text)));
-  font-size: 32px;
+  /* font-size: 32px; */
   margin-top: 0;
   margin-inline: 0;
   overflow: visible;
@@ -3404,7 +3404,7 @@ slideshow-section .hero__subheading {
 }
 @media (min-width: 900px) {
   .hero__title {
-    font-size: 40px;
+    /* font-size: 40px; */
   }
 }
 /* @media (min-width: 1200px) {
