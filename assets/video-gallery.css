@@ -58,7 +58,7 @@
   .vg-section .vg-modal-inner { width: 90vw; }
 }
 @media (max-width: 899px) {
-  .vg-section .vg-filters { flex-direction: column; align-items: start; margin-bottom: 32px; }
+  .vg-section .vg-filters { flex-direction: column; align-items: start; margin-bottom: 32px; gap: 16px;}
   .vg-section .vg-filter-label { font-size: 16px; }
   .vg-section .vg-grid { grid-template-columns: 1fr; gap: 32px; }
   .vg-section .vg-filter-btn-wrapper { gap: 8px; padding-inline: 16px; margin-inline: -16px; }
@@ -72,6 +72,6 @@
   .vg-section .vg-duration { padding: 4px 8px; font-size: 10px; }
   .vg-section .vg-subtitle { font-size: 12px; }
   .vg-section .vg-date { font-size: 10px; }
-  .vg-section .vg-filter-btn { padding: 5px 23px; font-size: 14px; line-height: 1.5; letter-spacing: -0.07px; }
+  .vg-section .vg-filter-btn { padding: 5px 30px; font-size: 14px; line-height: 1.5; letter-spacing: -0.07px; }
   .vg-section .vg-play-btn *, .vg-section .vg-play-btn svg { width: 17px; height: 17px; }
 }
