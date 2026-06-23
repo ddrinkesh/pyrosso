@@ -1087,6 +1087,7 @@ body:has(
   }
 
   .wt-featured-collection .card__container .card__badges { left: 0; right: auto; }
+  .card__container .wt-product__add-to-cart_form--wrapper .button:has(.quick-add-mobile) { width:40px; height: 40px; }
 }
 @media (max-width: 600px) {
   .card__container .card__title,
