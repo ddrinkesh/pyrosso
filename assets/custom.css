@@ -2203,6 +2203,12 @@ custom-select.collection__sort .wt-options__list__item[selected] {
   }
 }
 
+/* Footer newsletter (Klaviyo) status message */
+.wt-signup__message { margin-top: 8px; font-size: 12px; line-height: 1.4; }
+.wt-signup__message:empty { display: none; }
+.wt-signup__message--error { color: #ff6b6b; }
+.wt-signup__message--success { opacity: 0.85; }
+
 /* Localization drawer opens FROM the mobile nav drawer (trigger lives inside it).
    critical.css forces opacity:0 on every direct <body> child except .page-header
    and .menu-drawer-overlay while the nav drawer is open (<=599px), which hid the
