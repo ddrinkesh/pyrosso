@@ -76,6 +76,10 @@
             "video_reels_6_product": ""
           }
         },
+        "appstle_subscription_appstle_subscription_product_page_widget_B8YPwp": {
+          "type": "shopify://apps/appstle-subscription/blocks/appstle-subscription-product-page-widget/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
+          "settings": {}
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -163,6 +167,7 @@
         "text_tbbwd4",
         "text_XfU9zt",
         "images_Nj3cky",
+        "appstle_subscription_appstle_subscription_product_page_widget_B8YPwp",
         "buy_buttons",
         "formulation_tool_qrRCeB",
         "product_details_h6cnTz",

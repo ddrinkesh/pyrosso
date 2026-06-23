@@ -107,7 +107,16 @@
 <footer class="wt-footer {% if section.settings.show-scroll-effect %}wt-footer--scroll-effect{% endif %}">
   <div class="wt-footer__top wt-footer__body">
     <div class="wt-footer__top__newsletter">
-      <section class="wt-newsletter wt-footer__additional wt-signup" data-signup>
+      <section
+        class="wt-newsletter wt-footer__additional wt-signup"
+        data-signup
+        data-klaviyo-config
+        data-klaviyo-public-key="{{ section.settings.klaviyo_public_key | escape }}"
+        data-default-dial-code="{{ section.settings.klaviyo_sms_dial_code | default: '1' | escape }}"
+        data-success-text="{{ section.settings.newsletter_success_text | default: 'Thanks for subscribing!' | escape }}"
+        data-error-text="{{ section.settings.newsletter_error_text | default: 'Something went wrong. Please try again.' | escape }}"
+      >
+        <script src="{{ 'klaviyo-signup.js' | asset_url }}" defer="defer"></script>
         <div class="wt-signup__head">
           {%- if section.settings.heading_newsletter != blank -%}
             <div class="wt-signup__heading">{{ section.settings.heading_newsletter }}</div>
@@ -139,16 +148,21 @@
 
         <div class="wt-signup__body">
           {%- comment -%} Email signup — its own customer form {%- endcomment -%}
-          {% form 'customer', class: 'newsletter-form wt-newsletter__form wt-signup__form wt-footer__additional__form wt-signup__panel is-active', data-signup-panel: 'email' %}
-            <input type="hidden" name="contact[tags]" value="newsletter">
-
+          {%- comment -%} Email signup — submits to Klaviyo via klaviyo-signup.js {%- endcomment -%}
+          <form
+            class="newsletter-form wt-newsletter__form wt-signup__form wt-footer__additional__form wt-signup__panel is-active"
+            data-signup-panel="email"
+            data-klaviyo-form
+            data-klaviyo-list="{{ section.settings.klaviyo_email_list_id | escape }}"
+            data-klaviyo-source="Footer Newsletter (Email)"
+            novalidate
+          >
             <div class="wt-signup__field-wrap">
               <input
                 id="NewsletterForm--{{ section.id }}"
                 type="email"
-                name="contact[email]"
+                name="email"
                 class="wt-signup__field"
-                value="{{ form.email }}"
                 aria-required="true"
                 autocorrect="off"
                 autocapitalize="off"
@@ -167,61 +181,25 @@
               <div class="wt-signup__disclaimer rte">{{ section.settings.disclaimer_text }}</div>
             {%- endif -%}
 
-            {%- if form.errors -%}
-              <div class="form__message">
-                <div class="form__error-field">
-                  {% for error in form.errors %}
-                    <p id="Newsletter-error--{{ section.id }}">
-                      {% if error == 'form' %}
-                        {{ form.errors.messages[error] }}
-                      {% else %}
-                        {{ form.errors.translated_fields[error] }} - {{ form.errors.messages[error] }}
-                      {% endif %}
-                    </p>
-                  {% endfor %}
-                </div>
-              </div>
-            {%- endif -%}
-
-            {%- if form.posted_successfully? -%}
-              <div class="form__message">
-                <div class="form__success-field" tabindex="-1" autofocus>
-                  <p>{{- 'newsletter.success' | t }}</p>
-                </div>
-              </div>
-            {%- endif -%}
-          {% endform %}
+            <div class="wt-signup__message" data-signup-message role="status" aria-live="polite"></div>
+          </form>
 
           {%- if section.settings.enable_sms -%}
-            {%- comment -%} SMS signup — separate customer form {%- endcomment -%}
-            {% form 'customer', class: 'newsletter-form wt-newsletter__form wt-signup__form wt-footer__additional__form wt-signup__panel', data-signup-panel: 'sms' %}
-              <input type="hidden" name="contact[tags]" value="newsletter,sms">
-              <input type="hidden" name="contact[accepts_marketing]" value="true">
-
-              {%- comment -%} Shopify customer form requires email; phone adds SMS consent {%- endcomment -%}
-              <div class="wt-signup__field-wrap">
-                <input
-                  id="NewsletterFormSmsEmail--{{ section.id }}"
-                  type="email"
-                  name="contact[email]"
-                  class="wt-signup__field"
-                  value="{{ form.email }}"
-                  aria-required="true"
-                  autocorrect="off"
-                  autocapitalize="off"
-                  autocomplete="email"
-                  placeholder="{{ section.settings.email_placeholder | default: 'Enter your email.' }}"
-                  required
-                >
-              </div>
-
+            {%- comment -%} SMS signup — email + phone, both subscribed in Klaviyo (klaviyo-signup.js) {%- endcomment -%}
+            <form
+              class="newsletter-form wt-newsletter__form wt-signup__form wt-footer__additional__form wt-signup__panel"
+              data-signup-panel="sms"
+              data-klaviyo-form
+              data-klaviyo-list="{{ section.settings.klaviyo_sms_list_id | escape }}"
+              data-klaviyo-source="Footer Newsletter (SMS)"
+              novalidate
+            >
               <div class="wt-signup__field-wrap">
                 <input
                   id="NewsletterFormSms--{{ section.id }}"
                   type="tel"
-                  name="contact[phone]"
+                  name="phone"
                   class="wt-signup__field"
-                  value="{{ form.phone }}"
                   aria-required="true"
                   autocorrect="off"
                   autocapitalize="off"
@@ -240,30 +218,8 @@
                 <div class="wt-signup__disclaimer rte">{{ section.settings.disclaimer_text }}</div>
               {%- endif -%}
 
-              {%- if form.errors -%}
-                <div class="form__message">
-                  <div class="form__error-field">
-                    {% for error in form.errors %}
-                      <p id="NewsletterSms-error--{{ section.id }}">
-                        {% if error == 'form' %}
-                          {{ form.errors.messages[error] }}
-                        {% else %}
-                          {{ form.errors.translated_fields[error] }} - {{ form.errors.messages[error] }}
-                        {% endif %}
-                      </p>
-                    {% endfor %}
-                  </div>
-                </div>
-              {%- endif -%}
-
-              {%- if form.posted_successfully? -%}
-                <div class="form__message">
-                  <div class="form__success-field" tabindex="-1" autofocus>
-                    <p>{{- 'newsletter.success' | t }}</p>
-                  </div>
-                </div>
-              {%- endif -%}
-            {% endform %}
+              <div class="wt-signup__message" data-signup-message role="status" aria-live="polite"></div>
+            </form>
           {%- endif -%}
         </div>
       </section>
@@ -865,6 +821,50 @@
       "id": "disclaimer_text",
       "label": "Disclaimer text",
       "default": "<p>*By completing this form you are signing up to receive our marketing and can unsubscribe at any time.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Klaviyo (newsletter signup)"
+    },
+    {
+      "type": "text",
+      "id": "klaviyo_public_key",
+      "label": "Public API Key (Site ID)",
+      "info": "PUBLIC 6-char Site ID only (Klaviyo > Settings > API Keys). Never paste a private pk_ key here.",
+      "default": "Vh49QN"
+    },
+    {
+      "type": "text",
+      "id": "klaviyo_email_list_id",
+      "label": "Email List ID",
+      "info": "Klaviyo list the Email panel subscribes to (Lists & Segments > list > Settings).",
+      "default": "XtJD8u"
+    },
+    {
+      "type": "text",
+      "id": "klaviyo_sms_list_id",
+      "label": "SMS List ID",
+      "info": "Klaviyo list the SMS panel subscribes to. Requires SMS enabled on the account.",
+      "default": "URTS7Q"
+    },
+    {
+      "type": "text",
+      "id": "klaviyo_sms_dial_code",
+      "label": "SMS default country code",
+      "info": "Digits only, no +. Prepended to phone numbers typed without a country code. US = 1.",
+      "default": "1"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_success_text",
+      "label": "Success message",
+      "default": "Thanks for subscribing!"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_error_text",
+      "label": "Error message",
+      "default": "Something went wrong. Please try again."
     },
     {
       "type": "header",

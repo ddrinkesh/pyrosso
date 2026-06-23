@@ -154,6 +154,10 @@
             "enable-striped-rows": true
           }
         },
+        "appstle_subscription_appstle_subscription_product_page_widget_B8YPwp": {
+          "type": "shopify://apps/appstle-subscription/blocks/appstle-subscription-product-page-widget/fe257d39-6f88-4f35-ab08-bd437e3aa94e",
+          "settings": {}
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -375,6 +379,7 @@
         "promo_dfKV6n",
         "price",
         "variant_picker",
+        "appstle_subscription_appstle_subscription_product_page_widget_B8YPwp",
         "buy_buttons",
         "separator_4DhDqF",
         "feature_icons_6k4GEa",
