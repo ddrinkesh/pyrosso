@@ -236,6 +236,7 @@
         "column_kDdwrw",
         "column_EJUyrn"
       ],
+      "disabled": true,
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
         "advanced_heading": true,
