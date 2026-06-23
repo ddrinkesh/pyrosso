@@ -33,7 +33,7 @@
 .iwp-section .card__badges { display: none; }
 
 /* Quick-add: always visible, white circle 42px at top-right of image (Figma: p-[10px] from image edge) */
-.iwp-section .card__quick-add-container--desktop { position: absolute; top: 10px; right: 2cqh; bottom: auto; width: 42px; height: 42px; opacity: 1 !important; transform: none !important; pointer-events: auto !important; z-index: 2; }
+.iwp-section .card__quick-add-container--desktop { position: absolute; top: 10px; right: 2cqh; bottom: auto; width: 42px; height: 42px; opacity: 1 !important; transform: none !important; pointer-events: auto !important; z-index: 2; margin-right: 10px; }
 .iwp-section .card__quick-add-container--desktop .hero__button,
 .iwp-section .card__quick-add-container--desktop button { background: #ffffff !important; color: transparent !important; border: none !important; border-radius: 50% !important; width: 42px !important; height: 42px !important; min-width: unset !important; min-height: unset !important; max-width: unset !important; padding: 0 !important; font-size: 0 !important; line-height: 0 !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer; position: relative; overflow: hidden !important; }
 .iwp-section .card__quick-add-container--desktop .quick-add-desktop { display: none !important; }
