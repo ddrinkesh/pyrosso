@@ -2222,3 +2222,5 @@ custom-select.collection__sort .wt-options__list__item[selected] {
 /* 
 
 .csm-cookie-consent .csm-banner-text-wrapper { width: 100% !important; } */
+
+.section-background-video .hero { border-radius: 0; }
