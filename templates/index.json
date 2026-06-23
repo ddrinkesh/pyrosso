@@ -24,7 +24,7 @@
           "settings": {
             "heading": "Pop on Spotwear.",
             "disable_on_mobile": false,
-            "size_heading": 100,
+            "size_heading": 160,
             "size_heading_mobile": 100
           }
         },
@@ -57,6 +57,7 @@
         "autoplay": true,
         "video_controls": false,
         "video_custom_play_controls": true,
+        "play_button_position": "bottom_of_video",
         "video_custom_mute_controls": true,
         "video_url": "",
         "original_ratio": "fixed_height",
