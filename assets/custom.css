@@ -1085,6 +1085,8 @@ body:has(
   .card__container .quick-add-desktop {
     display: none;
   }
+
+  .wt-featured-collection .card__container .card__badges { left: 0; right: auto; }
 }
 @media (max-width: 600px) {
   .card__container .card__title,
