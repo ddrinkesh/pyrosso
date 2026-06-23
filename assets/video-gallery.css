@@ -4,7 +4,7 @@
 .vg-section .vg-filter-label { font-size: 20px; font-weight: 600; line-height: 1; letter-spacing: 0; text-transform: uppercase; }
 .vg-section .vg-filter-btn-wrapper { display: flex; overflow-x: auto; gap: 16px; }
 .vg-section .vg-filter-btn-wrapper::-webkit-scrollbar { width: 0; }
-.vg-section .vg-filter-btn { padding: 7px 24px; border-color: #6b6b6b; background: transparent; color: #bfbfbf; min-width: fit-content; font-size: 18px; font-style: normal; font-weight: 400; line-height: 1.5; letter-spacing: -0.09px;}
+.vg-section .vg-filter-btn { padding: 7px 20px; border-color: #6b6b6b; background: transparent; color: #bfbfbf; min-width: fit-content; font-size: 18px; font-style: normal; font-weight: 400; line-height: 1.5; letter-spacing: -0.09px;}
 .vg-section .vg-filter-btn:is(.active, :hover) { background: var(--vg-text); color: var(--vg-bg); }
 .vg-section .vg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px 32px; }
 .vg-section .vg-thumbnail { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #2c2c2c; border-radius: var(--border-radius); }
