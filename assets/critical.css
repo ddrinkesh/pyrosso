@@ -3300,6 +3300,7 @@ body.no-focus-visible .wt-page-nav-mega__sublist__link:focus-visible[data-menu-l
   align-items: center;
   justify-content: space-between;
   color: inherit;
+  text-transform: uppercase;
 }
 @media (max-width: 1199px) {
   .wt-page-nav-mega__link {
