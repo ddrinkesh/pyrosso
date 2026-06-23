@@ -27,18 +27,16 @@
     "background_video_aEmn34": {
       "type": "background-video",
       "blocks": {
-        "heading_NHxcAn": {
-          "type": "heading",
+        "text_zqNd8K": {
+          "type": "text",
           "settings": {
-            "heading": "Get to know GLAZING \nMIST.",
-            "disable_on_mobile": false,
-            "size_heading": 100,
-            "size_heading_mobile": 100
+            "text": "<p>Get to know GLAZING <br/>MIST.</p>",
+            "disable_on_mobile": false
           }
         }
       },
       "block_order": [
-        "heading_NHxcAn"
+        "text_zqNd8K"
       ],
       "name": "t:sections.background-video.presets.name",
       "settings": {
