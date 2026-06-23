@@ -1,6 +1,6 @@
 .vg-section .vg-wrapper { max-width: var(--site-max-width-big); padding-left: calc(var(--gap, 8px) * 2); padding-right: calc(var(--gap, 8px) * 2); overflow: hidden; margin-inline: auto; }
 .vg-section .vg-card { overflow: hidden; cursor: pointer; transition: all 400ms ease-in-out; }
-.vg-section .vg-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 15px; margin-bottom: 24px; }
+.vg-section .vg-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 15px; margin-bottom: 48px; }
 .vg-section .vg-filter-label { font-size: 20px; font-weight: 600; line-height: 1; letter-spacing: 0; text-transform: uppercase; }
 .vg-section .vg-filter-btn-wrapper { display: flex; overflow-x: auto; gap: 16px; }
 .vg-section .vg-filter-btn-wrapper::-webkit-scrollbar { width: 0; }
