@@ -30,6 +30,9 @@
 .product-review-wrapper .jdgm-rev__pics { margin-top: 8px !important; }
 .product-review-wrapper .jdgm-rev__pics .jdgm-rev__pic-link { border-radius: var(--border-radius, 0); overflow: hidden; display: inline-block; vertical-align: text-bottom; }
 .product-review-wrapper .jdgm-rev__header .jdgm-row-rating { line-height: 10px !important; }
+
+.product-review-wrapper .jdgm-rev-widg[data-number-of-reviews="0"] .product-review :is(.jdgm-rev-widg__title, .jdgm-row-stars .jdgm-histogram.jdgm-temp-hidden, .jdgm-row-stars .jdgm-widget-actions-wrapper, .jdgm-verified-checkmark, .jdgm-rev__icon, .jdgm-row-extra, .jdgm-rev__custom-form)  { display: flex !important; }
+
 @media (min-width: 1200px) {
     .product-review-wrapper { padding-left: calc(calc(var(--gap, 8px) * 2) + calc(var(--gap, 8px) * 2)); padding-right: calc(calc(var(--gap, 8px) * 2) + calc(var(--gap, 8px) * 2)); }
 }
