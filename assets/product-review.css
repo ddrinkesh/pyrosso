@@ -47,6 +47,7 @@
 }
 @media (max-width: 899px) {
     .product-review-wrapper .product-review.product-review_padding { padding: 0; }
+    .product-review-wrapper .product-review .jdgm-rev-widg[data-number-of-reviews="0"] .jdgm-rev-widg__header .jdgm-rev-widg__title { justify-content: start; }
 }
 @media (max-width: 480px) {
     .product-review-wrapper .jdgm-rev-widg__summary-average { font-size: 16px; }
