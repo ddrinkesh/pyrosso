@@ -1,5 +1,5 @@
 .product-review-wrapper { max-width: var(--site-max-width-big); padding-left: calc(var(--gap, 8px) * 2); padding-right: calc(var(--gap, 8px) * 2); margin-inline: auto; }
-.product-review-wrapper:has(.jdgm-rev-widg__reviews:empty) { display: none; }
+/* .product-review-wrapper:has(.jdgm-rev-widg__reviews:empty) { display: none; } */
 .product-review-wrapper .product-review { border-radius: var(--border-radius, 0); overflow: hidden; }
 .product-review-wrapper .product-review * { line-height: 1.35; letter-spacing: -1%; }
 .product-review-wrapper .jdgm-rev__rating { line-height: 1 !important; }
