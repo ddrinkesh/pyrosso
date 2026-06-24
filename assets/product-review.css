@@ -38,6 +38,8 @@
 .product-review-wrapper .product-review .jdgm-rev-widg[data-number-of-reviews="0"] .jdgm-row-stars { justify-content: center!important; padding: 10px !important; gap: 50px; }
 .product-review-wrapper .product-review .jdgm-rev-widg[data-number-of-reviews="0"] .jdgm-rev-widg__header .jdgm-rev-widg__title { justify-content: center; }
 
+.product-review-wrapper .product-review a { color: var(--text-color); }
+
 @media (min-width: 1200px) {
     .product-review-wrapper { padding-left: calc(calc(var(--gap, 8px) * 2) + calc(var(--gap, 8px) * 2)); padding-right: calc(calc(var(--gap, 8px) * 2) + calc(var(--gap, 8px) * 2)); }
 }
