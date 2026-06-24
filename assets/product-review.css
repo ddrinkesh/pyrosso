@@ -33,6 +33,8 @@
 
 .product-review-wrapper .product-review .jdgm-rev-widg[data-number-of-reviews="0"] :is(.jdgm-rev-widg__title, .jdgm-row-stars .jdgm-histogram.jdgm-temp-hidden, .jdgm-row-stars .jdgm-widget-actions-wrapper, .jdgm-verified-checkmark, .jdgm-rev__icon, .jdgm-row-extra, .jdgm-rev__custom-form)  { display: flex !important; }
 
+.jdgm-rev-widg[data-number-of-reviews="0"] .jdgm-histogram.jdgm-histogram, .jdgm-rev-widg[data-number-of-reviews="0"] .jdgm-row-search, .jdgm-rev-widg[data-number-of-reviews="0"] .jdgm-row-actions, .jdgm-rev-widg[data-number-of-reviews="0"] .jdgm-rev-widg__body, .jdgm-rev-widg[data-number-of-reviews="0"] .jdgm-paginate { display: none !important; }
+
 @media (min-width: 1200px) {
     .product-review-wrapper { padding-left: calc(calc(var(--gap, 8px) * 2) + calc(var(--gap, 8px) * 2)); padding-right: calc(calc(var(--gap, 8px) * 2) + calc(var(--gap, 8px) * 2)); }
 }
