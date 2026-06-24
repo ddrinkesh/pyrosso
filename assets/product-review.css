@@ -46,6 +46,7 @@
 .product-review-wrapper .jdgm-rev-widg__summary .jdgm-star { font-size: 17px !important; }
 }
 @media (max-width: 990px) {
+.product-review-wrapper .product-review .jdgm-rev-widg[data-number-of-reviews="0"] .jdgm-row-stars { padding: 0!important; }
 .product-review-wrapper .product-review .jdgm-rev-widg[data-number-of-reviews="0"] .jdgm-rev-widg__header .jdgm-rev-widg__title { justify-content: start; }
 .product-review-wrapper .product-review .jdgm-rev-widg[data-number-of-reviews="0"] .jdgm-write-rev-link.jdgm-write-rev-link { margin: 0; margin-top: 10px; }
 }
