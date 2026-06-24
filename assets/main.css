@@ -3378,7 +3378,7 @@ slideshow-section .hero__subheading {
     width: min(40%, 80rem);
   }
   .section-background-video .hero__overlay__content {
-    width: min(60%, 90rem);
+    width: min(65%, 90rem);
   }
 }
 .wt-image-banner .hero__overlay__content, .slideshow-section .hero__overlay__content {
